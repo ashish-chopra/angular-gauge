@@ -1,0 +1,20 @@
+{
+  "name": "angular-gauge",
+  "description": "A Gauge meter directive for Angular Apps and dashboards",
+  "main": "index.js",
+  "authors": [
+    "Ashish Chopra"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.8"
+  }
+}
