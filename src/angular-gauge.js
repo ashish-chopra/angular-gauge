@@ -16,7 +16,7 @@
 
         Gauge.prototype.getRadius = function () {
             var center = this.getCenter(),
-                radius = center.x - this.options.thick - 2;
+                radius = center.x - this.options.thick;
             return radius;
         };
         Gauge.prototype.drawBackground = function (start, end) {
@@ -25,8 +25,9 @@
                 radius = this.getRadius();
             context.beginPath();
             context.arc(center.x, center.y, radius, start, end, false);
+            context.lineCap = "round";
             context.lineWidth = this.options.thick;
-            context.strokeStyle = "#eee";
+            context.strokeStyle = "rgba(255,255,255,0.2)";
             context.stroke();
 
         };
@@ -56,7 +57,7 @@
             } else if (this.options.type == 'full') {
                 var head = 1.5 * Math.PI,
                     tail = 3.5 * Math.PI;
-            } else {
+            } else if(this.options.type === 'arch') {
                 var head = 0.8 * Math.PI,
                     tail = 2.2 * Math.PI;
             }
@@ -81,11 +82,11 @@
                     var newPos = head + 2 * stripe * movePerFrame;
                     context.arc(center.x, center.y, radius, head, newPos, false);
 
-                    context.lineCap = 'round';
+                    context.lineCap = 'butt';
                     context.lineWidth = thick;
                     context.strokeStyle = "#ffcc66";
                     context.stroke();
-                    head = newPos;
+                    head = newPos + stripe * movePerFrame;
 
                 } else {
                     cancelAnimationFrame(requestID);
@@ -126,7 +127,7 @@
         return {
             restrict: 'E',
             replace: true,
-            template: "<div class='parent'><span class='text'>121 GE</span><canvas height='180' width='180'></canvas></div>",
+            template: "<div class='parent'><span class='text text-span'>{{value}}<u>%</u></span><b class='text text-b'>Speed</b><canvas height='200' width='200'></canvas></div>",
             scope: {
                 value: "=",
                 used: "=",

@@ -21,19 +21,40 @@
         .parent {
             margin: 0 10px;
             text-align: center;
-            border: 1px solid green;
+/*            border: 1px solid green;*/
             width: 200px;
             position: relative;
         }
         .text {
-            border: 1px solid red;
+/*          border: 1px solid red;*/
             display: inline-block;
+            font-weight: 100;
+            width: 100%;
+/*            margin: 0 23%;*/
+            position: absolute;
+            font-family: 'Open Sans';
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .text-span {
             font-size: 44px;
             line-height: 200px;
-            width: 54%;
-            position: absolute;
-            text-align: center;
-            margin: 0 23%;
+        } 
+        .text-b {
+            font-size:15.3846px;
+            line-height: 276.923px;
+            font-weight: 200;
+        }
+        .text u {
+            text-decoration: none;
+            font-size: 0.6em;
+            font-weight: 200;
+        }
+        
+        .gauge {
+            float: left;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -41,14 +62,11 @@
 <body ng-controller="demoController as dm" style="background-color:#d6b552;">
     <h1>Angular Gauge</h1>
     <input type="text" ng-model="dm.data">
-    <ng-gauge id="1" size="200" thick="10" type="full" value="dm.data"></ng-gauge>
-    <ng-gauge id="2" size="200" thick="10" type="semi" value="dm.data"></ng-gauge>
-    <ng-gauge id="3" size="200" thick="10" type="arch" value="dm.data"></ng-gauge>
-    
-    <div class="parent">
-        <span class="text">this is text</span>
-        
-    </div>
+    <br>
+    <br>
+    <ng-gauge class="gauge" id="1" size="200" thick="20" stripe="1" type="full" value="dm.data"></ng-gauge>
+    <ng-gauge class="gauge" id="2" size="200" thick="20" stripe="1" type="semi" value="dm.data"></ng-gauge>
+    <ng-gauge class="gauge" id="3" size="200" thick="20" stripe="1" type="arch" value="dm.data"></ng-gauge>
 </body>
 
 </html>
