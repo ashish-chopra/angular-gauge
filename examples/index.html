@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+
+<head>
+    <title>Angular Gauge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.js"></script>
+    <script src="angular-gauge.js"></script>
+    <script>
+        angular.module('demo', ['angularGauge'])
+            .controller('demoController', demoController);
+
+        demoController.$inject = [];
+
+        function demoController() {
+            var vm = this;
+            vm.data = 40;
+        }
+    </script>
+    <style>
+        .parent {
+            margin: 0 10px;
+            text-align: center;
+            border: 1px solid green;
+            width: 200px;
+            position: relative;
+        }
+        .text {
+            border: 1px solid red;
+            display: inline-block;
+            font-size: 44px;
+            line-height: 200px;
+            width: 54%;
+            position: absolute;
+            text-align: center;
+            margin: 0 23%;
+        }
+    </style>
+</head>
+
+<body ng-controller="demoController as dm" style="background-color:#d6b552;">
+    <h1>Angular Gauge</h1>
+    <input type="text" ng-model="dm.data">
+    <ng-gauge id="1" size="200" thick="10" type="full" value="dm.data"></ng-gauge>
+    <ng-gauge id="2" size="200" thick="10" type="semi" value="dm.data"></ng-gauge>
+    <ng-gauge id="3" size="200" thick="10" type="arch" value="dm.data"></ng-gauge>
+    
+    <div class="parent">
+        <span class="text">this is text</span>
+        
+    </div>
+</body>
+
+</html>
