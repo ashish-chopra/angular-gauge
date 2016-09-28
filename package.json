@@ -1,13 +1,13 @@
 {
   "name": "angular-gauge",
-  "version": "0.1",
-  "description": "A gauge meter directive for Angular Apps and Dashboards",
+  "version": "0.1.0",
+  "description": "A reusable Gauge directive for Angular 1.x apps and dashboards",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ashish Chopra",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",

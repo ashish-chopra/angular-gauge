@@ -3,13 +3,14 @@
        Author: Ashish Chopra
        Updated on: 21 may, 2016
        --------------------------------------
-       Gulpfile.js is customized for library development process for writing
-       front end libraries in JavaScript.
+       Gulpfile.js is customized for library development process for
+       writing front end libraries in JavaScript.
        
        TODO:
        1. Adding the test framework support
        2. Adding the code coverage support
        3. Add the build assets support 
+       4. Utilize jshint and jscs tasks written below.
  */
 
 (function () {

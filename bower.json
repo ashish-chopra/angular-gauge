@@ -1,12 +1,12 @@
 {
   "name": "angular-gauge",
-  "description": "A Gauge meter directive for Angular Apps and dashboards",
+  "description": "A Gauge meter directive for Angular 1.x apps and dashboards",
   "main": "index.js",
   "authors": [
     "Ashish Chopra"
   ],
-  "license": "ISC",
-  "homepage": "",
+  "license": "MIT",
+  "homepage": "https://github.com/ashish-chopra/angular-gauge",
   "ignore": [
     "**/.*",
     "node_modules",
