@@ -17,11 +17,16 @@ Installation is easy:
 
 2. Run following commands to setup your dev environment:
 
-       npm install
-       
+```
+npm install
+
+```      
 3. To run the example in development mode:
 
-       gulp
+```
+gulp
+
+```
 
 4. Browse the example at `http://localhost:3000/`
 
