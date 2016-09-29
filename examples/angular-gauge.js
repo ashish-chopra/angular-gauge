@@ -15,11 +15,58 @@
     gaugeMeterDirective.$inject = [];
 
     function gaugeMeterDirective() {
+
+        var defaults = {
+            size: 200,
+            type: 'full',
+            thick: 2,
+            cap: "butt",
+            label: null,
+            text: null
+        };
+
         var Gauge = function (element, options) {
-            this.element = element;
-            this.context = element.getContext('2d');
+            this.element = element.find("canvas")[0];
+            this.context = this.element.getContext('2d');
+            this.context.canvas.width = options.size;
+            this.context.canvas.height = options.size;
+            this.context.lineCap = options.cap;
+            this.context.lineWidth = options.thick;
             this.options = options;
-            console.log(this.options);
+            this.label = element.find("span");
+            // styling
+            element.find("span").css({
+                display: 'inline-block',
+                fontWeight: 100,
+                width: '100%',
+                position: 'absolute',
+                fontFamily: 'Open Sans',
+                textAlign: 'center',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                fontSize: '44px',
+                lineHeight: '200px'
+            });
+            element.find("b").css({
+                display: 'inline-block',
+                fontWeight: 100,
+                width: '100%',
+                position: 'absolute',
+                fontFamily: 'Open Sans',
+                textAlign: 'center',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                fontSize: '15.3846px',
+                lineHeight: '276.923px',
+                fontWeight: 200
+            });
+
+
+            element.find("u").css({
+                textDecoration: 'none',
+                fontSize: '0.6em',
+                fontWeight: 200
+            })
             this.create();
         };
 
@@ -34,29 +81,11 @@
                 radius = this.getRadius();
             context.beginPath();
             context.arc(center.x, center.y, radius, start, end, false);
-            context.lineCap = "round";
-            context.lineWidth = this.options.thick;
-            context.strokeStyle = "rgba(255,255,255,0.2)";
+            context.strokeStyle = this.options.backgroundColor;
             context.stroke();
 
         };
-        Gauge.prototype.addLabelByCanvas = function () {
-            var center = this.getCenter(),
-                context = this.context;
-            context.font = "32px 'Open Sans'";
-            context.textAlign = "center";
-            context.fillText("40 mph", center.x, center.y);
-            var c = context.measureText("40").width * 3 / 4 + 10;
-            context.font = "16px 'Open Sans'";
-            context.fillText("mph", center.x + c, center.y);
-            context.font = "12px 'Open Sans'";
-            context.fillText("Hello World", center.x, center.y + 20);
 
-        }
-        
-        Gauge.prototype.addLabel = function() {
-            
-        }
         Gauge.prototype.create = function () {
             var center = this.getCenter(),
                 movePerFrame = 0.0174532925;
@@ -66,43 +95,37 @@
             } else if (this.options.type == 'full') {
                 var head = 1.5 * Math.PI,
                     tail = 3.5 * Math.PI;
-            } else if(this.options.type === 'arch') {
+            } else if (this.options.type === 'arch') {
                 var head = 0.8 * Math.PI,
                     tail = 2.2 * Math.PI;
             }
-            var context = this.context,
-                value = this.options.value;
-            radius = this.getRadius();
+
             this.drawBackground(head, tail);
+            var context = this.context,
+                value = this.options.value,
+                radius = this.getRadius(),
+                thick = this.options.thick,
+                foregroundColor = this.options.foregroundColor,
+                requestID;
 
-
-            var distance = tail - head;
-            tail = head + (distance * value) / 100;
-            console.log(tail);
-
-            var stripe = this.options.stripe || 2;
-            var thick = this.options.thick;
+            var distance = tail - head,
+                label = this.label;
+            tail = head + ((tail - head) * value) / 100;
 
             function animate() {
                 requestID = window.requestAnimationFrame(animate);
 
                 if (head <= tail) {
                     context.beginPath();
-                    var newPos = head + 2 * stripe * movePerFrame;
+                    var newPos = head + 2 * movePerFrame;
                     context.arc(center.x, center.y, radius, head, newPos, false);
-
-                    context.lineCap = 'butt';
-                    context.lineWidth = thick;
-                    context.strokeStyle = "#ffcc66";
+                    context.strokeStyle = foregroundColor;
                     context.stroke();
-                    head = newPos + stripe * movePerFrame;
-
+                    head = newPos;
                 } else {
                     cancelAnimationFrame(requestID);
                 }
             }
-            console.log("stripe" + stripe);
-            this.addLabel();
             animate();
         };
 
@@ -132,64 +155,61 @@
             this.options.value = val;
             this.create();
         }
+        Gauge.prototype.destroy = function () {
+
+        }
+
+
+        var getOptions = function (scope) {
+            var opts = angular.extend({}, defaults, scope || {});
+            return opts;
+        }
 
         return {
             restrict: 'E',
             replace: true,
-            template: "<div class='parent'><span class='text text-span'>{{value}}<u>%</u></span><b class='text text-b'>Speed</b><canvas height='200' width='200'></canvas></div>",
+            template: "<div style='display:inline; margin: 0 10px;text-align: center;position: relative;          width: 200px;'><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas height='200' width='200'></canvas></div>",
             scope: {
-                value: "=",
-                used: "=",
-                total: "=",
-                type: "@",
+                append: "@",
+                backgroundColor: "@",
+                cap: "@",
+                foregroundColor: "@",
+                label: "@",
                 size: "@",
                 thick: "@",
-                stripe: "@",
-                label: "@",
-                text: "@"
-            },
-            controller: function ($scope) {
-                var defaultOptions = {
-                    size: 180,
-                    thick: 2,
-                    type: 'full'
-                };
-                var vm = this;
-                vm.options = angular.extend({}, $scope);
-                console.log(vm.options);
+                type: "@",
+                value: "=",
+                prepend: "@",
+                append: "@"
             },
             link: function (scope, element, attrs, ctrl) {
-                if (scope.value && scope.value != '') {
+                if (angular.isDefined(scope.value) && scope.value !== "") {
                     setTimeout(function () {
                         initOrUpdateGauge();
                     })
                 }
-
+//                initOrUpdateGauge();
                 var gauge;
 
-                function initOrUpdateGauge() {
-                    if (!gauge) {
-                        var options = {
-                            type: ctrl.options.type,
-                            size: ctrl.options.size,
-                            value: ctrl.options.value,
-                            thick: ctrl.options.thick,
-                            stripe: ctrl.options.stripe
-                        };
-                        console.log(options.thick);
-                        gauge = new Gauge(element.find("canvas")[0], options);
-                        console.log(gauge);
-                    } else {
-                        // update gauge
-                    }
-                }
-
-                // monitor changes in directive scope
-                scope.$watch('value', function (newVal) {
+                scope.$watch('value', function (newVal, oldVal) {
+                    console.log('inside value changed fn' + newVal, +" " + oldVal);
                     if (gauge)
                         gauge.update(newVal);
                 });
 
+                scope.$on('$destroy', function () {
+                    gauge.destroy();
+                })
+
+                function initOrUpdateGauge() {
+                    if (!gauge) {
+                        var options = getOptions(scope);
+                        gauge = new Gauge(element, options);
+                        console.log("inside initorupdate fn");
+                    } else {
+                        // update gauge
+                    }
+                }
             }
         }
     }
