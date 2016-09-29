@@ -9,7 +9,6 @@
     <script>
         angular.module('demo', ['angularGauge'])
             .controller('demoController', demoController);
-
         demoController.$inject = [];
 
         function demoController() {
@@ -18,35 +17,6 @@
         }
     </script>
     <style>
-        /*
-        .container {
-            -webkit-column-count: 4;
-            -moz-column-count: 4;
-            column-count: 4;
-            font-family: 'Open Sans';
-            column-gap: 1em;
-            -webkit-column-gap: 1em;
-            -moz-column-gap: 1em;
-        }
-        
-        .item {
-            display: inline-block;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.05);
-            
-            margin: 0 0 1em;
-            padding: 1.5em;
-
-            margin: 10px 8px;
-            padding: 10px;
-            text-align: center;
-        }
-        
-        .item p {
-            display: inline-block;
-        }
-*/
-        
         .container {
             display: flex;
             flex-direction: row;
@@ -63,7 +33,9 @@
             border-radius: 3px 3px;
             width: 20%;
         }
-        .item p, li {
+        
+        .item p,
+        li {
             text-align: left;
         }
     </style>
@@ -75,11 +47,12 @@
         <div class="item">
             <h2>Type</h2>
             <p>There are three types of Gauges you can create:
-            <ol>
-                <li>Full style</li>
-                <li>Semi style</li>
-                <li>Arch style</li>
-            </ol></p>
+                <ol>
+                    <li>Full style</li>
+                    <li>Semi style</li>
+                    <li>Arch style</li>
+                </ol>
+            </p>
         </div>
         <div class="item">
             <h2>Full</h2>
