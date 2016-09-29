@@ -7,6 +7,8 @@ Current Version: `0.1.0`
 
 This directive project is currently in development stage. So you can only install it in development only right now. I do not recommend to use it for production use.
 
+![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
+
 How to Install?
 ------------------------
 Installation is easy:
