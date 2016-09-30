@@ -1,36 +1,42 @@
-angular-gauge
-----------------------
+# angular-gauge
 
 Current Version: `0.1.0`
 
-`angular-gauge` is a reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your needs.
+A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
-This directive project is currently in development stage. So you can only install it in development only right now. I do not recommend to use it for production use.
+```
+NOTE:This directive project is currently in development stage. I do not recommend to use it for production use.
+```
 
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
 
-How to Install?
-------------------------
-Installation is easy:
+# Installation
+
+Currently we support manual method of adding this library into your project. Follow the steps given below:
 
 1. Clone the repo.
-
 2. Run following commands to setup your dev environment:
 
+    ```
+    npm install
+    gulp build
+    ```      
+3. copy the files from `dist/` manually into your project folder.
+
+4.  Then add the sources to your code (after adding the dependency of Angular) as given below:
+
+```html
+<head>
+  ...
+<head>
+<body>
+  ...
+</body>
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="angular-gauge/dist/angular-gauge.min.js"></script>
 ```
-npm install
 
-```      
-3. To run the example in development mode:
-
-```
-gulp
-
-```
-
-4. Browse the example at `http://localhost:3000/`
-
-If you encounter any problem while setting up the project, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
+If any problem occurs, raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
 
 Contribute
