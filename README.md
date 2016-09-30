@@ -8,31 +8,21 @@ A reusable gauge directive for Angular 1.x apps and dashboards. It provides many
 
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
 
-# Experimental Usage
+# Usage
 
+Currently we support manual way of adding this library into your project.
 
-Currently we support manual way of adding this library into your project. Follow the steps given below:
-
-1. Setup the project on your machine manually using following commands
+Clone the repo and download the project dependencies & build the project using following commands
 
     ```
     git clone https://github.com/ashish-chopra/angular-gauge.git
     npm install
+    gulp build
     ```
-
-## Checkout Examples
-
-2. The `examples` bundled in the project can be explored by running a dev server:
-    ```
-    gulp
-    ```
-    and browse at `http://localhost:3000`.
-
-## Add to your Project
 
 3. Copy the files from `dist/` manually into your project folder.
 
-4.  Then add the sources to your code (after adding the dependency of Angular) and  as given below:
+4.  Then add the sources to your code (after adding the dependency of Angular) and resolving the paths as given below:
 
     ```html
     <head>
@@ -50,18 +40,11 @@ Currently we support manual way of adding this library into your project. Follow
     ```
     angular.module('yourApp', ['ngGauge']);
     ```
-6. Use it in your markup as
+6. Use it in your markup like this
 
     ```html
     <ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="kW"></ng-gauge>
     ```
-
-In order to checkout the bundled `examples` run:
-    
-    ```
-    gulp
-    ```
- and browse the examples at `http://localhost:3000`.
  
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
@@ -69,18 +52,18 @@ If you face any problem, then raise an issue [here](https://github.com/ashish-ch
 # Contribute
 
 This project is currently in development phase. So you can fork it and contribute in its active development. 
+Setting up the development environment is easy:
 
     ```
     git clone https://github.com/ashish-chopra/angular-gauge.git
     npm install
+    gulp
     
     ```
+`gulp` will run a development server on your machine and you can checkout the bundled `examples` at `http://localhost:3000`.
 
 
-Checkout the [issue tracker](https://github.com/ashish-chopra/angular-gauge/issues) to start with.
-
-There are tons of project setup related issues and activities in which you can help.
-Your feedback could also be a great contribution.
+Explore the [issue tracker](https://github.com/ashish-chopra/angular-gauge/issues) to start with. There are tons of other project setup related issues and activities in which you can help. Your feedback could also be a great contribution.
 
 
 License
