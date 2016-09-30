@@ -39,7 +39,7 @@ Then add the sources to your code (after adding the dependency of Angular) and r
 Add as dependency in your module
 
 ```
-angular.module('yourApp', ['ngGauge']);
+angular.module('yourApp', ['angularGauge']);
 ```
 Use it in your markup like this
 
