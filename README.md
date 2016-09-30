@@ -20,9 +20,9 @@ npm install
 gulp build
 ```
 
-3. Copy the files from `dist/` manually into your project folder.
+Copy the files from `dist/` manually into your project folder.
 
-4.  Then add the sources to your code (after adding the dependency of Angular) and resolving the paths as given below:
+Then add the sources to your code (after adding the dependency of Angular) and resolving the paths as given below:
 
 ```html
 <head>
@@ -35,12 +35,12 @@ gulp build
   <script src="vendor/angular-gauge/dist/angular-gauge.min.js"></script>
 ```
 
-5. Add as dependency in your module
+Add as dependency in your module
 
     ```
     angular.module('yourApp', ['ngGauge']);
     ```
-6. Use it in your markup like this
+Use it in your markup like this
 
 ```html
 <ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="kW"></ng-gauge>
@@ -65,6 +65,7 @@ gulp
 
 First thing first, explore the [issue tracker](https://github.com/ashish-chopra/angular-gauge/issues) to find something to contribute. There are tons of other project setup related issues and activities in which you can help. Your feedback could also be a great contribution.
 
+If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
 License
 ---------
