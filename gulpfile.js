@@ -89,7 +89,8 @@
     });
 
     gulp.task('default', sequence('clean', 'js', 'connect', 'watch'));
-
+    gulp.task('build', sequence('clean', 'js'));
+    
     // connects the server at given port and root.
     // enables the live reloading.
     gulp.task('connect', function () {
