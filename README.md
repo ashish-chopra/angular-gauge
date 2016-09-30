@@ -17,6 +17,7 @@ Clone the repo and download the project dependencies & build the project using f
 ```
 git clone https://github.com/ashish-chopra/angular-gauge.git
 npm install
+npm install -g gulp
 gulp build
 ```
 
@@ -37,9 +38,9 @@ Then add the sources to your code (after adding the dependency of Angular) and r
 
 Add as dependency in your module
 
-    ```
-    angular.module('yourApp', ['ngGauge']);
-    ```
+```
+angular.module('yourApp', ['ngGauge']);
+```
 Use it in your markup like this
 
 ```html
