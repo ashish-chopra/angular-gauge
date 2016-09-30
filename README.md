@@ -14,26 +14,26 @@ Currently we support manual way of adding this library into your project.
 
 Clone the repo and download the project dependencies & build the project using following commands
 
-    ```
-    git clone https://github.com/ashish-chopra/angular-gauge.git
-    npm install
-    gulp build
-    ```
+```
+git clone https://github.com/ashish-chopra/angular-gauge.git
+npm install
+gulp build
+```
 
 3. Copy the files from `dist/` manually into your project folder.
 
 4.  Then add the sources to your code (after adding the dependency of Angular) and resolving the paths as given below:
 
-    ```html
-    <head>
-      ...
-    <head>
-    <body>
-      ...
-    </body>
-      <script src="vendor/angular/angular.min.js"></script>
-      <script src="vendor/angular-gauge/dist/angular-gauge.min.js"></script>
-    ```
+```html
+<head>
+  ...
+<head>
+<body>
+  ...
+</body>
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular-gauge/dist/angular-gauge.min.js"></script>
+```
 
 5. Add as dependency in your module
 
@@ -42,9 +42,9 @@ Clone the repo and download the project dependencies & build the project using f
     ```
 6. Use it in your markup like this
 
-    ```html
-    <ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="kW"></ng-gauge>
-    ```
+```html
+<ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="kW"></ng-gauge>
+```
  
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
@@ -54,19 +54,19 @@ If you face any problem, then raise an issue [here](https://github.com/ashish-ch
 This project is currently in development phase. So you can fork it and contribute in its active development. 
 Setting up the development environment is easy:
 
-    ```
-    git clone https://github.com/ashish-chopra/angular-gauge.git
-    npm install
-    gulp
-    
-    ```
-`gulp` will run a development server on your machine and you can checkout the bundled `examples` at `http://localhost:3000`.
+```
+git clone https://github.com/ashish-chopra/angular-gauge.git
+npm install
+gulp
+
+```
+`gulp` command will run a development server at port `3000` on your machine, then you can browse the bundled `examples` at `http://localhost:3000`.
 
 
-Explore the [issue tracker](https://github.com/ashish-chopra/angular-gauge/issues) to start with. There are tons of other project setup related issues and activities in which you can help. Your feedback could also be a great contribution.
+First thing first, explore the [issue tracker](https://github.com/ashish-chopra/angular-gauge/issues) to find something to contribute. There are tons of other project setup related issues and activities in which you can help. Your feedback could also be a great contribution.
 
 
 License
 ---------
-MIT Licensed. See the license file.
+MIT License
 
