@@ -26,7 +26,8 @@
         uglify = require('gulp-uglify'),
         sourcemaps = require('gulp-sourcemaps'),
         sequence = require('gulp-sequence'),
-        pkg = require('./package.json');
+        pkg = require('./package.json'),
+        KarmaServer = require('karma').Server;
 
     var port = 3000,
         banner = ['/*!',
@@ -68,6 +69,7 @@
             .pipe(gulp.dest('./examples/'));
     });
 
+
     gulp.task('js', ['bower'], function () {
         return gulp.src('src/angular-gauge.js')
             .pipe(header(banner, {
@@ -90,7 +92,7 @@
 
     gulp.task('default', sequence('clean', 'js', 'connect', 'watch'));
     gulp.task('build', sequence('clean', 'js'));
-    
+
     // connects the server at given port and root.
     // enables the live reloading.
     gulp.task('connect', function () {
@@ -105,5 +107,21 @@
         return gulp.src('./examples/**/*.*')
             .pipe(connect.reload());
     })
+
+    // run tests once and exit
+    gulp.task('test', function (done) {
+        new KarmaServer({
+            configFile: __dirname + '/karma.conf.js',
+            singleRun: true
+        }, done).start();
+    })
+
+    
+    // Watch for file changes and re-run tests on each change
+    gulp.task('tdd', function (done) {
+        new KarmaServer({
+            configFile: __dirname + '/karma.conf.js'
+        }, done).start();
+    });
 
 })();
