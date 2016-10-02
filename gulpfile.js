@@ -1,16 +1,23 @@
 /*
        File: gulpfile.js
        Author: Ashish Chopra
-       Updated on: 21 may, 2016
+       Updated on: 2 Oct, 2016
        --------------------------------------
        Gulpfile.js is customized for library development process for
        writing front end libraries in JavaScript.
        
        TODO:
-       1. Adding the test framework support
        2. Adding the code coverage support
        3. Add the build assets support 
        4. Utilize jshint and jscs tasks written below.
+       
+       Usage:
+       
+       gulp build -- to build the library from source in 'dist/'
+       gulp   -- to builds the code, start the server and watch for changes in code and examples..
+       gulp test  -- run the test suite and exit
+       gulp tdd   -- run the test suite and wait for changes in any code/test files
+       
  */
 
 (function () {
