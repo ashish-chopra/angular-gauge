@@ -32,7 +32,6 @@
                 fontWeight: 200
             },
 
-
             /*
                 var g = new Gauge();
                 g.getValue()
@@ -52,18 +51,16 @@
             
             */
 
-
-
             Gauge = function (element, options) {
                 this.element = element.find("canvas")[0];
                 this.text = element.find("span");
-                this.label = element.find("b");
-                this.u = element.find("u");
+                this.legend = element.find("b");
+                this.unit = element.find("u");
                 this.context = this.element.getContext('2d');
                 this.context.canvas.width = options.size;
                 this.context.canvas.height = options.size;
                 this.context.lineCap = options.cap;
-               
+
                 this.context.lineWidth = options.thick;
                 this.options = options;
 
@@ -82,9 +79,17 @@
                     fontSize: lfs + "px",
                     lineHeight: llh + "px"
                 });
+                
+                this.unit.css({
+                    textDecoration: 'none',
+                    fontSize: '0.6em',
+                    fontWeight: 200
+                });
+                
+                var fs = this.options.size / 13;
+                var lh = (5 * fs) + parseInt(this.options.size);
 
-
-                this.label.css({
+                this.legend.css({
                     display: 'inline-block',
                     width: '100%',
                     position: 'absolute',
@@ -93,112 +98,141 @@
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     fontWeight: 200,
-
-                });
-                var fs = this.options.size / 13;
-                var lh = (5 * fs) + parseInt(this.options.size);
-        
-                this.label.css({
                     fontSize: fs + "px",
                     lineHeight: lh + "px"
-                })
-
-                this.u.css({
-                    textDecoration: 'none',
-                    fontSize: '0.6em',
-                    fontWeight: 200
-                })
+                });
+                
                 this.create();
             };
 
-        Gauge.prototype.getRadius = function () {
-            var center = this.getCenter(),
-                radius = center.x - this.options.thick;
-            return radius;
-        };
-        Gauge.prototype.drawShell = function (start, end) {
-            var context = this.context,
-                center = this.getCenter(),
-                radius = this.getRadius();
-            context.beginPath();
-            context.arc(center.x, center.y, radius, start, end, false);
-            context.strokeStyle = this.options.backgroundColor;
-            context.stroke();
+        Gauge.prototype = {
 
-        };
+            create: function () {
 
-        Gauge.prototype.create = function () {
-            var center = this.getCenter(),
-                movePerFrame = 0.0174532925;
-            if (this.options.type == 'semi') {
-                var head = Math.PI,
-                    tail = 2 * Math.PI;
-            } else if (this.options.type == 'full') {
-                var head = 1.5 * Math.PI,
-                    tail = 3.5 * Math.PI;
-            } else if (this.options.type === 'arch') {
-                var head = 0.8 * Math.PI,
-                    tail = 2.2 * Math.PI;
-            }
+                var type = this.getType(),
+                    bounds = this.getBounds(type),
+                    movePerFrame = 0.0174532925,
+                    center = this.getCenter(),
+                    context = this.context,
+                    value = this.getValue(),
+                    radius = this.getRadius(),
+                    thick = this.getThickness(),
+                    foregroundColor = this.getForegroundColor(),
+                    requestID,
+                    head = bounds.head,
+                    tail = bounds.tail,
+                    distance = tail - head;
 
-            this.drawShell(head, tail);
-            var context = this.context,
-                value = this.options.value,
-                radius = this.getRadius(),
-                thick = this.options.thick,
-                foregroundColor = this.options.foregroundColor,
-                requestID;
+                this.drawShell(head, tail);
+                tail = head + (distance * value) / 100;
 
-            var distance = tail - head,
-                label = this.label;
-            tail = head + ((tail - head) * value) / 100;
+                function animate() {
+                    requestID = window.requestAnimationFrame(animate);
 
-            function animate() {
-                requestID = window.requestAnimationFrame(animate);
-
-                if (head <= tail) {
-                    context.beginPath();
-                    var newPos = head + 2 * movePerFrame;
-                    context.arc(center.x, center.y, radius, head, newPos, false);
-                    context.strokeStyle = foregroundColor;
-                    context.stroke();
-                    head = newPos;
-                } else {
-                    cancelAnimationFrame(requestID);
+                    if (head <= tail) {
+                        context.beginPath();
+                        var newPos = head + 2 * movePerFrame;
+                        context.arc(center.x, center.y, radius, head, newPos, false);
+                        context.strokeStyle = foregroundColor;
+                        context.stroke();
+                        head = newPos;
+                    } else {
+                        cancelAnimationFrame(requestID);
+                    }
                 }
+                animate();
+            },
+
+            getBounds: function (type) {
+                if (type == 'semi') {
+                    var head = Math.PI,
+                        tail = 2 * Math.PI;
+                } else if (type == 'full') {
+                    var head = 1.5 * Math.PI,
+                        tail = 3.5 * Math.PI;
+                } else if (type === 'arch') {
+                    var head = 0.8 * Math.PI,
+                        tail = 2.2 * Math.PI;
+                }
+
+                return {
+                    head: head,
+                    tail: tail
+                };
+
+            },
+
+            drawShell: function (start, end) {
+                var context = this.context,
+                    center = this.getCenter(),
+                    radius = this.getRadius();
+                context.beginPath();
+                context.arc(center.x, center.y, radius, start, end, false);
+                context.strokeStyle = this.getBackgroundColor();
+                context.stroke();
+            },
+
+            clear: function () {
+                this.context.clearRect(0, 0, this.getWidth(), this.getHeight());
+            },
+
+            update: function (val) {
+                this.clear();
+                this.options.value = val;
+                this.create();
+            },
+
+            destroy: function () {
+                this.clear();
+            },
+
+            getRadius: function () {
+                var center = this.getCenter();
+                return center.x - this.getThickness();
+            },
+
+            getCenter: function () {
+                var x = this.getWidth() / 2,
+                    y = this.getHeight() / 2;
+                return {
+                    x: x,
+                    y: y
+                };
+            },
+            
+            getValue: function() {
+                return this.options.value;
+            },
+            getWidth: function () {
+                return this.context.canvas.width;
+            },
+
+            getHeight: function () {
+                return this.context.canvas.height;
+            },
+
+            getThickness: function () {
+                return this.options.thick;
+            },
+
+            getBackgroundColor: function () {
+                return this.options.backgroundColor;
+            },
+
+            getForegroundColor: function () {
+                return this.options.foregroundColor;
+            },
+
+            getLineCap: function () {
+                return this.options.cap;
+            },
+
+            getType: function () {
+                return this.options.type;
             }
-            animate();
+
         };
 
-        Gauge.prototype.clear = function () {
-            var center = this.getCenter();
-            this.context.clearRect(0, 0, this.getWidth(), this.getHeight());
-        };
-
-        Gauge.prototype.getCenter = function () {
-            var x = this.context.canvas.width / 2,
-                y = this.context.canvas.height / 2;
-            return {
-                x: x,
-                y: y
-            };
-        }
-
-        Gauge.prototype.getWidth = function () {
-            return this.context.canvas.width;
-        }
-        Gauge.prototype.getHeight = function () {
-            return this.context.canvas.height;
-        }
-
-        Gauge.prototype.update = function (val) {
-            this.clear();
-            this.options.value = val;
-            this.create();
-        }
-        Gauge.prototype.destroy = function () {
-
-        }
 
         return {
             restrict: 'E',
@@ -224,22 +258,35 @@
                 scope.type = angular.isDefined(scope.type) ? scope.type : defaults.type;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
-               
+
                 var gauge = new Gauge(element, scope);
 
-                scope.$watch('value', function (nv, ov) {
-                    if (gauge && angular.isDefined(nv) && !angular.equals(nv, ov)) {
-                        gauge.update(nv);
-                    }
-                });
+                scope.$watch('value', watchData, false);
+                scope.$watch('cap', watchOther, false);
+                scope.$watch('thick', watchOther, false);
+                scope.$watch('type', watchOther, false);
+                scope.$watch('foregroundColor', watchOther, false);
+                scope.$watch('backgroundColor', watchOther, false);
 
-                scope.$on('$destroy', function () {
-                    console.log("destroy called");
-                });
-                
-                scope.$on('$resize', function() {
-                    console.log("resize called");
-                })
+
+                scope.$on('$destroy', function () {});
+
+                scope.$on('$resize', function () {});
+
+                function watchData(nv, ov) {
+                    if (!gauge) return;
+                    if (!nv) {
+                        gauge.update(0);
+                    }
+                    gauge.update(nv);
+                }
+
+                function watchOther(nv, ov) {
+                    if (!gauge) return;
+                    if (!nv) return;
+                    gauge.destroy();
+                    gauge.create();
+                }
             }
         }
     }
