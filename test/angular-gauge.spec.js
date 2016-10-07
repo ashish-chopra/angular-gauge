@@ -49,25 +49,85 @@ describe('Angular Gauge Unit Test Suites', function () {
 
         expect(canvas.attr('width')).toBe('300');
         expect(canvas.attr('height')).toBe('300');
-        
-        /* These tests are not working because of resizing not implemented yet */
-        // parentScope.size = 250;
-        // parentScope.$digest();
-        // expect(canvas.attr('width')).toBe('250');
-        // expect(canvas.attr('height')).toBe('250');
+
+//        parentScope.size = 250;
+//        parentScope.$digest();
+//        expect(canvas.attr('width')).toBe('250');
+//        expect(canvas.attr('height')).toBe('250');
 
     });
 
     it('custom value', function () {
+        var code = "<ng-gauge value='value'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+
+        var elem = $compile(angular.element(code))(parentScope),
+            label = elem.find("span").eq(0),
+            directiveScope = elem.scope();
+
+        parentScope.$digest();
+        expect(label.text()).toContain('0');
+        expect(directiveScope.value).toBe(0);
+
+        parentScope.value = 20;
+        parentScope.$digest();
+        expect(label.text()).toContain('20');
+        expect(directiveScope.value).toBe(20);
+
+        parentScope.value = 50;
+        parentScope.$digest();
+        expect(label.text()).toContain('50');
+        expect(directiveScope.value).toBe(50);
+
+        parentScope.value = 'hello';
+        parentScope.$digest();
+        expect(label.text()).toContain('hello');
+        expect(directiveScope.value).toBe('hello');
+
+        parentScope.value = undefined;
+        parentScope.$digest();
+        expect(directiveScope.value).toBeUndefined();
+
 
     });
 
     it("custom line cap", function () {
+        var code = "<ng-gauge cap='{{cap}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope();
+
+        expect(directiveScope.cap).toBeUndefined();
+
+        parentScope.cap = "round";
+        parentScope.$digest();
+        expect(directiveScope.cap).toBe("round");
+
+        parentScope.cap = "gibberish";
+        parentScope.$digest();
+        expect(directiveScope.cap).toBe('gibberish');
 
     });
 
     it("custom thickness", function () {
+        var code = "<ng-gauge thick='{{thick}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
 
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope();
+
+        expect(directiveScope.thick).toBeUndefined();
+
+        parentScope.thick = 5;
+        parentScope.$digest();
+        expect(directiveScope.thick).toBe(5);
+
+        parentScope.thick = 10;
+        parentScope.$digest();
+        expect(directiveScope.thick).toBe(10);
     });
 
     it("custom label", function () {

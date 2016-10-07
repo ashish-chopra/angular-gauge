@@ -16,7 +16,7 @@
 
     function gaugeMeterDirective() {
 
-        var tpl = "<div style='display:inline; margin: 0 10px;text-align: center;position: relative;width: 200px;'><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>";
+        var tpl = "<div style='display:inline;text-align:center;position:relative;'><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>";
 
         var defaults = {
                 size: 200,
@@ -28,37 +28,16 @@
                 backgroundColor: "#CCC"
             },
 
-            css = {
+            styles = {
                 display: 'inline-block',
+                fontWeight: 100,
                 width: '100%',
                 position: 'absolute',
                 fontFamily: 'Open Sans',
                 textAlign: 'center',
                 overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                fontSize: '15.3846px',
-                lineHeight: '276.923px',
-                fontWeight: 200
+                textOverflow: 'ellipsis'
             },
-
-            /*
-                var g = new Gauge();
-                g.getValue()
-                g.getLineCap();
-                g.getSize()
-                g.getThickness()
-                g.getType()
-                g.getForegroundColor()
-                g.getBackgroundColor()
-                
-                g.getCenter()
-                g.getRadius()
-                g.setLabel()
-                g.update()
-                g.create()
-                g.destroy()
-            
-            */
 
             Gauge = function (element, options) {
                 this.element = element.find("canvas")[0];
@@ -66,16 +45,26 @@
                 this.legend = element.find("b");
                 this.unit = element.find("u");
                 this.context = this.element.getContext('2d');
-                this.context.canvas.width = options.size;
-                this.context.canvas.height = options.size;
-                this.context.lineCap = options.cap;
-
-                this.context.lineWidth = options.thick;
                 this.options = options;
+                this.init();
+            };
+
+        Gauge.prototype = {
+            init: function () {
+                this.setupStyles();
+                this.create();
+            },
+
+            setupStyles: function () {
+
+                this.context.canvas.width = this.options.size;
+                this.context.canvas.height = this.options.size;
+                this.context.lineCap = this.options.cap;
+                this.context.lineWidth = this.options.thick;
 
                 var lfs = this.options.size * 0.22,
                     llh = this.options.size;
-                // styling
+
                 this.text.css({
                     display: 'inline-block',
                     fontWeight: 100,
@@ -88,13 +77,13 @@
                     fontSize: lfs + "px",
                     lineHeight: llh + "px"
                 });
-                
+
                 this.unit.css({
                     textDecoration: 'none',
                     fontSize: '0.6em',
                     fontWeight: 200
                 });
-                
+
                 var fs = this.options.size / 13;
                 var lh = (5 * fs) + parseInt(this.options.size);
 
@@ -110,12 +99,7 @@
                     fontSize: fs + "px",
                     lineHeight: lh + "px"
                 });
-                
-                this.create();
-            };
-
-        Gauge.prototype = {
-
+            },
             create: function () {
 
                 var type = this.getType(),
@@ -134,15 +118,15 @@
 
                 this.drawShell(head, tail);
                 tail = head + (distance * value) / 100;
-
+                
                 function animate() {
                     requestID = window.requestAnimationFrame(animate);
 
                     if (head <= tail) {
                         context.beginPath();
-                        var newPos = head + 2 * movePerFrame;
+                        var newPos = head + 2 *  movePerFrame;
                         context.arc(center.x, center.y, radius, head, newPos, false);
-                        context.strokeStyle = foregroundColor;
+                        context.strokeStyle = foregroundColor;        
                         context.stroke();
                         head = newPos;
                     } else {
@@ -177,7 +161,7 @@
                     radius = this.getRadius();
                 context.beginPath();
                 context.arc(center.x, center.y, radius, start, end, false);
-                context.strokeStyle = this.getBackgroundColor();
+                context.strokeStyle = this.options.backgroundColor;
                 context.stroke();
             },
 
@@ -208,8 +192,8 @@
                     y: y
                 };
             },
-            
-            getValue: function() {
+
+            getValue: function () {
                 return this.options.value;
             },
             getWidth: function () {
@@ -267,16 +251,16 @@
                 scope.type = angular.isDefined(scope.type) ? scope.type : defaults.type;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
-
+        
                 var gauge = new Gauge(element, scope);
 
                 scope.$watch('value', watchData, false);
                 scope.$watch('cap', watchOther, false);
                 scope.$watch('thick', watchOther, false);
                 scope.$watch('type', watchOther, false);
+                scope.$watch('size', watchOther, false);
                 scope.$watch('foregroundColor', watchOther, false);
                 scope.$watch('backgroundColor', watchOther, false);
-
 
                 scope.$on('$destroy', function () {});
 
@@ -284,17 +268,15 @@
 
                 function watchData(nv, ov) {
                     if (!gauge) return;
-                    if (!nv) {
-                        gauge.update(0);
-                    }
+                    if (!nv || angular.equals(nv,ov)) return; 
                     gauge.update(nv);
                 }
 
                 function watchOther(nv, ov) {
                     if (!gauge) return;
-                    if (!nv) return;
+                    if (!nv || angular.equals(nv, ov)) return;
                     gauge.destroy();
-                    gauge.create();
+                    gauge.init();
                 }
             }
         }
