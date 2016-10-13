@@ -29,7 +29,7 @@ describe('Angular Gauge Unit Test Suites', function () {
 
         expect(canvas.attr('width')).toBe('200');
         expect(canvas.attr('height')).toBe('200');
-        expect(scope.value).toBe(0);
+        expect(scope.value).toBeUndefined();
         expect(scope.foregroundColor).toBe('#FFCC66');
         expect(scope.backgroundColor).toBe('#CCC');
         expect(scope.cap).toBe('butt');
@@ -50,10 +50,10 @@ describe('Angular Gauge Unit Test Suites', function () {
         expect(canvas.attr('width')).toBe('300');
         expect(canvas.attr('height')).toBe('300');
 
-//        parentScope.size = 250;
-//        parentScope.$digest();
-//        expect(canvas.attr('width')).toBe('250');
-//        expect(canvas.attr('height')).toBe('250');
+        //        parentScope.size = 250;
+        //        parentScope.$digest();
+        //        expect(canvas.attr('width')).toBe('250');
+        //        expect(canvas.attr('height')).toBe('250');
 
     });
 
@@ -67,8 +67,7 @@ describe('Angular Gauge Unit Test Suites', function () {
             directiveScope = elem.scope();
 
         parentScope.$digest();
-        expect(label.text()).toContain('0');
-        expect(directiveScope.value).toBe(0);
+        expect(directiveScope.value).toBeUndefined();
 
         parentScope.value = 20;
         parentScope.$digest();
@@ -77,7 +76,9 @@ describe('Angular Gauge Unit Test Suites', function () {
 
         parentScope.value = 50;
         parentScope.$digest();
+        
         expect(label.text()).toContain('50');
+      //  expect(label.text()).toBeEmptyString();
         expect(directiveScope.value).toBe(50);
 
         parentScope.value = 'hello';
@@ -129,29 +130,132 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(directiveScope.thick).toBe(10);
     });
+    
+     it("custom type", function () {
+         var code = "<ng-gauge type='{{type}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
 
-    it("custom label", function () {
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope();
+        
+        expect(directiveScope.type).toBeUndefined();
 
-    });
+        parentScope.type = "semi";
+        parentScope.$digest();
+        expect(directiveScope.type).toBe("semi");
 
-    it("custom type", function () {
-
+        parentScope.type = "full";
+        parentScope.$digest();
+        expect(directiveScope.type).toBe("full");
     });
 
     it("custom foreground color", function () {
+        var code = "<ng-gauge foregroundColor='{{foregroundColor}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
 
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope();
+        
+        expect(directiveScope.foregroundColor).toBeUndefined();
+
+        parentScope.foregroundColor = "red";
+        parentScope.$digest();
+        expect(directiveScope.foregroundColor).toBe("red");
+
+        parentScope.foregroundColor = "#CCC";
+        parentScope.$digest();
+        expect(directiveScope.foregroundColor).toBe("#CCC");
     });
 
     it("custom background color", function () {
+         var code = "<ng-gauge backgroundColor='{{backgroundColor}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
 
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope();
+        
+        expect(directiveScope.backgroundColor).toBeUndefined();
+
+        parentScope.backgroundColor = "red";
+        parentScope.$digest();
+        expect(directiveScope.backgroundColor).toBe("red");
+
+        parentScope.backgroundColor = "#CCC";
+        parentScope.$digest();
+        expect(directiveScope.backgroundColor).toBe("#CCC");
+    });
+    
+    it("custom label", function () {
+        var code = "<ng-gauge label='{{label}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+        var elem = $compile(angular.element(code))(parentScope),
+            legend = elem.find("b");
+        directiveScope = elem.scope();
+
+        parentScope.label = "Speed";
+        parentScope.$digest();
+        expect(directiveScope.label).toBe('Speed');
+        expect(legend.text()).toBe('Speed');
+
+        parentScope.label = "Current";
+        parentScope.$digest();
+        expect(directiveScope.label).toBe('Current');
+        expect(legend.text()).toBe('Current');
+        
+        parentScope.label = undefined;
+        parentScope.$digest();
+        expect(directiveScope.label).toBeUndefined();
+        expect(legend.text()).toBe('');
+        
     });
 
     it("custom append", function () {
+         var code = "<ng-gauge append='{{append}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
 
+        var elem = $compile(angular.element(code))(parentScope),
+            append = elem.find("u").eq(1);
+        directiveScope = elem.scope();
+
+        parentScope.append = "mph";
+        parentScope.$digest();
+        expect(directiveScope.append).toBe('mph');
+        expect(append.text()).toBe('mph');
+
+        parentScope.append = "kW";
+        parentScope.$digest();
+        expect(directiveScope.append).toBe('kW');
+        expect(append.text()).toBe('kW');
+        
+        parentScope.append = undefined;
+        parentScope.$digest();
+        expect(directiveScope.append).toBeUndefined();
+        expect(append.text()).toBe('');
     });
 
     it("custom prepend", function () {
+          var code = "<ng-gauge prepend='{{prepend}}'></ng-gauge>",
+            parentScope = $rootScope.$new();
 
+        var elem = $compile(angular.element(code))(parentScope),
+            prepend = elem.find("u").eq(0);
+        directiveScope = elem.scope();
+
+        parentScope.prepend = "$";
+        parentScope.$digest();
+        expect(directiveScope.prepend).toBe('$');
+        expect(prepend.text()).toBe('$');
+
+        parentScope.prepend = "Rs";
+        parentScope.$digest();
+        expect(directiveScope.prepend).toBe('Rs');
+        expect(prepend.text()).toBe('Rs');
+        
+        parentScope.prepend = undefined;
+        parentScope.$digest();
+        expect(directiveScope.prepend).toBeUndefined();
+        expect(prepend.text()).toBe('');
     });
 
 });

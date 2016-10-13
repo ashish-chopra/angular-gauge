@@ -19,17 +19,6 @@
                 backgroundColor: "#CCC"
             },
 
-            styles = {
-                display: 'inline-block',
-                fontWeight: 100,
-                width: '100%',
-                position: 'absolute',
-                fontFamily: 'Open Sans',
-                textAlign: 'center',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis'
-            },
-
             Gauge = function (element, options) {
                 this.element = element.find("canvas")[0];
                 this.text = element.find("span");
@@ -109,15 +98,15 @@
 
                 this.drawShell(head, tail);
                 tail = head + (distance * value) / 100;
-                
+
                 function animate() {
                     requestID = window.requestAnimationFrame(animate);
 
                     if (head <= tail) {
                         context.beginPath();
-                        var newPos = head + 2 *  movePerFrame;
+                        var newPos = head + 2 * movePerFrame;
                         context.arc(center.x, center.y, radius, head, newPos, false);
-                        context.strokeStyle = foregroundColor;        
+                        context.strokeStyle = foregroundColor;
                         context.stroke();
                         head = newPos;
                     } else {
@@ -160,9 +149,8 @@
                 this.context.clearRect(0, 0, this.getWidth(), this.getHeight());
             },
 
-            update: function (val) {
+            update: function () {
                 this.clear();
-                this.options.value = val;
                 this.create();
             },
 
@@ -185,7 +173,15 @@
             },
 
             getValue: function () {
-                return this.options.value;
+                var val = 0;
+                if (this.options.used && this.options.total) {
+                    val = (this.options.used / this.options.total) * 100;
+                    this.options.value = this.options.used;
+                } else {
+                    val = this.options.value;
+                }
+                return val;
+
             },
             getWidth: function () {
                 return this.context.canvas.width;
@@ -232,20 +228,25 @@
                 size: "@?",
                 thick: "@?",
                 type: "@?",
-                value: "=?"
+                value: "=?",
+                used: "=?",
+                total: "=?"
+
             },
             link: function (scope, element, attrs, ctrl) {
-                scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
+                scope.value = angular.isDefined(scope.value) ? scope.value : undefined;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
                 scope.thick = angular.isDefined(scope.thick) ? scope.thick : defaults.thick;
                 scope.type = angular.isDefined(scope.type) ? scope.type : defaults.type;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
-        
+
                 var gauge = new Gauge(element, scope);
 
                 scope.$watch('value', watchData, false);
+                scope.$watch('used', watchData, false);
+                scope.$watch('total', watchData, false);
                 scope.$watch('cap', watchOther, false);
                 scope.$watch('thick', watchOther, false);
                 scope.$watch('type', watchOther, false);
@@ -254,13 +255,12 @@
                 scope.$watch('backgroundColor', watchOther, false);
 
                 scope.$on('$destroy', function () {});
-
                 scope.$on('$resize', function () {});
 
                 function watchData(nv, ov) {
                     if (!gauge) return;
-                    if (!nv || angular.equals(nv,ov)) return; 
-                    gauge.update(nv);
+                    if (!nv || angular.equals(nv, ov)) return;
+                    gauge.update();
                 }
 
                 function watchOther(nv, ov) {
