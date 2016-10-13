@@ -1,6 +1,6 @@
 # angular-gauge
 
-Current Version: `0.1.0`
+Current Version: `0.2.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
@@ -50,7 +50,9 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | Name      | Description  | Required  | Default value  | Possible values |
 | ---       | ---          | ---       | ---               | ---            |
 | `size`    | Specifies the size of the canvas in which Gauge will be drawn. It is used as `width` and `height` both. | Yes       | `200` | Positive Integer           |
-| `value`          | Specifies the current value of the Gauge       | Yes       | `0`  | Integer           |
+| `value`          | Specifies the current value of the Gauge       | No       | `undefined`  | A numeric value between `0` to `100`.           |
+| `used`  | Specifies the absolute vaue which has been consumed out of `total`. The percentage usage will be displayed by the Gauge.  | No     | `undefined`  | Any numeric value  |
+| `total` | specifies the total value that represents the whole rim of the Gauge. It is used along with `used` attribute.  `used` and `total` attributes are specified together. When these attributes are specified, do not use `value` attribute. | No       | `undefined`  | Any numeric value  |
 | `cap`       | The style of line ending at the gauge's end.    | No        | `"round"`    | `round`, `butt `           |
 | `thick`        | Specified the thickness of the gauge's bar.            | No        | `5`        | Any Positive Integer |
 | `type`      | Specifies the gauge's type.                     | No        | `"full"`     |  `"full"`, `"semi"`, `"arch"`  |
@@ -59,8 +61,6 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `"#CCC"`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
-| `used`  |       Not supported yet                                 | -        | -   | -  |
-| `total` |              Not supported yet                             | -        | -   | -  |
 | `text`  |              Not supported yet                              | -        | -   | -  |
 | `theme` |        Not supported yet                             | -        | -   | -  | 
 
@@ -72,10 +72,19 @@ This project is currently in development phase. So you can fork it and contribut
 Setting up the development environment is easy:
 
 ```
+# clone and setup the project dependencies
 git clone https://github.com/ashish-chopra/angular-gauge.git
 npm install
 npm install -g gulp
+
+# runs a development server at port 3000 (default) and host the examples directory
 gulp
+
+# use following command to run test suite once and exit
+gulp test
+
+# use following command to run the test suite and wait for changes (useful while development)
+gulp tdd
 
 ```
 `gulp` command will run a development server at port `3000` on your machine, then you can browse the bundled `examples` at `http://localhost:3000`.
