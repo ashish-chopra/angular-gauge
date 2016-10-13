@@ -4,8 +4,6 @@ Current Version: `0.1.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
-**NOTE**: This directive project is currently in development stage. I do not recommend to use it for production use.
-
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
 
 # Usage
@@ -34,15 +32,15 @@ Copy the files from `dist/` manually into your project folder.Then, add the scri
 
 Add as dependency in your module
 
-```html
+```js
 angular.module('yourApp', ['angularGauge']);
 ```
 Use it in your HTML markup like this
 
 ```html
-<ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="kW"></ng-gauge>
+<ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed"  foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="mph"></ng-gauge>
 ```
- 
+
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
 ## Config Options
@@ -56,11 +54,11 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `cap`       | The style of line ending at the gauge's end.    | No        | `"round"`    | `round`, `butt `           |
 | `thick`        | Specified the thickness of the gauge's bar.            | No        | `5`        | Any Positive Integer |
 | `type`      | Specifies the gauge's type.                     | No        | `"full"`     |  `"full"`, `"semi"`, `"arch"`  |
-| `label`       | Specifies the text to display below the Gauge's reading.  | No  | `undefined`                | String           |
-| `foreground-color`         | Specifies the foreground color of the Gauge's bar. It will be overriden if `theme` attribute is specified.                    | No        |              |            |
-| `background-color`    | Specifies the background color of the Gauge's bar.| No        |               |            |
+| `label`       | Specifies the text to display below the Gauge's reading.  | No  | `undefined`                | Any String           |
+| `foreground-color`         | Specifies the foreground color of the Gauge's bar. It will be overriden if `theme` attribute is specified.                    | No       | `"#FFCC66"`             |   Any color value string       |
+| `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `"#CCC"`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
-| `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | false             | Boolean           |
+| `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
 | `used`  |       Not supported yet                                 | -        | -   | -  |
 | `total` |              Not supported yet                             | -        | -   | -  |
 | `text`  |              Not supported yet                              | -        | -   | -  |
@@ -89,5 +87,5 @@ If you face any problem, then raise an issue [here](https://github.com/ashish-ch
 
 License
 ---------
-MIT License
+[MIT](https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE)
 
