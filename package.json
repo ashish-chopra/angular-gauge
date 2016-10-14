@@ -12,7 +12,7 @@
         "full",
         "arc"
     ],
-    "main": "dist/angular-gauge.js",
+    "main": "dist/angularjs-gauge.js",
     "scripts": {
         "test": "gulp test"
     },

@@ -30,13 +30,13 @@ Copy the files from `dist/` manually into your project folder.Then, add the scri
   ...
 </body>
   <script src="vendor/angular/angular.min.js"></script>
-  <script src="vendor/angular-gauge/dist/angular-gauge.min.js"></script>
+  <script src="vendor/angular-gauge/dist/angularjs-gauge.min.js"></script>
 ```
 
 Add as dependency in your module
 
 ```js
-angular.module('yourApp', ['angularGauge']);
+angular.module('yourApp', ['angularjs-gauge']);
 ```
 Use it in your HTML markup like this
 

@@ -1,5 +1,5 @@
 /*!
- * angular-gauge - A Gauge directive for Angular 1.x apps and dashboards
+ * angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
  * 
  * Version: 1.0.0
  *
@@ -9,7 +9,7 @@
  */
 (function (angular) {
     angular
-        .module('angularGauge', [])
+        .module('angularjs-gauge', [])
         .directive('ngGauge', gaugeMeterDirective);
 
     gaugeMeterDirective.$inject = [];

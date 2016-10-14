@@ -68,7 +68,7 @@
     });
 
     gulp.task('bower', function () {
-        return gulp.src('src/angular-gauge.js')
+        return gulp.src('src/angularjs-gauge.js')
             .pipe(header(banner, {
                 pkg: pkg
             }))
@@ -78,11 +78,11 @@
 
 
     gulp.task('js', ['bower'], function () {
-        return gulp.src('src/angular-gauge.js')
+        return gulp.src('src/angularjs-gauge.js')
             .pipe(header(banner, {
                 pkg: pkg
             }))
-            .pipe(rename('angular-gauge.min.js'))
+            .pipe(rename('angularjs-gauge.min.js'))
             .pipe(sourcemaps.init())
             .pipe(uglify({
                 preserveComments: 'license'

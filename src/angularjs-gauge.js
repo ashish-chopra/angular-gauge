@@ -1,6 +1,6 @@
 (function (angular) {
     angular
-        .module('angularGauge', [])
+        .module('angularjs-gauge', [])
         .directive('ngGauge', gaugeMeterDirective);
 
     gaugeMeterDirective.$inject = [];

@@ -2,7 +2,7 @@ describe('Angular Gauge Unit Test Suites', function () {
 
     var $compile, $rootScope;
 
-    beforeEach(module('angularGauge'));
+    beforeEach(module('angularjs-gauge'));
 
     beforeEach(inject(function (_$compile_, _$rootScope_) {
         $compile = _$compile_;
