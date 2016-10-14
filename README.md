@@ -8,13 +8,16 @@ A reusable gauge directive for Angular 1.x apps and dashboards. It provides many
 
 # Usage
 
-Currently we support manual way of adding this library into your project. Clone the repo, download the project dependencies & build the project using following commands:
+### Install using Bower
+
+```
+bower install angularjs-gauge 
+```
+
+### Install manually
 
 ```
 git clone https://github.com/ashish-chopra/angular-gauge.git
-npm install
-npm install -g gulp
-gulp build
 ```
 
 Copy the files from `dist/` manually into your project folder.Then, add the script to your code (after adding the dependency of Angular 1.5) and resolving the paths as given below:
@@ -78,13 +81,16 @@ git clone https://github.com/ashish-chopra/angular-gauge.git
 npm install
 npm install -g gulp
 
-# runs a development server at port 3000 (default) and host the examples directory
+# builds the source code
+gulp build
+
+# runs a web server at port 3000 (default) and host the /examples directory
 gulp
 
-# use this command to run test suite once and exit
+# runs test suite once and exit
 gulp test
 
-# use this command to run the test suite and wait for changes (useful while development)
+# runs the test suite and wait for code changes (useful while development)
 gulp tdd
 
 ```
