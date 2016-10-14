@@ -11,7 +11,7 @@
 
         var defaults = {
                 size: 200,
-                value: 0,
+                value: undefined,
                 cap: "butt",
                 thick: 2,
                 type: 'full',
@@ -234,7 +234,7 @@
 
             },
             link: function (scope, element, attrs, ctrl) {
-                scope.value = angular.isDefined(scope.value) ? scope.value : undefined;
+                scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
                 scope.thick = angular.isDefined(scope.thick) ? scope.thick : defaults.thick;

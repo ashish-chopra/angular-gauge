@@ -1,31 +1,45 @@
 {
-  "name": "angular-gauge",
-  "version": "0.1.0",
-  "description": "A reusable Gauge directive for Angular 1.x apps and dashboards",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Ashish Chopra",
-  "license": "MIT",
-  "devDependencies": {
-    "angular": "^1.5.8",
-    "angular-mocks": "^1.5.8",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-concat": "^2.6.0",
-    "gulp-connect": "^3.2.2",
-    "gulp-header": "^1.8.8",
-    "gulp-jscs": "^4.0.0",
-    "gulp-jshint": "^2.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sequence": "^0.4.6",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^2.0.0",
-    "jasmine-core": "^2.5.2",
-    "jshint": "^2.9.3",
-    "karma": "^1.3.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.0.2"
-  }
+    "name": "angular-gauge",
+    "version": "1.0.0",
+    "description": "A Gauge directive for Angular 1.x apps and dashboards",
+    "keywords": [
+        "angular",
+        "gauge",
+        "speedometer",
+        "js",
+        "dial",
+        "semi",
+        "full",
+        "arc"
+    ],
+    "main": "dist/angular-gauge.js",
+    "scripts": {
+        "test": "gulp test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ashish-chopra/angular-gauge.git"
+    },
+    "author": "Ashish Chopra",
+    "license": "MIT",
+    "devDependencies": {
+        "angular": "^1.5.8",
+        "angular-mocks": "^1.5.8",
+        "gulp": "^3.9.1",
+        "gulp-clean": "^0.3.2",
+        "gulp-concat": "^2.6.0",
+        "gulp-connect": "^3.2.2",
+        "gulp-header": "^1.8.8",
+        "gulp-jscs": "^4.0.0",
+        "gulp-jshint": "^2.0.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-sequence": "^0.4.6",
+        "gulp-sourcemaps": "^1.6.0",
+        "gulp-uglify": "^2.0.0",
+        "jasmine-core": "^2.5.2",
+        "jshint": "^2.9.3",
+        "karma": "^1.3.0",
+        "karma-chrome-launcher": "^2.0.0",
+        "karma-jasmine": "^1.0.2"
+    }
 }

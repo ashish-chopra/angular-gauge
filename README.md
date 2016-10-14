@@ -1,6 +1,6 @@
 # angular-gauge
 
-Current Version: `0.2.0`
+Current Version: `1.0.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
@@ -49,11 +49,11 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 
 | Name      | Description  | Required  | Default value  | Possible values |
 | ---       | ---          | ---       | ---               | ---            |
-| `size`    | Specifies the size of the canvas in which Gauge will be drawn. It is used as `width` and `height` both. | Yes       | `200` | Positive Integer           |
-| `value`          | Specifies the current value of the Gauge       | No       | `undefined`  | A numeric value between `0` to `100`.           |
-| `used`  | Specifies the absolute vaue which has been consumed out of `total`. The percentage usage will be displayed by the Gauge.  | No     | `undefined`  | Any numeric value  |
+| `size`    | Specifies the size of the canvas in which Gauge will be drawn. It is used as `width` and `height` both. | No       | `200` | Positive Integer           |
+| `value`          | Specifies the current value of the Gauge as a percentage. It is required attribute.       | Yes       | `undefined`  | A numeric value between `0` - `100`.           |
+| `used`  | Specifies the absolute value which has been consumed out of `total`. The percentage usage (used/total) will be displayed by the Gauge. When this attribute is specified with `total`, `value` attribute is not used.  | No     | `undefined`  | Any numeric value  |
 | `total` | specifies the total value that represents the whole rim of the Gauge. It is used along with `used` attribute.  `used` and `total` attributes are specified together. When these attributes are specified, do not use `value` attribute. | No       | `undefined`  | Any numeric value  |
-| `cap`       | The style of line ending at the gauge's end.    | No        | `"round"`    | `round`, `butt `           |
+| `cap`       | The style of line ending at the gauge's end.    | No        | `"butt"`    | `"round"`, `"butt"`           |
 | `thick`        | Specified the thickness of the gauge's bar.            | No        | `5`        | Any Positive Integer |
 | `type`      | Specifies the gauge's type.                     | No        | `"full"`     |  `"full"`, `"semi"`, `"arch"`  |
 | `label`       | Specifies the text to display below the Gauge's reading.  | No  | `undefined`                | Any String           |
@@ -68,8 +68,9 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 
 # Contribute
 
-This project is currently in development phase. So you can fork it and contribute in its active development. 
-Setting up the development environment is easy:
+The project is continously evovling with every new release. Give it a star, if you like it.
+ 
+For contribution setup the development environment as follows:
 
 ```
 # clone and setup the project dependencies
@@ -80,10 +81,10 @@ npm install -g gulp
 # runs a development server at port 3000 (default) and host the examples directory
 gulp
 
-# use following command to run test suite once and exit
+# use this command to run test suite once and exit
 gulp test
 
-# use following command to run the test suite and wait for changes (useful while development)
+# use this command to run the test suite and wait for changes (useful while development)
 gulp tdd
 
 ```
@@ -96,5 +97,5 @@ If you face any problem, then raise an issue [here](https://github.com/ashish-ch
 
 License
 ---------
-[MIT](https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE)
+[MIT License](https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE)
 

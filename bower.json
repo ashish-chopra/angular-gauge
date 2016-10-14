@@ -1,20 +1,29 @@
 {
-  "name": "angular-gauge",
-  "description": "A Gauge meter directive for Angular 1.x apps and dashboards",
-  "main": "index.js",
-  "authors": [
-    "Ashish Chopra"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/ashish-chopra/angular-gauge",
-  "ignore": [
+    "name": "angular-gauge",
+    "version": "1.0.0",
+    "description": "A Gauge directive for Angular 1.x apps and dashboards",
+    "keywords": [
+        "angular",
+        "gauge",
+        "speedometer",
+        "js",
+        "dial",
+        "semi",
+        "full",
+        "arc"
+    ],
+    "main": "dist/angular-gauge.js",
+    "authors": "Ashish Chopra",
+    "license": "MIT",
+    "homepage": "https://github.com/ashish-chopra/angular-gauge",
+    "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
   ],
-  "dependencies": {
-    "angular": "~1.5.8"
-  }
+    "dependencies": {
+        "angular": "~1.5.8"
+    }
 }
