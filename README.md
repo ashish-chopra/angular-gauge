@@ -8,6 +8,11 @@ A reusable gauge directive for Angular 1.x apps and dashboards. It provides many
 
 # Usage
 
+### Install using npm
+
+```
+npm install angularjs-gauge
+```
 ### Install using Bower
 
 ```
