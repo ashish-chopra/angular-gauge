@@ -1,4 +1,5 @@
 (function (angular) {
+    'use strict';
     angular
         .module('angularjs-gauge', [])
         .directive('ngGauge', gaugeMeterDirective);
@@ -7,23 +8,23 @@
 
     function gaugeMeterDirective() {
 
-        var tpl = "<div style='display:inline;text-align:center;position:relative;'><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>";
+        var tpl = '<div style="display:inline;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
         var defaults = {
                 size: 200,
                 value: undefined,
-                cap: "butt",
+                cap: 'butt',
                 thick: 2,
                 type: 'full',
-                foregroundColor: "#FFCC66",
-                backgroundColor: "#CCC"
+                foregroundColor: '#FFCC66',
+                backgroundColor: '#CCC'
             },
 
             Gauge = function (element, options) {
-                this.element = element.find("canvas")[0];
-                this.text = element.find("span");
-                this.legend = element.find("b");
-                this.unit = element.find("u");
+                this.element = element.find('canvas')[0];
+                this.text = element.find('span');
+                this.legend = element.find('b');
+                this.unit = element.find('u');
                 this.context = this.element.getContext('2d');
                 this.options = options;
                 this.init();
@@ -54,8 +55,8 @@
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    fontSize: lfs + "px",
-                    lineHeight: llh + "px"
+                    fontSize: lfs + 'px',
+                    lineHeight: llh + 'px'
                 });
 
                 this.unit.css({
@@ -76,8 +77,8 @@
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     fontWeight: 200,
-                    fontSize: fs + "px",
-                    lineHeight: lh + "px"
+                    fontSize: fs + 'px',
+                    lineHeight: lh + 'px'
                 });
             },
             create: function () {
@@ -89,7 +90,6 @@
                     context = this.context,
                     value = this.getValue(),
                     radius = this.getRadius(),
-                    thick = this.getThickness(),
                     foregroundColor = this.getForegroundColor(),
                     requestID,
                     head = bounds.head,
@@ -117,15 +117,16 @@
             },
 
             getBounds: function (type) {
+                var head, tail;
                 if (type == 'semi') {
-                    var head = Math.PI,
-                        tail = 2 * Math.PI;
+                    head = Math.PI;
+                    tail = 2 * Math.PI;
                 } else if (type == 'full') {
-                    var head = 1.5 * Math.PI,
-                        tail = 3.5 * Math.PI;
+                    head = 1.5 * Math.PI;
+                    tail = 3.5 * Math.PI;
                 } else if (type === 'arch') {
-                    var head = 0.8 * Math.PI,
-                        tail = 2.2 * Math.PI;
+                    head = 0.8 * Math.PI;
+                    tail = 2.2 * Math.PI;
                 }
 
                 return {
@@ -219,21 +220,21 @@
             replace: true,
             template: tpl,
             scope: {
-                append: "@?",
-                backgroundColor: "@?",
-                cap: "@?",
-                foregroundColor: "@?",
-                label: "@?",
-                prepend: "@?",
-                size: "@?",
-                thick: "@?",
-                type: "@?",
-                value: "=?",
-                used: "=?",
-                total: "=?"
+                append: '@?',
+                backgroundColor: '@?',
+                cap: '@?',
+                foregroundColor: '@?',
+                label: '@?',
+                prepend: '@?',
+                size: '@?',
+                thick: '@?',
+                type: '@?',
+                value: '=?',
+                used: '=?',
+                total: '=?'
 
             },
-            link: function (scope, element, attrs, ctrl) {
+            link: function (scope, element) {
                 scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
@@ -270,6 +271,6 @@
                     gauge.init();
                 }
             }
-        }
+        };
     }
 }(angular));

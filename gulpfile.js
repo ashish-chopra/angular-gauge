@@ -1,18 +1,15 @@
 /*
        File: gulpfile.js
        Author: Ashish Chopra
-       Updated on: 2 Oct, 2016
+       Updated on: 17 Nov, 2016
        --------------------------------------
        Gulpfile.js is customized for library development process for
        writing front end libraries in JavaScript.
        
        TODO:
-       2. Adding the code coverage support
-       3. Add the build assets support 
-       4. Utilize jshint and jscs tasks written below.
+       1. Adding the code coverage support
        
-       Usage:
-       
+       Usage:       
        gulp build -- to build the library from source in 'dist/'
        gulp   -- to builds the code, start the server and watch for changes in code and examples..
        gulp test  -- run the test suite and exit
@@ -94,11 +91,11 @@
 
     gulp.task('watch', function () {
         gulp.watch('src/*.js', ['js']);
-        gulp.watch('./examples/**/*.*', ['reload'])
+        gulp.watch('./examples/**/*.*', ['reload']);
     });
 
-    gulp.task('default', sequence('clean', 'js', 'connect', 'watch'));
-    gulp.task('build', sequence('clean', 'js'));
+    gulp.task('default', sequence('clean', 'lint', 'style', 'js', 'connect', 'watch'));
+    gulp.task('build', sequence('clean', 'lint', 'style', 'js'));
 
     // connects the server at given port and root.
     // enables the live reloading.
@@ -113,7 +110,7 @@
     gulp.task('reload', function () {
         return gulp.src('./examples/**/*.*')
             .pipe(connect.reload());
-    })
+    });
 
     // run tests once and exit
     gulp.task('test', function (done) {
@@ -121,7 +118,7 @@
             configFile: __dirname + '/karma.conf.js',
             singleRun: true
         }, done).start();
-    })
+    });
 
     
     // Watch for file changes and re-run tests on each change

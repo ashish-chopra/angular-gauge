@@ -2,9 +2,9 @@ node_modules/
 bower_components/
 dist/
 tmp/
-examples/bundle.js
-examples/commonjs.bundle.js
-examples/smoothscroll.min.js
+examples/
+examples/
+examples/
 coverage/
-test/fixtures/coverage.js
-
+extra/
+test/

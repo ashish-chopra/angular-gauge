@@ -72,11 +72,11 @@
 
   "excludeFiles": [
     "node_modules/**",
+    "bower_components/**",
     "dist/**",
+    "extra/**",
     "coverage/**",
-    "examples/bundle.js",
-    "examples/commonjs.bundle.js",
-    "examples/smoothscroll.min.js",
-    "test/fixtures/coverage.js"
+    "examples/**",
+    "test/**"
   ]
 }

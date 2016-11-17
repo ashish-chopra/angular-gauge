@@ -19,6 +19,7 @@
     "console",
     "Chart",
     "define",
-    "module"
+    "module",
+    "__dirname"
   ]
 }

@@ -2,16 +2,15 @@
 // Generated on Sat Oct 01 2016 21:45:49 GMT+0530 (India Standard Time)
 
 module.exports = function (config) {
+    'use strict';
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
-
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine'],
-
 
         // list of files / patterns to load in the browser
         files: [
@@ -21,16 +20,13 @@ module.exports = function (config) {
         'test/**/*.js'
     ],
 
-
         // list of files to exclude
         exclude: [
     ],
 
-
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {},
-
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
@@ -67,5 +63,5 @@ module.exports = function (config) {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
-}
+    });
+};
