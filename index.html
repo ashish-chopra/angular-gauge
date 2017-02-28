@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="websiteApp">
 
 <head>
     <title>Ashish Chopra</title>
@@ -8,10 +8,34 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
 </head>
 
-<body>
-        <h1>Angular gauge website is coming soon.</h1>
+<body ng-controller="MainController as main">
+    <header>
+        <div>{{main.displayText}}</div>
+        <nav>
+            <div class="container">
+
+            </div>
+        </nav>
+        <section class="hero">
+            <div class="container">
+
+            </div>
+        </section>
+    </header>
+    <main>
+        <div class="container">
+
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -10,5 +10,5 @@ gulp.task('serve', () => {
         }
     });
 
-    gulp.watch(['*.html', '*.css', "*.js"], reload);
+    gulp.watch(['*.html', '*.css', "./scripts/*.js"], reload);
 });
