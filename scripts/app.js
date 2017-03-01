@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('websiteApp', ['ngMaterial', 'angularjs-gauge'])
+        .module('websiteApp', ['ngMaterial', 'angularjs-gauge', 'hljs'])
         .config(configApp)
         .controller('MainController', mainController);
 
@@ -14,7 +14,8 @@
     mainController.$inject = [];
     function mainController() {
         var vm  = this;
-        vm.displayText = "Yay, the website is coming up soon..."
+        vm.displayText = "Yay, the website is coming up soon...";
+        vm.currentPrice  = 101;
     }
 
 }(angular));

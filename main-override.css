@@ -1,94 +1,52 @@
-/*html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
+/* 
+   
+   Why i call this override.css, because this is the place where i will override the 
+   ready-to-use frameworks like Bootstrap, Angular Material design as per my needs.
 
-body {
-    font-family: 'Open Sans';
-    font-size: 16px;
-    color: #424242;
-    line-height: 1.5;
-}
+*/
 
-h1, h2, h3, h4, h5 {
-    margin: 0;
-}
-
-header, nav, footer, section, article, div {
-  box-sizing: border-box;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul > li {
-    display: inline;
-    margin-right: 15px;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-header {
-    height: 70px;
-    padding: 20px;
-}
-
-.header-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background: coral;
-    height: calc(70vh - 100px);
-}
-
-.dummy-container {
-    height: auto;
-    width: 900px;
-    border: 1px solid white;
-}*/
 html, body {
     color: #424242;
+    background-color: #fff;
 }
+
 .jumbotron {
     background:#16a085;
     color: white;
 }
 
-.btn-outline-primary {
-    color: white;
-    border-color: white;
-}
-
-.custom-badge {
-    font-size: 1.5rem;
-    position:absolute;
-    right: -5rem;
-    top:0;
-}
 .custom-heading {
     position: relative;
     display: inline-block;
     margin-bottom: 1.2rem;
 }
 
+#jumbo-action .btn {
+    color: white;
+    border-color: #ffe484;
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    background-color: transparent;
+
+}
+
+#jumbo-action .btn:hover {
+    color: #424242;
+    background-color: #ffe484;
+}
+
+.badge {
+    font-size: 1.5rem;
+    position:absolute;
+    right: -5rem;
+    top:0;
+    color: #ffe484;
+}
+
 footer {
     background-color: #f7f7f7;
-    padding: 4rem 0;
+    padding: 3rem 0;
     margin-top: 4rem;
     font-size: 85%;
 }
@@ -97,7 +55,6 @@ footer ul {
     list-style-type: none;
     font-weight: bold;
     padding: 0;
-
 }
 
 footer li {
@@ -105,12 +62,12 @@ footer li {
      margin-right: 2rem;
 }
 
-
 .block {
     padding: 2rem;
     padding-left: 0;
-    border-bottom: 1px solid #eee;
+    /*border-bottom: 1px solid #eee;*/
 }
+
 .block h2 {
     font-weight: normal;
     margin-bottom: 1.3rem;
@@ -125,27 +82,58 @@ footer li {
 .column-item  {
     width: 50%;
     padding: 20px;
+    margin-bottom: 3rem;
 }
 
 .column-item:nth-child(1) {
     padding-left: 0;
 }
 
-html.md-default-theme, html, .md-default-theme {
+.md-default-theme {
     background-color: #fff;
 }
 
-md-content {
-    background-color: #fff;
+md-content  {
+    min-height: 250px;
+    background-color: none;
+    padding: 1rem 0;
+}
+
+md-tab code.hljs {
+    background: none;
 }
 
 .output-frame {
-    border: 1px solid #eee;
-    border-radius: 3px 3px;
+    border: 1px solid #ddd;
+    border-radius: 4px 4px;
     height: 300px;
-    padding: 20px;
     display:flex;
     align-items: center;
     justify-content: space-around;
+}
 
+h1 {
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0.5rem;
+}
+
+h1.custom-heading  {
+    padding-bottom:0rem;
+    border: none;
+}
+h4 {
+    margin: 1rem 0;
+}
+
+.well {
+    background-color: #eee;
+    border: 1px solid #999;
+    border-radius: 4px 4px;
+    padding: 5px;
+    font-family: Courier New, Courier;
+}
+
+code.hljs {
+    padding-top: 10px;
 }
