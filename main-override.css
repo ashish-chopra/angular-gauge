@@ -1,0 +1,151 @@
+/*html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    color: #424242;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+header, nav, footer, section, article, div {
+  box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul > li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    height: 70px;
+    padding: 20px;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: coral;
+    height: calc(70vh - 100px);
+}
+
+.dummy-container {
+    height: auto;
+    width: 900px;
+    border: 1px solid white;
+}*/
+html, body {
+    color: #424242;
+}
+.jumbotron {
+    background:#16a085;
+    color: white;
+}
+
+.btn-outline-primary {
+    color: white;
+    border-color: white;
+}
+
+.custom-badge {
+    font-size: 1.5rem;
+    position:absolute;
+    right: -5rem;
+    top:0;
+}
+.custom-heading {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.2rem;
+}
+
+footer {
+    background-color: #f7f7f7;
+    padding: 4rem 0;
+    margin-top: 4rem;
+    font-size: 85%;
+}
+
+footer ul {
+    list-style-type: none;
+    font-weight: bold;
+    padding: 0;
+
+}
+
+footer li {
+     display: inline-block;
+     margin-right: 2rem;
+}
+
+
+.block {
+    padding: 2rem;
+    padding-left: 0;
+    border-bottom: 1px solid #eee;
+}
+.block h2 {
+    font-weight: normal;
+    margin-bottom: 1.3rem;
+}
+
+.column-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+.column-item  {
+    width: 50%;
+    padding: 20px;
+}
+
+.column-item:nth-child(1) {
+    padding-left: 0;
+}
+
+html.md-default-theme, html, .md-default-theme {
+    background-color: #fff;
+}
+
+md-content {
+    background-color: #fff;
+}
+
+.output-frame {
+    border: 1px solid #eee;
+    border-radius: 3px 3px;
+    height: 300px;
+    padding: 20px;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+
+}

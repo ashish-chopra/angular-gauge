@@ -2,38 +2,241 @@
 <html ng-app="websiteApp">
 
 <head>
-    <title>Ashish Chopra</title>
+    <title>Angular Gauge v1.0.0 - A customizable gauge directive for Angular JS apps</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-    <script src="scripts/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="main-override.css">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+        <!-- Angular Material Library -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+        <script src="lib/angularjs-gauge.min-1.0.0.js"></script>
+        <script src="scripts/app.js"></script>
 </head>
 
 <body ng-controller="MainController as main">
-    <header>
-        <div>{{main.displayText}}</div>
-        <nav>
-            <div class="container">
 
-            </div>
-        </nav>
-        <section class="hero">
-            <div class="container">
-
-            </div>
-        </section>
-    </header>
-    <main>
+    <nav class="navbar navbar-toggleable-md navbar-light">
         <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">angular-gauge</a>
 
+                <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Getting Started</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Documentation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Demos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">License</a>
+                        </li>
+                    </ul>
+                </div>
         </div>
-    </main>
+    </nav>
+    <section class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="custom-heading display-2">Angular Gauge <span class="custom-badge badge badge-default">1.0.0</span></h1>
+            <p class="lead">A highly customizable gauge directive for Angular JS apps and dashboards. </p>
+            <br>
+            <div>
+                <button class="btn btn-outline-primary btn-lg">Download</button> &nbsp;
+                <button class="btn btn-outline-primary btn-lg">Code on GitHub</button>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container block">
+            <h2>Getting Started</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum incidunt deserunt modi ipsa hic. In, hic. Illo nisi voluptates
+                ab, nostrum eaque, quaerat maiores soluta doloremque aliquid, est pariatur magni. Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Assumenda asperiores autem, magni ratione ipsum id deserunt mollitia amet hic
+                eveniet! Cum quidem ad, labore inventore itaque, modi consequatur reiciendis officia! Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Quia, aspernatur aliquid repellat necessitatibus aliquam magni eos eum,
+                iste cupiditate voluptatibus expedita neque in doloribus consectetur dolorum quasi nostrum ratione deserunt!
+            </p>
+        </div>
+
+    </section>
+    <section>
+        <div class="container block">
+            <h2>Documentation</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum incidunt deserunt modi ipsa hic. In, hic. Illo nisi voluptates
+                ab, nostrum eaque, quaerat maiores soluta doloremque aliquid, est pariatur magni. Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Assumenda asperiores autem, magni ratione ipsum id deserunt mollitia amet hic
+                eveniet! Cum quidem ad, labore inventore itaque, modi consequatur reiciendis officia! Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Quia, aspernatur aliquid repellat necessitatibus aliquam magni eos eum,
+                iste cupiditate voluptatibus expedita neque in doloribus consectetur dolorum quasi nostrum ratione deserunt!
+            </p>
+        </div>
+
+    </section>
+
+
+    <section>
+        <div class="container block">
+            <h2>Demos</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, quisquam laboriosam dolores aliquam omnis
+                unde! Illum eum libero quidem repellendus, beatae, quia, est dolor aut nihil impedit veniam harum eius.</p>
+            <div class="column-box">
+                <div class="column-item">
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab label="Description">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Tab One</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                                        Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                                        In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis
+                                        nec, feugiat ultricies mi.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="Markup">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Tab Two</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                                        Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                                        In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis
+                                        nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices
+                                        porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis
+                                        sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a
+                                        nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor,
+                                        aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum
+                                        quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum
+                                        ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus
+                                        risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec
+                                        luctus mauris semper.</p>
+                                    <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci
+                                        nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum
+                                        facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam
+                                        pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit
+                                        amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor.
+                                        Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus
+                                        sapien.
+                                    </p>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
+                                        posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse
+                                        vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                                        commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus
+                                        commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="JavaScript">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Tab Three</h1>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
+                                        posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse
+                                        vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                                        commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus
+                                        commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
+                    </md-content>
+                </div>
+                <div class="column-item">
+                    <div class="output-frame">
+                        <ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
+                            append="mph"></ng-gauge>
+                    </div>
+                </div>
+            </div>
+            <div class="column-box">
+                <div class="column-item">
+                    <div class="output-frame">
+                        <ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
+                            append="mph"></ng-gauge>
+                    </div>
+                </div>
+                <div class="column-item">
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab label="Description">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Tab One</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                                        Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                                        In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis
+                                        nec, feugiat ultricies mi.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="Markup">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Tab Two</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+                                        Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+                                        In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis
+                                        nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices
+                                        porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis
+                                        sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a
+                                        nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor,
+                                        aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum
+                                        quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum
+                                        ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus
+                                        risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec
+                                        luctus mauris semper.</p>
+                                    <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci
+                                        nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum
+                                        facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam
+                                        pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit
+                                        amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor.
+                                        Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus
+                                        sapien.
+                                    </p>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
+                                        posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse
+                                        vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                                        commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus
+                                        commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="JavaScript">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Tab Three</h1>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur
+                                        posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse
+                                        vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci
+                                        commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus
+                                        commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
+                    </md-content>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-
+            <ul>
+                <li>GitHub</li>
+                <li>Angular</li>
+                <li>More Projects</li>
+            </ul>
+            <span> Made with love and JavaScript - Ashish Chopra.
+            </span>
         </div>
     </footer>
 </body>
