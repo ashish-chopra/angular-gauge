@@ -1,0 +1,2 @@
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular-gauge/dist/angularjs-gauge.min.js"></script>
