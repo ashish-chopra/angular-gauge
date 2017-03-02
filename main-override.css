@@ -10,9 +10,31 @@ html, body {
     background-color: #fff;
 }
 
+.spacer {
+   margin-top: 56px;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+}
+.nav-link {
+    font-weight: bold;
+}
+
+#navbarSupportedContent {
+    padding-left: 50px;
+}
 .jumbotron {
     background:#16a085;
     color: white;
+}
+
+.jumptarget::before {
+  content:"";
+  display:block;
+  height:56px; /* fixed header height*/
+  margin:-56px 0 0; /* negative fixed header height */
 }
 
 .custom-heading {
@@ -32,6 +54,11 @@ html, body {
 }
 
 #jumbo-action .btn:hover {
+    color: #424242;
+    background-color: #ffe484;
+}
+
+#jumbo-action .btn-fill {
     color: #424242;
     background-color: #ffe484;
 }
@@ -122,18 +149,7 @@ h1.custom-heading  {
     padding-bottom:0rem;
     border: none;
 }
+
 h4 {
     margin: 1rem 0;
-}
-
-.well {
-    background-color: #eee;
-    border: 1px solid #999;
-    border-radius: 4px 4px;
-    padding: 5px;
-    font-family: Courier New, Courier;
-}
-
-code.hljs {
-    padding-top: 10px;
 }

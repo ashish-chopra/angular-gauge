@@ -20,11 +20,12 @@
     <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
     <script src="lib/angularjs-gauge.min-1.0.0.js"></script>
     <script src="scripts/app.js"></script>
+
 </head>
 
 <body ng-controller="MainController as main">
 
-    <nav class="navbar navbar-toggleable-md navbar-light">
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">angular-gauge</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -32,170 +33,36 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#gettingStarted">Getting Started</a>
+                            <a class="nav-link" href="#getting-started" target="_self">Getting Started</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#documentation">Documentation</a>
+                            <a class="nav-link" href="#documentation" target="_self">Documentation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#demos">Demos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#license">License</a>
+                            <a class="nav-link" href="#demos" target="_self">Demos</a>
                         </li>
                     </ul>
                 </div>
         </div>
     </nav>
+    <div class="spacer">
     <section class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="custom-heading display-2">Angular Gauge <span class="badge badge-default">1.0.0</span></h1>
             <p class="lead">A highly customizable gauge directive for Angular JS apps and dashboards. </p>
             <br>
             <div id="jumbo-action">
-                <a class="btn btn-lg" role="button" >Download</a> &nbsp;
+                <a class="btn btn-fill btn-lg" role="button">Download</a> &nbsp;
                 <a class="btn btn-lg" role="button" href="https://github.com/ashish-chopra/angular-gauge" target="_blank">Code on GitHub</a>
             </div>
         </div>
     </section>
-
-    <section>
-        <div class="container block">
-            <h1>Getting Started</h1>
-            <p>
-                angular-gauge is a highly customizable and configurable gauge directive for Angular JS apps and dashboards. It provides multitude
-                of options to customize as per your needs.
-            </p>
-            <h4>Dependencies</h4>
-            <p>This repository contains set of native Angular JS directives for gauge widget.The only required dependency is:
-                <ul>
-                    <li>Angular JS (1.4.5 or higher and tested with 1.6.1)</li>
-                </ul>
-            </p>
-
-            <h4>How to Download?</h4>
-            <p>The easiest way to download is with <b>npm</b>: </p>
-
-            <div hljs hljs-language="bash">
-                npm install --save angularjs-gauge
-            </div>
-
-            <p>or, you can install it with bower: </p>
-            <div hljs hljs-language="bash">
-                bower install --save angularjs-gauge
-            </div>
-            <p>otherwise, you can manually clone the git repository.</p>
-
-            <h4>Installation</h4>
-            <p>
-                You need to include the dependencies in your page: </p>
-            <div hljs>
-                <script src="node_modules/angular/angular.min.js"></script>
-                <script src="node_modules/angular-gauge/dist/angularjs-gauge.min.js"></script>
-            </div>
-            <p>
-                As soon as you've got all the files downloaded and included in your page you just need to declare a dependency on the chart.js
-                module:
-            </p>
-            <div hljs>
-                angular.module('yourApp', ['angularjs-gauge']);
-            </div>
-        </div>
-
-    </section>
-    <section>
-        <div class="container block">
-            <h1>Documentation</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum incidunt deserunt modi ipsa hic. In, hic. Illo nisi voluptates
-                ab, nostrum eaque, quaerat maiores soluta doloremque aliquid, est pariatur magni. Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. Assumenda asperiores autem, magni ratione ipsum id deserunt mollitia amet hic
-                eveniet! Cum quidem ad, labore inventore itaque, modi consequatur reiciendis officia! Lorem ipsum dolor sit
-                amet, consectetur adipisicing elit. Quia, aspernatur aliquid repellat necessitatibus aliquam magni eos eum,
-                iste cupiditate voluptatibus expedita neque in doloribus consectetur dolorum quasi nostrum ratione deserunt!
-            </p>
-        </div>
-
-    </section>
-
-
-    <section>
-        <div class="container block">
-            <h1>Demos</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, quisquam laboriosam dolores aliquam omnis
-                unde! Illum eum libero quidem repellendus, beatae, quia, est dolor aut nihil impedit veniam harum eius.</p>
-
-            <div class="column-box">
-                <div class="column-item" ng-include="'demos/size.html'"></div>
-                <div class="column-item">
-                    <div class="output-frame">
-                        <ng-gauge size="150" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
-                            append="mph"></ng-gauge>
-                    </div>
-                </div>
-                <div class="column-item">
-                    <md-tabs md-dynamic-height md-border-bottom>
-                        <md-tab label="Description">
-                            <md-content class="md-padding">
-                                <h1 class="md-display-2">Tab One</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
-                                    volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
-                                    ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies
-                                    mi.
-                                </p>
-                            </md-content>
-                        </md-tab>
-                        <md-tab label="Markup">
-                            <md-content class="md-padding">
-                                <h1 class="md-display-2">Tab Two</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
-                                    volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium
-                                    ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies
-                                    mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum
-                                    enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida.
-                                    Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat
-                                    diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate,
-                                    euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus
-                                    in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat
-                                    blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus
-                                    ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                                <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci
-                                    nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis.
-                                    Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel.
-                                    Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit
-                                    tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras
-                                    sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.
-                                </p>
-                                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                                    molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                                    erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non
-                                    ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            </md-content>
-                        </md-tab>
-                        <md-tab label="JavaScript">
-                            <md-content class="md-padding">
-                                <h1 class="md-display-2">Tab Three</h1>
-                                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
-                                    molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
-                                    erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non
-                                    ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                            </md-content>
-                        </md-tab>
-                    </md-tabs>
-                </div>
-                <div class="column-item">
-                    <div class="output-frame">
-                        <ng-gauge size="200" type="full" thick="5" value="68" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
-                            append="mph"></ng-gauge>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
+    <section id="getting-started" class="jumptarget" ng-include="'templates/getting-started.html'"></section>
+    <section id="documentation" class="jumptarget" ng-include="'templates/documentation.html'"></section>
+    <section id="demos" class="jumptarget" ng-include="'templates/demos.html'"></section>
 
     <footer>
         <div class="container">
@@ -208,7 +75,7 @@
             </span>
         </div>
     </footer>
-
+</div>
 </body>
 <script type="text/ng-template" id="code2">
     <ng-gauge size="150" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
@@ -216,9 +83,10 @@
         </ng-gauge>
 </script>
 <script type="text/ng-template" id="code3">
-   <ng-gauge size="150" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
+    <ng-gauge size="150" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
         append="mph">
         </ng-gauge>
 </script>
+
 
 </html>

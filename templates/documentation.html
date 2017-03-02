@@ -1,0 +1,116 @@
+<div class="container block">
+    <h1>Documentation</h1>
+    <h4>Usage</h4>
+    <p>Once you are setup with angular-gauge and its dependencies, you can straight forward use it on any HTML page like: </p>
+    <div hljs hljs-include="'code/usage'">
+    </div>
+    <h4>Config Options</h4>
+    <p>
+        There are plenty of configurable options available to tune the Gauge as per your needs. Following is the extensive list of
+        configurable options.
+    </p>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th width="450">Description</th>
+            <th>Required</th>
+            <th>Default value</th>
+            <th>Possible Values</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>size</td>
+                <td>Specifies the size of the canvas in which Gauge will be drawn. It is used as width and height both.</td>
+                <td>No</td>
+                <td>200</td>
+                <td>Positive Integer</td>
+            </tr>
+              <tr>
+                <td>value</td>
+                <td>Specifies the current value of the Gauge as a percentage. It is required attribute.</td>
+                <td>Yes</td>
+                <td>undefined</td>
+                <td>A numeric value between 0 - 100.</td>
+            </tr>
+              <tr>
+                <td>used</td>
+                <td>Specifies the absolute value which has been consumed out of total. The percentage usage (used/total) will be displayed by the Gauge. When this attribute is specified with total, value attribute is not used.</td>
+                <td>No</td>
+                <td>undefined</td>
+                <td>Any numeric value</td>
+            </tr>
+              <tr>
+                <td>cap</td>
+                <td>The style of line ending at the gauge's end.</td>
+                <td>No</td>
+                <td>"butt"</td>
+                <td>"round", "butt"</td>
+            </tr>
+            <tr>
+                <td>thick</td>
+                <td>Specified the thickness of the gauge's bar.</td>
+                <td>No</td>
+                <td>5</td>
+                <td>Any Positive Integer</td>
+            </tr>
+             <tr>
+                <td>type</td>
+                <td>Specifies the gauge's type.</td>
+                <td>No</td>
+                <td>"full"</td>
+                <td>"full", "semi", "arch"</td>
+            </tr>
+             <tr>
+                <td>label</td>
+                <td>Specifies the text to display below the Gauge's reading.</td>
+                <td>No</td>
+                <td>undefined</td>
+                <td>Any String</td>
+            </tr>
+             <tr>
+                <td>foreground-color</td>
+                <td>Specifies the foreground color of the Gauge's bar. It will be overriden if theme attribute is specified.</td>
+                <td>No</td>
+                <td>"#FFCC66"</td>
+                <td>Any color value string</td>
+            </tr>
+             <tr>
+                <td>background-color</td>
+                <td>Specifies the background color of the Gauge's bar.</td>
+                <td>No</td>
+                <td>"#CCC"</td>
+                <td>Any color value string</td>
+            </tr>
+            <tr>
+                <td>append</td>
+                <td>Specifies a string appended to the Gauge's reading. For example "%" most commonly used.</td>
+                <td>No</td>
+                <td>undefined</td>
+                <td>Any string</td>
+            </tr>
+            <tr>
+                <td>prepend</td>
+                <td>Specifies a string prepended to the Gauge's reading. For example "$" in case of financial data displayed in Gauge.</td>
+                <td>No</td>
+                <td>undefined</td>
+                <td>Any String</td>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td>Not supported yet</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>theme</td>
+               <td>Not supported yet</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
