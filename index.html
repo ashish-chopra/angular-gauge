@@ -2,15 +2,16 @@
 <html ng-app="websiteApp">
 
 <head>
-    <title>Angular Gauge v1.0.0 - A customizable gauge directive for Angular JS apps</title>
+    <title>Angular Gauge - A customizable gauge directive for Angular JS apps</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" href="main-override.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+    <link rel="stylesheet" href="styles/main-override.css">
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
@@ -20,7 +21,6 @@
     <script src="https://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
     <script src="lib/angularjs-gauge.min-1.0.0.js"></script>
     <script src="scripts/app.js"></script>
-
 </head>
 
 <body ng-controller="MainController as main">
@@ -33,48 +33,61 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#getting-started" target="_self">Getting Started</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#documentation" target="_self">Documentation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#demos" target="_self">Demos</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#getting-started" target="_self">Getting Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documentation" target="_self">Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demos" target="_self">Demos</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="spacer">
-    <section class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="custom-heading display-2">Angular Gauge <span class="badge badge-default">1.0.0</span></h1>
-            <p class="lead">A highly customizable gauge directive for Angular JS apps and dashboards. </p>
-            <br>
-            <div id="jumbo-action">
-                <a class="btn btn-fill btn-lg" role="button" href="https://github.com/ashish-chopra/angular-gauge/releases" target="_blank">Download</a> &nbsp;
-                <a class="btn btn-lg" role="button" href="https://github.com/ashish-chopra/angular-gauge" target="_blank">Code on GitHub</a>
+        <section class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="custom-heading display-2">Angular Gauge <span class="badge badge-default">1.0.0</span></h1>
+                <p class="lead">A highly customizable gauge directive for Angular JS apps and dashboards. </p>
+                <br>
+                <div id="jumbo-action">
+                    <a class="btn btn-fill btn-lg" role="button" href="https://github.com/ashish-chopra/angular-gauge/releases" target="_blank">Download</a>                    &nbsp;
+                    <a class="btn btn-lg" role="button" href="https://github.com/ashish-chopra/angular-gauge" target="_blank">Code on GitHub</a>
+                </div>
             </div>
-        </div>
-    </section>
-    <section id="getting-started" class="jumptarget" ng-include="'templates/getting-started.html'"></section>
-    <section id="documentation" class="jumptarget" ng-include="'templates/documentation.html'"></section>
-    <section id="demos" class="jumptarget" ng-include="'templates/demos.html'"></section>
+        </section>
+        <section id="getting-started" class="jumptarget" ng-include="'templates/getting-started.html'"></section>
+        <section id="documentation" class="jumptarget" ng-include="'templates/documentation.html'"></section>
+        <section id="demos" class="jumptarget" ng-include="'templates/demos.html'"></section>
 
-    <footer>
-        <div class="container">
-           <div>Thanks to <b> GitHub &middot; Angular &middot; Highlightjs &middot; Bootstrap 4 &middot; Font Awesome</b> for giving tools to make this website.</div>
-            <br>
-            <div> 
-                Made with <i class="fa fa-heart"></i> &amp; JavaScript by <a href="https://ashish-chopra.github.io">Ashish Chopra</a>. <br>
-                Checkout my other <a href="https://github.com/ashish-chopra?tab=repositories">projects</a>.
+        <footer>
+            <div class="container footer-box">
+                <div>
+                    <div>&copy; copyright 2017 Ashish Chopra. <br> Thanks to <b> GitHub &middot; Angular &middot; Highlightjs &middot; Bootstrap 4 &middot; Font Awesome</b>                        for giving technologies to build this website.
+                    </div>
+                    <br>
+                    <div>
+                        Made with hands &amp; <i class="fa fa-heart"></i> by <a href="https://ashish-chopra.github.io">Ashish Chopra</a>.
+                        <br> Checkout my other <a href="https://github.com/ashish-chopra?tab=repositories">projects</a>.
+                    </div>
+                </div>
+                <div>
+                    <b>Other Links</b>
+                    <ul>
+                        <li><a href="https://ashish-chopra.github.io" target="_blank">Website</a></li>
+                        <li><a href="https://github.com/ashish-chopra" target="_blank">GitHub</a></li>
+                        <li><a href="https://www.facebook.com/ashish.chopra22" target="_blank">Facebook</a></li>
+                        <li><a href="mailto://sendtoashishchopra@gmail.com">Email</a></li>
+                    </ul>
 
+                </div>
             </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>
 </body>
+
 </html>

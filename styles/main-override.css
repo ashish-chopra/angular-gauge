@@ -80,13 +80,17 @@ footer {
 
 footer ul {
     list-style-type: none;
-    font-weight: bold;
     padding: 0;
 }
 
-footer li {
-     display: inline-block;
-     margin-right: 2rem;
+.footer-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-box > div:first-child {
+    width:75%;
 }
 
 .block {

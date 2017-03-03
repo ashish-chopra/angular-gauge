@@ -1,0 +1,17 @@
+<!--blue theme -->
+<ng-gauge size="150" type="arch" thick="7" value="68.2" 
+          cap="round" label="Speed" append="mph" 
+          foreground-color="#2980b9"
+          background-color="#ecf0f1"></ng-gauge>
+
+<!-- green theme -->
+<ng-gauge size="150" type="arch" thick="7" value="68.2" 
+          cap="round" label="Speed" append="mph" 
+          foreground-color="#2ecc71"
+          background-color="#ecf0f1"></ng-gauge>
+
+<!-- red theme -->
+<ng-gauge size="150" type="arch" thick="7" value="68.2" 
+          cap="round" label="Speed" append="mph" 
+          foreground-color="#e74c3c"
+          background-color="#ecf0f1"></ng-gauge>

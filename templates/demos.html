@@ -1,8 +1,8 @@
 <div class="container block">
     <h1>Demos</h1>
     <p>
-        In this section, basic styles of using angular-gauge directive in any application has been demonstrated.
-        To name a few, you can apply themes, colors, thickness, styles, i18n and many more as per your business needs.
+        In this section, basic styles of using angular-gauge directive in any application has been demonstrated. To name a few, you
+        can apply themes, colors, thickness, styles, i18n and many more as per your business needs.
     </p>
 
     <div class="column-box">
@@ -60,12 +60,9 @@
         </div>
         <div class="column-item">
             <div class="output-frame">
-                <ng-gauge size="120" type="full" thick="5" value="68" cap="round" label="Speed" 
-                    append="mph"></ng-gauge>
-                <ng-gauge size="120" type="semi" thick="5" value="68" cap="round" label="Speed" 
-                    append="mph"></ng-gauge>
-                <ng-gauge size="120" type="arch" thick="5" value="68" cap="round" label="Speed"
-                    append="mph"></ng-gauge>
+                <ng-gauge size="120" type="full" thick="5" value="68" cap="round" label="Speed" append="mph"></ng-gauge>
+                <ng-gauge size="120" type="semi" thick="5" value="68" cap="round" label="Speed" append="mph"></ng-gauge>
+                <ng-gauge size="120" type="arch" thick="5" value="68" cap="round" label="Speed" append="mph"></ng-gauge>
             </div>
         </div>
         <div class="column-item">
@@ -93,15 +90,106 @@
         </div>
         <div class="column-item">
             <div class="output-frame">
-                <ng-gauge size="180" type="arch" thick="15" value="68" cap="butt" label="Speed" 
-                    append="mph"></ng-gauge>
-                <ng-gauge size="180" type="arch" thick="15" value="68" cap="round" label="Speed" 
-                    append="mph"></ng-gauge>
+                <ng-gauge size="180" type="arch" thick="15" value="68" cap="butt" label="Speed" append="mph"></ng-gauge>
+                <ng-gauge size="180" type="arch" thick="15" value="68" cap="round" label="Speed" append="mph"></ng-gauge>
             </div>
         </div>
         <div class="column-item">
-            Many more coming soon...
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Description">
+                    <md-content class="md-padding">
+                        <h2>Gauge Thickness</h2>
+                        <p>
+                            Thickness of gauge can be set using `thick` attribute. It takes a positive integer value.
+                        </p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Markup">
+                    <md-content class="md-padding">
+                        <div hljs hljs-include="'code/thickness-markup'"></div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
         </div>
+        <div class="column-item">
+            <div class="output-frame">
+                <!-- thickness = 5 -->
+                <ng-gauge type="arch" value="68" thick="5" size="150" label="Speed" append="mph"></ng-gauge>
+
+                <!-- thickness = 10 -->
+                <ng-gauge type="arch" value="68" thick="10" size="150" label="Speed" append="mph"></ng-gauge>
+
+                <!-- thickness = 15 -->
+                <ng-gauge type="arch" value="68" thick="15" size="150" label="Speed" append="mph"></ng-gauge>
+            </div>
+        </div>
+        <div class="column-item">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Description">
+                    <md-content class="md-padding">
+                        <h2>Dynamic Gauge Value</h2>
+                        <p>
+                           The gauge value can be specified directly or bound to a scope variable defined in the controller. The gauge will udpate the display when the value is updated in the scope.
+                           Click the button to see its working.
+                        </p>
+                        <md-button class="md-raised md-primary" ng-click="main.updateRandomValue()">Update</md-button>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Markup">
+                    <md-content class="md-padding">
+                        <div hljs hljs-include="'code/dynamic-markup'"></div>
+                    </md-content>
+                      <md-tab label="Javascript">
+                    <md-content class="md-padding">
+                        <div hljs hljs-include="'code/dynamic-js'"></div>
+                    </md-content>
+                </md-tab>
+                </md-tab>
+            </md-tabs>
+        </div>
+        <div class="column-item">
+            <div class="output-frame">
+                  <ng-gauge type="arch" value="main.randomValue" thick="13" cap="round" size="200" label="I/O Utilization" append="%"></ng-gauge>
+            </div>
+        </div>
+        <div class="column-item">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Description">
+                    <md-content class="md-padding">
+                        <h2>Gauge Themes</h2>
+                        <p>
+                            Themes for gauge widget can be set manually using foreground color and background color attributes. In upcoming releases,
+                            it will contain set of named themes which can be applied based on choice.
+                            <ul>
+                                <li> <b>foreground-color</b> - #FFCC66 (default)</li>
+                                <li><b>background-color</b> - #EEE (default)</li>
+                            </ul>
+                        </p>
+                        <p>It can accept any valid <a href="https://www.w3schools.com/css/css_colors.asp" target="_blank">CSS color value</a>.
+                        </p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Markup">
+                    <md-content class="md-padding">
+                        <div hljs hljs-include="'code/themes-markup'"></div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </div>
+        <div class="column-item">
+            <div class="output-frame">
+                <ng-gauge size="150" type="arch" thick="7" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#2980b9"
+                    background-color="#ecf0f1">
+                </ng-gauge>
+                <ng-gauge size="150" type="arch" thick="7" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#2ecc71"
+                    background-color="#ecf0f1">
+                </ng-gauge>
+                <ng-gauge size="150" type="arch" thick="7" value="68.2" cap="round" label="Speed" append="mph" foreground-color="#e74c3c"
+                    background-color="#ecf0f1">
+                </ng-gauge>
+            </div>
+        </div>
+        
     </div>
 </div>
 </div>

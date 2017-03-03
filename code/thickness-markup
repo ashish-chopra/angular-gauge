@@ -1,0 +1,11 @@
+<!-- thickness = 5 -->
+<ng-gauge type="arch" value="68" thick="15" size="120"
+          label="Speed" append="mph"></ng-gauge>
+
+<!-- thickness = 10 -->
+<ng-gauge type="arch" value="68" thick="15" size="120"
+          label="Speed" append="mph"></ng-gauge>
+
+<!-- thickness = 15 -->
+<ng-gauge type="arch" value="68" thick="15" size="120"
+          label="Speed" append="mph"></ng-gauge>

@@ -1,0 +1,10 @@
+<div ng-controller="MainController as main">
+    <ng-gauge type="arch" thick="13" cap="round" 
+            value="main.randomValue"  
+            label="I/O Utilization" append="%">
+    </ng-gauge> 
+
+    <button ng-click="main.updateRandomValue()">
+        Update
+    </button>
+</div>

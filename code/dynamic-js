@@ -1,0 +1,22 @@
+angular
+    .module('examples', ['angularjs-gauge'])
+    .controller('MainController', mainController);
+
+mainController.$inject = [];
+function mainController() {
+    var vm = this;
+
+    // scope variable bound to
+    // gauge's value attribute
+    vm.randomValue = 68.3;
+
+    // update button click handler
+    vm.getRandomValue = function() {
+        
+      // in real application, here comes
+      // the logic to fetch value for 
+      // gauge from server etc.
+      vm.randomValue = (Math.random() * 100).toFixed(1);
+        
+    }
+}

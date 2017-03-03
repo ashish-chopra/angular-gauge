@@ -37,6 +37,7 @@
     };
 
     vm.gaugeOptions = defaultOptions;
+    vm.randomValue = 68.3;
 
     vm.runDefault = function () {
       vm.gaugeOptions = defaultOptions;
@@ -50,6 +51,10 @@
         value: 68.2
       };
       vm.gaugeOptions = angular.extend({}, vm.gaugeOptions, moreOptions);
+    }
+
+    vm.updateRandomValue = function() {
+      vm.randomValue =  Number((Math.random() * 100).toFixed(1));
     }
 }
 
