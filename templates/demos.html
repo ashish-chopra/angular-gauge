@@ -8,27 +8,61 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Description">
                     <md-content class="md-padding">
-                        <div hljs>
-
-                        </div>
+                        <h2>Intelligent Defaults</h2>
+                        <p>Gauge has many default options. With bare minimum required parameters set, you will get a ready-to-use
+                            gauge as shown.
+                        </p>
+                        <div hljs hljs-include="'code/defaults-markup'"></div>
+                        <p>To know about default parameters, checkout <a href="#documentation" target="_self">documentation</a>.</p>
                     </md-content>
                 </md-tab>
-                <md-tab label="Markup">
+                <md-tab label="More">
                     <md-content class="md-padding">
-                        <div hljs hljs-include="'dummy'">
-                        </div>
-                    </md-content>
-                </md-tab>
-                <md-tab label="JavaScript">
-                    <md-content class="md-padding">
-                        <div hljs hljs-include="'code3'"></div>
+                        <p>We can, however set some more bits to the default code to make it more usable (readable) in our apps,
+                            like:
+                            <div hljs hljs-include="'code/defaults-more'"></div>
+                            <md-button class="md-raised md-primary" ng-click="main.runDefaultMore()">Run</md-button>
                     </md-content>
                 </md-tab>
             </md-tabs>
         </div>
         <div class="column-item">
             <div class="output-frame">
-                <ng-gauge size="150" type="full" thick="5" value="68.2" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
+                <ng-gauge size="{{main.gaugeOptions.size}}" thick="{{main.gaugeOptions.thick}}" value="main.gaugeOptions.value" label="{{main.gaugeOptions.label}}"
+                    append="{{main.gaugeOptions.append}}"></ng-gauge>
+            </div>
+        </div>
+        <div class="column-item">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Description">
+                    <md-content class="md-padding">
+                        <h2>Gauge Types</h2>
+
+                        <p>
+                            Gauge directive lets you create three distinct types of gauges:
+                            <ul>
+                                <li><b>full</b> (default) - a circular gauge</li>
+                                <li><b>semi</b> - a semi-circular gauge</li>
+                                <li><b>arch</b> - arc like gauge less than a full circle.</li>
+                            </ul>
+                        </p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Markup">
+                    <md-content class="md-padding">
+                        <div hljs hljs-include="'code/types-markup'"></div>
+                    </md-content>
+                </md-tab>
+
+            </md-tabs>
+        </div>
+        <div class="column-item">
+            <div class="output-frame">
+                <ng-gauge size="120" type="full" thick="5" value="68" cap="round" label="Speed" 
+                    append="mph"></ng-gauge>
+                <ng-gauge size="120" type="semi" thick="5" value="68" cap="round" label="Speed" 
+                    append="mph"></ng-gauge>
+                <ng-gauge size="120" type="arch" thick="5" value="68" cap="round" label="Speed"
                     append="mph"></ng-gauge>
             </div>
         </div>
@@ -36,53 +70,30 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Description">
                     <md-content class="md-padding">
-                        <h1 class="md-display-2">Tab One</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat
-                            neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas
-                            lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.
+                        <h2>Gauge Styles</h2>
+
+                        <p>
+                            Gauge directive provides two cap styles for Gauge lines:
+                            <ul>
+                                <li> <b>butt</b> (default) - gives a flat edge to gauge line</li>
+                                <li><b>round</b> - gives a rounded edge to gauge line</li>
+                            </ul>
                         </p>
                     </md-content>
                 </md-tab>
                 <md-tab label="Markup">
                     <md-content class="md-padding">
-                        <h1 class="md-display-2">Tab Two</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat
-                            neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas
-                            lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat.
-                            Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus.
-                            Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies
-                            id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet
-                            vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula
-                            sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum
-                            neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus
-                            ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                        <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna.
-                            Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor
-                            tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi
-                            maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas
-                            facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus
-                            sapien sit amet, tempus sapien.
-                        </p>
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie
-                            dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere
-                            mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula
-                            diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                        <div hljs hljs-include="'code/styles-markup'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="JavaScript">
-                    <md-content class="md-padding">
-                        <h1 class="md-display-2">Tab Three</h1>
-                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie
-                            dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere
-                            mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula
-                            diam, congue eu enim scelerisque, finibus commodo lectus. Hello world</p>
-                    </md-content>
-                </md-tab>
+
             </md-tabs>
         </div>
         <div class="column-item">
             <div class="output-frame">
-                <ng-gauge size="200" type="full" thick="5" value="68" cap="round" label="Speed" foreground-color="#ffcc66" background-color="#EEE"
+                <ng-gauge size="180" type="arch" thick="15" value="68" cap="butt" label="Speed" 
+                    append="mph"></ng-gauge>
+                <ng-gauge size="180" type="arch" thick="15" value="68" cap="round" label="Speed" 
                     append="mph"></ng-gauge>
             </div>
         </div>

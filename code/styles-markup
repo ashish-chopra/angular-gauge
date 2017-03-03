@@ -1,0 +1,7 @@
+<ng-gauge size="180" type="arch" thick="15" 
+          value="68" cap="butt" label="Speed" 
+          append="mph"></ng-gauge>
+
+<ng-gauge size="180" type="arch" thick="15" 
+          value="68" cap="round" label="Speed" 
+          append="mph"></ng-gauge>

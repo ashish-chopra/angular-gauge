@@ -1,0 +1,11 @@
+<!-- full type gauge -->
+<ng-gauge type="full" value="68" thick="5" size="120"
+          label="Speed" append="mph"></ng-gauge>
+
+<!-- semi type gauge -->
+<ng-gauge type="semi" value="68" thick="5" size="120"
+          label="Speed" append="mph"></ng-gauge>
+
+<!-- arch type gauge -->
+<ng-gauge type="arch" value="68" thick="5" size="120"
+          label="Speed" append="mph"><ng-gauge>

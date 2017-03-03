@@ -1,0 +1,3 @@
+<ng-gauge value="68.2" thick="15" 
+          label="Disk Usage" append="GB">
+</ng-gauge>
