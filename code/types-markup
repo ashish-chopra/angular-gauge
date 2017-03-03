@@ -8,4 +8,4 @@
 
 <!-- arch type gauge -->
 <ng-gauge type="arch" value="68" thick="5" size="120"
-          label="Speed" append="mph"><ng-gauge>
+          label="Speed" append="mph"></ng-gauge>
