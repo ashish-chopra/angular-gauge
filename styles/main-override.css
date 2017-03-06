@@ -96,7 +96,6 @@ footer ul {
 .block {
     padding: 2rem;
     padding-left: 0;
-    /*border-bottom: 1px solid #eee;*/
 }
 
 .block h2 {
@@ -156,4 +155,83 @@ h1.custom-heading  {
 
 h4 {
     margin: 1rem 0;
+}
+
+@media screen and (max-width: 500px) {
+    .display-2 {
+        font-size: 2.7em;
+    }
+    .container {
+        margin: 0;
+        width: 100%;
+    }
+    .block {
+        padding: 0.4rem;
+    }
+
+    .column-box {
+        flex-direction: column;
+    }
+    .column-item {
+        width: 100%;
+    }
+
+    .output-frame {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    #jumbo-action .btn, #jumbo-action .btn-group {
+        width: 100%;
+    }
+
+    .footer-box {
+        flex-direction: column;
+    }
+    .footer-box div {
+        width: 100%;
+        text-align: center;
+    }
+    .footer-box > div:nth-child(2) {
+        margin-top: 20px;
+    }
+    .footer-box  ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .footer-box li {
+        margin-right: 1rem;
+    }
+
+}
+
+/*@media screen and (max-width: 700px) {
+    .container.block {
+        margin: 0;
+        width: 100%;
+    }
+    .block {
+        padding: 0.4rem;
+    }
+    .output-frame {
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: auto;
+    }
+     .column-box {
+        flex-direction: column;
+    }
+    .column-item {
+        width: 100%;
+    }
+}*/
+@media screen and (max-width: 400px) {
+    .badge {
+        position:relative;
+    }
+    .footer-box {
+        font-size: 0.8rem;
+    }
 }
