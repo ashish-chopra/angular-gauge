@@ -51,7 +51,6 @@
                     fontWeight: 100,
                     width: '100%',
                     position: 'absolute',
-                    fontFamily: 'Open Sans',
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
