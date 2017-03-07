@@ -51,7 +51,7 @@ Use it in your HTML markup like this
 
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
-## Config Options
+# Config Options
 
 There are plenty of configurable options available to tune the `Gauge` as per your needs.
 
@@ -76,37 +76,32 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 
 # Contribute
 
-The project is continously evovling with every new release. Give it a star, if you like it.
- 
-For contribution setup the development environment as follows:
+The project is continously evovling with every new release. Give it a star, if you like it. For contribution setup the development environment as follows:
+
+1. clone and setup the project dependencies
+
+```    
+      $> git clone https://github.com/ashish-chopra/angular-gauge.git
+      $> npm install
+```
+
+2. Use following commands based on what you'd like to do:
 
 ```
-# clone and setup the project dependencies
-git clone https://github.com/ashish-chopra/angular-gauge.git
-npm install
-npm install -g gulp
-
-# builds the source code
-gulp build
-
-# runs a web server at port 3000 (default) and host the /examples directory
-gulp
-
-# runs test suite once and exit
-gulp test
-
-# runs the test suite and wait for code changes (useful while development)
-gulp tdd
-
+  $> npm start        # starts the server at port 3000 and hosts the `/examples` directory.
+  $> npm start:dev    # starts the test framework and watch for changes in code.
+  $> npm test         # runs test suite once and exit.
+  $> npm run build    # triggers a manual build for library, outputs at `/dist` directory.
 ```
-`gulp` command will run a development server at port `3000` on your machine, then you can browse the bundled `examples` at `http://localhost:3000`.
+
+3. To add a new feature or fix a bug, make sure to create a new branch from `master`.
 
 
 First thing first, explore the [issue tracker](https://github.com/ashish-chopra/angular-gauge/issues) to find something to contribute. There are tons of other project setup related issues and activities in which you can help. Your feedback could also be a great contribution.
 
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
-License
----------
+# License
+
 [MIT License](https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE)
 
