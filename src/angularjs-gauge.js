@@ -2,35 +2,57 @@
     'use strict';
     angular
         .module('angularjs-gauge', [])
-        .directive('ngGauge', gaugeMeterDirective);
+        .directive('ngGauge', gaugeMeterDirective)
+        .provider('ngGauge', gaugeMeterProviderFn);
 
-    gaugeMeterDirective.$inject = [];
+    gaugeMeterProviderFn.$inject = [];
+    function gaugeMeterProviderFn() {
+        var defaultOptions = {
+            size: 200,
+            value: undefined,
+            cap: 'butt',
+            thick: 2,
+            type: 'full',
+            foregroundColor: '#FFCC66',
+            backgroundColor: '#CCC'
+        };
 
-    function gaugeMeterDirective() {
+        this.setOptions = function (options) {
+            if (!(options && typeof options === 'object'))
+                throw new Error('Invalid option type specified in the ngGaugeProvider');
+            defaultOptions = angular.merge(defaultOptions, customOptions);
+        }
+
+        var ngGauge = {
+            getOptions: function () {
+                return angular.extend({}, defaultOptions)
+            }
+        };
+
+        this.$get = function () {
+            return ngGauge;
+        }
+
+    }
+
+    gaugeMeterDirective.$inject = ['ngGauge'];
+
+    function gaugeMeterDirective(ngGauge) {
 
         var tpl = '<div style="display:inline;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
-        var defaults = {
-                size: 200,
-                value: undefined,
-                cap: 'butt',
-                thick: 2,
-                type: 'full',
-                foregroundColor: '#FFCC66',
-                backgroundColor: '#CCC'
-            },
-
-            Gauge = function (element, options) {
-                this.element = element.find('canvas')[0];
-                this.text = element.find('span');
-                this.legend = element.find('b');
-                this.unit = element.find('u');
-                this.context = this.element.getContext('2d');
-                this.options = options;
-                this.init();
-            };
+        var Gauge = function (element, options) {
+            this.element = element.find('canvas')[0];
+            this.text = element.find('span');
+            this.legend = element.find('b');
+            this.unit = element.find('u');
+            this.context = this.element.getContext('2d');
+            this.options = options;
+            this.init();
+        };
 
         Gauge.prototype = {
+
             init: function () {
                 this.setupStyles();
                 this.create();
@@ -71,7 +93,6 @@
                     display: 'inline-block',
                     width: '100%',
                     position: 'absolute',
-                    fontFamily: 'Open Sans',
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -234,6 +255,8 @@
 
             },
             link: function (scope, element) {
+                var defaults = ngGauge.getOptions(); // fetching default settings from provider
+                console.log('default options = ', defaults);
                 scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
@@ -242,6 +265,7 @@
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
 
+                console.log(defaults, scope);
                 var gauge = new Gauge(element, scope);
 
                 scope.$watch('value', watchData, false);
@@ -254,8 +278,8 @@
                 scope.$watch('foregroundColor', watchOther, false);
                 scope.$watch('backgroundColor', watchOther, false);
 
-                scope.$on('$destroy', function () {});
-                scope.$on('$resize', function () {});
+                scope.$on('$destroy', function () { });
+                scope.$on('$resize', function () { });
 
                 function watchData(nv, ov) {
                     if (!gauge) return;
@@ -271,5 +295,6 @@
                 }
             }
         };
+
     }
 }(angular));
