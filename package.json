@@ -14,7 +14,10 @@
     ],
     "main": "dist/angularjs-gauge.js",
     "scripts": {
-        "test": "gulp test"
+        "test": "gulp test",
+        "start": "gulp",
+        "build": "gulp build",
+        "start:dev": "gulp tdd"
     },
     "repository": {
         "type": "git",
