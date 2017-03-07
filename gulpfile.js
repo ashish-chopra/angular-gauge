@@ -14,6 +14,7 @@
        gulp   -- to builds the code, start the server and watch for changes in code and examples..
        gulp test  -- run the test suite and exit
        gulp tdd   -- run the test suite and wait for changes in any code/test files
+       gulp connect -- hosts the examples directory at http://localhost:3000/
        
  */
 
