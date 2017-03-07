@@ -4,17 +4,20 @@
 <head>
     <title>Angular Gauge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="angularjs-gauge.js"></script>
     <script>
-        angular.module('demo', ['angularjs-gauge'])
+        angular
+            .module('demo', ['angularjs-gauge'])
             .controller('demoController', demoController);
+        
         demoController.$inject = [];
-
         function demoController() {
             var vm = this;
             vm.data = 40;
         }
+
+        
     </script>
     <style>
         .container {
