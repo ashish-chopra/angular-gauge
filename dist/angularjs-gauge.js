@@ -1,9 +1,9 @@
 /*!
- * angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
+ * @license angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
  * 
- * Version: 1.0.0
+ * version: 1.1.0
  *
- * Copyright 2016 Ashish Chopra
+ * Copyright (c) 2016-2017 Ashish Chopra
  * Released under the MIT license
  * https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE
  */
@@ -60,7 +60,6 @@
                     fontWeight: 100,
                     width: '100%',
                     position: 'absolute',
-                    fontFamily: 'Open Sans',
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -81,7 +80,6 @@
                     display: 'inline-block',
                     width: '100%',
                     position: 'absolute',
-                    fontFamily: 'Open Sans',
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
