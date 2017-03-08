@@ -8,11 +8,13 @@
 
     function gaugeMeterDirective() {
 
-        var tpl = '<div style="display:inline;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+        var tpl = "<div style='display:inline;text-align:center;position:relative;'><span><u>{{prepend}}</u>{{negateValue ? '-' : ''}}{{displayValue ? displayValue: value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>";
 
         var defaults = {
                 size: 200,
                 value: undefined,
+                negateValue: false,
+                displayValue: undefined,
                 cap: 'butt',
                 thick: 2,
                 type: 'full',
@@ -229,11 +231,14 @@
                 type: '@?',
                 value: '=?',
                 used: '=?',
-                total: '=?'
-
+                total: '=?',
+                displayValue: "@?",
+                negateValue: "@?"
             },
             link: function (scope, element) {
                 scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
+                scope.displayValue = angular.isDefined(scope.displayValue) ? scope.displayValue : defaults.value;
+                scope.negateValue = angular.isDefined(scope.negateValue) ? scope.negateValue : defaults.negateValue;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
                 scope.thick = angular.isDefined(scope.thick) ? scope.thick : defaults.thick;
