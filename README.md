@@ -72,26 +72,57 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `text`  |              Not supported yet                              | -        | -   | -  |
 | `theme` |        Not supported yet                             | -        | -   | -  | 
 
+# Global Defaults
 
+angular-gauge ships with a provider to globally set config options for all gauge instances used in the application during angular config phase. You can specify `ngGaugeProvider` dependency during `config` phase. It supports a single API to set config options:
+
+```
+ngGaugeProvider.setOptions(customOptions);
+```
+
+Here, `customOptions` is an object `{}` where keys are the configOptions name (in camelCase notation), mentioned in above section. For example, let see how to set `size`, `cap`, `thick`, `foreground-color` and `background-color` options  globally using provider as shown below:
+
+```js
+
+angular
+  .module('myApp', ['angularjs-gauge'])
+  .config(configApp);
+
+  configApp.$inject = ['ngGaugeProvider'];
+  function configApp(ngGaugeProvider) {
+
+    // setting the default parameters for 
+    // gauge instances globally.
+    ngGaugeProvider.setOptions({
+        size: 250,
+        cap: 'round',
+        thick: 15,
+        foregroundColor: "#ff8645",   // note the camelCase notation for parameter name
+        backgroundColor: "#e4e4e4"
+    });
+
+  }
+
+```
 
 # Contribute
 
-The project is continously evovling with every new release. Give it a star, if you like it. For contribution setup the development environment as follows:
+The project is continously evolving with every new release. Give it a star, if you like it. For contribution, setup the development environment as follows:
 
 1. clone and setup the project dependencies
 
-```    
-      $> git clone https://github.com/ashish-chopra/angular-gauge.git
-      $> npm install
+```shell  
+$> git clone https://github.com/ashish-chopra/angular-gauge.git
+$> npm install
 ```
 
 2. Use following commands based on what you'd like to do:
 
-```
-  $> npm start             # starts the server at port 3000 and hosts the `/examples` directory.
-  $> npm test              # runs test suite once and exit.
-  $> npm run test:watch    # starts the test framework and watch for changes in code.
-  $> npm run build         # triggers a manual build for library, outputs at `/dist` directory.
+```shell
+$> npm start             # starts the server at port 3000 and hosts the `/examples` directory.
+$> npm test              # runs test suite once and exit.
+$> npm run test:watch    # starts the test framework and watch for changes in code.
+$> npm run build         # triggers a manual build for library, outputs at `/dist` directory.
 ```
 
 3. To add a new feature or fix a bug, make sure to create a new branch from `master`.
