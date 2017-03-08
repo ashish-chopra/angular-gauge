@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html ng-app="demo">
-
 <head>
     <title>Angular Gauge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,36 +9,23 @@
     <script>
         angular
             .module('demo', ['angularjs-gauge'])
-            .config(configApp)
             .controller('demoController', demoController);
-        
+
         demoController.$inject = [];
         function demoController() {
             var vm = this;
             vm.data = 40;
         }
 
-        configApp.$inject = ['ngGaugeProvider'];
-        function configApp(ngGaugeProvider) {
-            ngGaugeProvider.setOptions({
-                foregroundColor: 'green',
-                backgroundColor: 'orange',
-                cap: 'round',
-                thick: 17,
-                type: 'arch'
-            });
-        }
-
-        
     </script>
     <style>
         .container {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            /*font-family: 'Open Sans';*/
+            font-family: 'Open Sans';
         }
-        
+
         .item {
             align-items: flex-start;
             margin: 10px 10px;
@@ -49,7 +35,8 @@
             border-radius: 3px 3px;
             width: 20%;
         }
-        
+
+
         .item p,
         li {
             text-align: left;
@@ -72,15 +59,15 @@
         </div>
         <div class="item">
             <h2>Full</h2>
-            <ng-gauge label="Fuel Usage" used="780" total="1000"  append="ltrs"></ng-gauge>
+            <ng-gauge label="Fuel Usage" value="80" thick="5" type="full" append="ltrs"></ng-gauge>
         </div>
         <div class="item">
             <h2>Semi</h2>
-            <ng-gauge type="semi" thick="5" value="75" cap="butt" label="Power"  append="kW"></ng-gauge>
+            <ng-gauge type="semi" thick="5" value="75" cap="butt" label="Power" append="kW"></ng-gauge>
         </div>
         <div class="item">
             <h2>Arch</h2>
-            <ng-gauge type="arch" thick="5" value="79.6" cap="round" label="Profit"  append="%"></ng-gauge>
+            <ng-gauge type="arch" thick="5" value="79.6" cap="round" label="Profit" append="%"></ng-gauge>
         </div>
         <div class="item">
             <h2>Form</h2>
@@ -88,15 +75,18 @@
         </div>
         <div class="item">
             <h2>Thick</h2>
-            <ng-gauge type="full" thick="18" value="82.2" cap="round" label="Sales" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)" append="%"></ng-gauge>
+            <ng-gauge type="full" thick="18" value="82.2" cap="round" label="Sales" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
+                append="%"></ng-gauge>
         </div>
         <div class="item">
             <h2>Round</h2>
-            <ng-gauge type="arch" thick="14" value="58.3" cap="round" label="Pressure" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)" append="Pa"></ng-gauge>
+            <ng-gauge type="arch" thick="14" value="58.3" cap="round" label="Pressure" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
+                append="Pa"></ng-gauge>
         </div>
         <div class="item">
             <h2>Flat</h2>
-            <ng-gauge type="arch" thick="14" value="54.4" cap="butt" label="Usage" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)" append="GB"></ng-gauge>
+            <ng-gauge type="arch" thick="14" value="54.4" cap="butt" label="Usage" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
+                append="GB"></ng-gauge>
         </div>
         <div class="item">
             <h2>Other</h2>
@@ -104,15 +94,17 @@
         </div>
         <div class="item">
             <h2>No Label</h2>
-            <ng-gauge type="arch" thick="11" value="66" cap="butt" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)" append="kW"></ng-gauge>
+            <ng-gauge type="arch" thick="11" value="66" cap="butt" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
+                append="kW"></ng-gauge>
         </div>
         <div class="item">
             <h2>Prepend</h2>
-            <ng-gauge type="arch" thick="11" value="74.7" cap="butt" label="Current" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)" prepend="$"></ng-gauge>
+            <ng-gauge type="arch" thick="11" value="74.7" cap="butt" label="Current" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
+                prepend="$"></ng-gauge>
         </div>
         <div class="item">
-            <h2>No Append</h2>
-            <ng-gauge type="arch" thick="11" value="40" cap="butt" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"></ng-gauge>
+            <h2>Append</h2>
+            <ng-gauge type="arch" thick="11" value="40" append="km/h" cap="butt" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"></ng-gauge>
         </div>
         <div class="item">
             <h2>CONTRIBUTE</h2>

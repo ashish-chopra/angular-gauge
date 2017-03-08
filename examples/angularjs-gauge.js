@@ -27,20 +27,21 @@
         };
 
         this.setOptions = function (customOptions) {
-            if (!(customOptions && typeof customOptions === 'object'))
+            if (!(customOptions && angular.isObject(customOptions)))
                 throw new Error('Invalid option type specified in the ngGaugeProvider');
             defaultOptions = angular.merge(defaultOptions, customOptions);
-        }
+        };
 
         var ngGauge = {
             getOptions: function () {
-                return angular.extend({}, defaultOptions)
+                return angular.extend({}, defaultOptions);
             }
         };
 
         this.$get = function () {
             return ngGauge;
-        }
+
+        };
 
     }
 
