@@ -1,7 +1,7 @@
 /*!
  * @license angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
  * 
- * version: 1.0.0
+ * version: 1.1.1
  *
  * Copyright (c) 2016-2017 Ashish Chopra
  * Released under the MIT license
@@ -82,7 +82,6 @@
                     fontWeight: 100,
                     width: '100%',
                     position: 'absolute',
-                    // fontFamily: 'Open Sans',
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -103,7 +102,6 @@
                     display: 'inline-block',
                     width: '100%',
                     position: 'absolute',
-                    // fontFamily: 'Open Sans',
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
