@@ -1,7 +1,7 @@
 /*!
  * @license angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
  * 
- * version: 1.1.1
+ * version: 1.2.0
  *
  * Copyright (c) 2016-2017 Ashish Chopra
  * Released under the MIT license

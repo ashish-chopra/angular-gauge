@@ -1,6 +1,6 @@
 # angular-gauge
 
-Current Version: `1.1.1`
+Current Version: `1.2.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
@@ -76,7 +76,7 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 
 angular-gauge ships with a provider to globally set config options for all gauge instances used in the application during angular config phase. You can specify `ngGaugeProvider` dependency during `config` phase. It supports a single API to set config options:
 
-```
+```js
 ngGaugeProvider.setOptions(customOptions);
 ```
 
