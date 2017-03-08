@@ -114,8 +114,8 @@
     });
 
     // run tests once and exit
-    gulp.task('test', function (done) {
-        new KarmaServer({
+    gulp.task('test', ['build'], function (done) {
+        return new KarmaServer({
             configFile: __dirname + '/karma.conf.js',
             singleRun: true
         }, done).start();
@@ -123,7 +123,7 @@
 
     
     // Watch for file changes and re-run tests on each change
-    gulp.task('tdd', function (done) {
+    gulp.task('tdd', ['lint'], function (done) {
         new KarmaServer({
             configFile: __dirname + '/karma.conf.js'
         }, done).start();

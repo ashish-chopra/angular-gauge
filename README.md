@@ -88,10 +88,10 @@ The project is continously evovling with every new release. Give it a star, if y
 2. Use following commands based on what you'd like to do:
 
 ```
-  $> npm start        # starts the server at port 3000 and hosts the `/examples` directory.
-  $> npm start:dev    # starts the test framework and watch for changes in code.
-  $> npm test         # runs test suite once and exit.
-  $> npm run build    # triggers a manual build for library, outputs at `/dist` directory.
+  $> npm start             # starts the server at port 3000 and hosts the `/examples` directory.
+  $> npm test              # runs test suite once and exit.
+  $> npm run test:watch    # starts the test framework and watch for changes in code.
+  $> npm run build         # triggers a manual build for library, outputs at `/dist` directory.
 ```
 
 3. To add a new feature or fix a bug, make sure to create a new branch from `master`.

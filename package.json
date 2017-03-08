@@ -17,7 +17,7 @@
         "test": "gulp test",
         "start": "gulp",
         "build": "gulp build",
-        "start:dev": "gulp tdd"
+        "test:watch": "gulp tdd"
     },
     "repository": {
         "type": "git",
