@@ -26,8 +26,8 @@
             backgroundColor: '#CCC'
         };
 
-        this.setOptions = function (options) {
-            if (!(options && typeof options === 'object'))
+        this.setOptions = function (customOptions) {
+            if (!(customOptions && typeof customOptions === 'object'))
                 throw new Error('Invalid option type specified in the ngGaugeProvider');
             defaultOptions = angular.merge(defaultOptions, customOptions);
         }
