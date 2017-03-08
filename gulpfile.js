@@ -114,7 +114,7 @@
     });
 
     // run tests once and exit
-    gulp.task('test', ['build'], function (done) {
+    gulp.task('test', ['lint'], function (done) {
         return new KarmaServer({
             configFile: __dirname + '/karma.conf.js',
             singleRun: true
