@@ -84,7 +84,8 @@
                 this.unit.css({
                     textDecoration: 'none',
                     fontSize: '0.6em',
-                    fontWeight: 200
+                    fontWeight: 200,
+                    opacity: 0.8
                 });
 
                 var fs = this.options.size / 13;
