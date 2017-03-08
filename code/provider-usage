@@ -1,0 +1,18 @@
+angular
+  .module('myApp', ['angularjs-gauge'])
+  .config(configApp);
+
+  configApp.$inject = ['ngGaugeProvider'];
+  function configApp(ngGaugeProvider) {
+
+    // setting the default parameters for 
+    // gauge instances globally.
+    ngGaugeProvider.setOptions({
+        size: 250,
+        cap: 'round',
+        thick: 15,
+        foregroundColor: "#ff8645",   // note the camelCase notation for parameter name
+        backgroundColor: "#e4e4e4"
+    });
+
+  }

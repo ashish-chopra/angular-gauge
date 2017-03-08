@@ -1,6 +1,6 @@
 {
   "name": "angularjs-gauge-website",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": " A Website to showcase capability of angular-gauge directive for Angular JS apps",
     "keywords": [
         "angular",

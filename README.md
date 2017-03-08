@@ -3,7 +3,6 @@
 This is the GitHub page source code for angular-gauge website, hosted at [https://ashish-chopra.github.io/angular-gauge](https://ashish-chopra.github.io/angular-gauge)
 
 `angular-gauge`, btw is a reusable gauge directive for Angular 1.x apps and dashboards. Checkout the website link, to know more about the library specifically.
-In case you want to make contribution to the existing 
 
 # Contribution Guidelines
 
@@ -23,7 +22,7 @@ npm start
 
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
 
-License
----------
+# License
+
 [MIT License](https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE)
 
