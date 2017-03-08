@@ -1,17 +1,17 @@
 {
   "name": "angularjs-gauge-website",
-    "version": "1.1.0",
-    "description": " A Website to showcase capability of angular-gauge directive for Angular JS apps",
-    "keywords": [
-        "angular",
-        "gauge",
-        "speedometer",
-        "js",
-        "dial",
-        "semi",
-        "full",
-        "arc"
-    ],
+  "version": "1.2.0",
+  "description": " A Website to showcase capability of angular-gauge directive for Angular JS apps",
+  "keywords": [
+    "angular",
+    "gauge",
+    "speedometer",
+    "js",
+    "dial",
+    "semi",
+    "full",
+    "arc"
+  ],
   "main": "index.js",
   "scripts": {
     "start": "gulp serve"
