@@ -267,7 +267,6 @@
             },
             link: function (scope, element) {
                 var defaults = ngGauge.getOptions(); // fetching default settings from provider
-                console.log('default options = ', defaults);
                 scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
