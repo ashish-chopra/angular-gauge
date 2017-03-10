@@ -1,121 +1,131 @@
 <!DOCTYPE html>
-<html ng-app="demo">
+<html ng-app="playground">
+
 <head>
-    <title>Angular Gauge</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular Gauge Playground</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="angularjs-gauge.js"></script>
-    <script>
-        angular
-            .module('demo', ['angularjs-gauge'])
-            .controller('demoController', demoController);
-
-        demoController.$inject = [];
-        function demoController() {
-            var vm = this;
-            vm.data = 40;
-        }
-
-    </script>
-    <style>
-        .container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            font-family: 'Open Sans';
-        }
-
-        .item {
-            align-items: flex-start;
-            margin: 10px 10px;
-            padding: 10px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 3px 3px;
-            width: 20%;
-        }
-
-
-        .item p,
-        li {
-            text-align: left;
-        }
-    </style>
+    <script src="app.js"></script>
 </head>
 
-<body ng-controller="demoController as dm" style="background-color:#16a085;color:white;">
-
-    <div class="container">
-        <div class="item">
-            <h2>Type</h2>
-            <p>There are three types of Gauges you can create:
-                <ol>
-                    <li>Full style</li>
-                    <li>Semi style</li>
-                    <li>Arch style</li>
-                </ol>
+<body ng-controller="MainController as m">
+    <nav class="navbar navbar-toggleable-md fixed-top navbar-light">
+        <div class="container custom-width">
+            <a class="navbar-brand" href="#">Angular Gauge <span class="badge badge-default">1.2.0</span> &nbsp;&nbsp;<i class="main-color">Playground</i></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://ashish-chopra.github.io/angular-gauge"  title="visit website"><i class="fa fa-2x fa-hand-peace-o"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ashish-chopra/angular-gauge" title="Checkout code on GitHub"><i class="fa fa-2x fa-github"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="spacer playground">
+        <section class="playground-section">
+            <md-toolbar class="md-accent">
+                <div class="md-toolbar-tools">
+                    <h3>Tune Gauge Properties</h3>
+                </div>
+            </md-toolbar>
+            <br>
+            <p>
+                This is Angular Gauge's playground. Here you get the options to fiddle with various properties of gauge widget directive.
+                Play around and see it working on the right side.
             </p>
-        </div>
-        <div class="item">
-            <h2>Full</h2>
-            <ng-gauge label="Fuel Usage" value="80" thick="5" type="full" append="ltrs"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Semi</h2>
-            <ng-gauge type="semi" thick="5" value="75" cap="butt" label="Power" append="kW"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Arch</h2>
-            <ng-gauge type="arch" thick="5" value="79.6" cap="round" label="Profit" append="%"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Form</h2>
-            <p>You can make thick and thin gauges by varying its 'thick' property.</p>
-        </div>
-        <div class="item">
-            <h2>Thick</h2>
-            <ng-gauge type="full" thick="18" value="82.2" cap="round" label="Sales" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
-                append="%"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Round</h2>
-            <ng-gauge type="arch" thick="14" value="58.3" cap="round" label="Pressure" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
-                append="Pa"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Flat</h2>
-            <ng-gauge type="arch" thick="14" value="54.4" cap="butt" label="Usage" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
-                append="GB"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Other</h2>
-            <p>There are many other customizations, you can do to match your needs.</p>
-        </div>
-        <div class="item">
-            <h2>No Label</h2>
-            <ng-gauge type="arch" thick="11" value="66" cap="butt" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
-                append="kW"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Prepend</h2>
-            <ng-gauge type="arch" thick="11" value="74.7" cap="butt" label="Current" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"
-                prepend="$"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>Append</h2>
-            <ng-gauge type="arch" thick="11" value="40" append="km/h" cap="butt" foreground-color="#ffcc66" background-color="rgba(255,255,255,0.3)"></ng-gauge>
-        </div>
-        <div class="item">
-            <h2>CONTRIBUTE</h2>
-            <p style="text-align:left;">
-                angular-gauge is an ongoing development project.
-                <br>
-                <br> You can contribute <a style="color:#ffcc66;" href="http://github.com/ashish-chopra/angular-gauge">here</a>.
-            </p>
-        </div>
 
+            <br>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Gauge Type</label>
+                    <md-select ng-model="m.options.type">
+                        <md-option value="full">Full</md-option>
+                        <md-option value="semi">Semi</md-option>
+                        <md-option value="arch">Arch</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Cap Style</label>
+                    <md-select ng-model="m.options.cap">
+                        <md-option value="round">Round</md-option>
+                        <md-option value="butt">Butt</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <md-slider-container class="md-block">
+                <div>Size</div>
+                <md-slider min="100" max="500" class="md-primary" ng-model="m.options.size">
+                </md-slider>
+                <md-input-container>
+                    <input type="number" ng-model="m.options.size">
+                </md-input-container>
+            </md-slider-container>
+            <md-slider-container class="md-block">
+                <div>Thick</div>
+                <md-slider min="1" max="50" class="md-primary" ng-model="m.options.thick">
+                </md-slider>
+                <md-input-container>
+                    <input type="number" ng-model="m.options.thick">
+                </md-input-container>
+            </md-slider-container>
+            <br>
+            <md-input-container class="md-block">
+                <label>Value</label>
+                <input type="text" ng-model="m.options.value">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Label</label>
+                <input ng-model="m.options.label">
+            </md-input-container>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Prepend</label>
+                    <input ng-model="m.options.prepend">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Append</label>
+                    <input ng-model="m.options.append">
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Foreground Color</label>
+                    <input ng-model="m.options.foregroundColor">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Background Color</label>
+                    <input ng-model="m.options.backgroundColor">
+                </md-input-container>
+            </div>
+        </section>
+        <section class="playground-section">
+            <div>
+                <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
+                    prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
+                    background-color="{{m.options.backgroundColor}}" value="m.options.value"></ng-gauge>
+            </div>
+        </section>
     </div>
+    <div class="spacer"></div>
 </body>
 
 </html>
