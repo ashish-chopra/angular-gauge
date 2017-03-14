@@ -14,7 +14,8 @@
             thick: 2,
             type: 'full',
             foregroundColor: '#FFCC66',
-            backgroundColor: '#CCC'
+            backgroundColor: '#CCC',
+            duration: 1500
         };
 
         this.setOptions = function (customOptions) {
@@ -107,7 +108,8 @@
 
                 var type = this.getType(),
                     bounds = this.getBounds(type),
-                    movePerFrame = 0.0174532925,
+                    msecs = this.getDuration(),
+                    movePerFrame = 40 / msecs,
                     center = this.getCenter(),
                     context = this.context,
                     value = this.getValue(),
@@ -232,6 +234,10 @@
 
             getType: function () {
                 return this.options.type;
+            },
+
+            getDuration: function () {
+              return this.options.duration;
             }
 
         };
@@ -251,6 +257,7 @@
                 size: '@?',
                 thick: '@?',
                 type: '@?',
+                duration: '@?',
                 value: '=?',
                 used: '=?',
                 total: '=?'
@@ -264,6 +271,7 @@
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
                 scope.thick = angular.isDefined(scope.thick) ? scope.thick : defaults.thick;
                 scope.type = angular.isDefined(scope.type) ? scope.type : defaults.type;
+                scope.duration = angular.isDefined(scope.duration) ? scope.duration : defaults.duration;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
 
@@ -277,6 +285,7 @@
                 scope.$watch('thick', watchOther, false);
                 scope.$watch('type', watchOther, false);
                 scope.$watch('size', watchOther, false);
+                scope.$watch('duration', watchOther, false);
                 scope.$watch('foregroundColor', watchOther, false);
                 scope.$watch('backgroundColor', watchOther, false);
 
