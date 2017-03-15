@@ -1,6 +1,6 @@
 # angular-gauge
 
-Current Version: `1.2.0`
+Current Version: `1.3.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
@@ -69,8 +69,7 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `"#CCC"`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
-| `duration`    | Specifies the duration (in msecs) of the Gauge animation | No       | `1500` | Positive Integer           |
-
+| `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1500` | Positive Integer           |
 | `text`  |              Not supported yet                              | -        | -   | -  |
 | `theme` |        Not supported yet                             | -        | -   | -  |
 
