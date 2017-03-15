@@ -16,7 +16,7 @@ npm install angularjs-gauge
 ### Install using Bower
 
 ```
-bower install angularjs-gauge 
+bower install angularjs-gauge
 ```
 
 ### Install manually
@@ -69,8 +69,10 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `"#CCC"`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
+| `duration`    | Specifies the duration (in msecs) of the Gauge animation | No       | `1500` | Positive Integer           |
+
 | `text`  |              Not supported yet                              | -        | -   | -  |
-| `theme` |        Not supported yet                             | -        | -   | -  | 
+| `theme` |        Not supported yet                             | -        | -   | -  |
 
 # Global Defaults
 
@@ -91,7 +93,7 @@ angular
   configApp.$inject = ['ngGaugeProvider'];
   function configApp(ngGaugeProvider) {
 
-    // setting the default parameters for 
+    // setting the default parameters for
     // gauge instances globally.
     ngGaugeProvider.setOptions({
         size: 250,
@@ -111,7 +113,7 @@ The project is continously evolving with every new release. Give it a star, if y
 
 1. clone and setup the project dependencies
 
-```shell  
+```shell
 $> git clone https://github.com/ashish-chopra/angular-gauge.git
 $> npm install
 ```
