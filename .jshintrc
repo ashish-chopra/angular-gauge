@@ -12,12 +12,11 @@
   "quotmark"      : "single", // Quotation mark consistency
   "-W058"         : true,     // Missing '()' invoking a constructor
   "browser"       : true,     // Standard browser globals e.g. `window`, `document`.
+  "esversion"     : 6,
   "predef"        : [         // Custom globals.
     "angular",
-    "G_vmlCanvasManager",
     "require",
     "console",
-    "Chart",
     "define",
     "module",
     "__dirname"

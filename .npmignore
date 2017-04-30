@@ -1,6 +1,5 @@
 extra
 node_modules
-src
 test
 .gitignore
 .jscsrc

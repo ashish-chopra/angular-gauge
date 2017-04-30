@@ -47,25 +47,25 @@
         ''
       ].join('\n');
 
-    gulp.task('clean', function () {
+    gulp.task('clean', () => {
         return gulp.src('./dist/*', {
                 read: false
             })
             .pipe(clean());
     });
 
-    gulp.task('lint', function () {
+    gulp.task('lint', () => {
         return gulp.src('**/*.js')
             .pipe(jshint())
             .pipe(jshint.reporter());
     });
 
-    gulp.task('style', function () {
+    gulp.task('style', () => {
         return gulp.src('**/*.js')
             .pipe(jscs());
     });
 
-    gulp.task('bower', function () {
+    gulp.task('bower', () => {
         return gulp.src('src/angularjs-gauge.js')
             .pipe(header(banner, {
                 pkg: pkg
@@ -75,7 +75,7 @@
     });
 
 
-    gulp.task('js', ['bower'], function () {
+    gulp.task('js', ['bower'], () => {
         return gulp.src('src/angularjs-gauge.js')
             .pipe(header(banner, {
                 pkg: pkg
@@ -90,7 +90,7 @@
             .pipe(connect.reload());
     });
 
-    gulp.task('watch', function () {
+    gulp.task('watch', () => {
         gulp.watch('src/*.js', ['js']);
         gulp.watch('./examples/**/*.*', ['reload']);
     });
@@ -100,7 +100,7 @@
 
     // connects the server at given port and root.
     // enables the live reloading.
-    gulp.task('connect', function () {
+    gulp.task('connect', () => {
         return connect.server({
             livereload: true,
             root: './examples/',
@@ -108,13 +108,13 @@
         });
     });
 
-    gulp.task('reload', function () {
+    gulp.task('reload', () => {
         return gulp.src('./examples/**/*.*')
             .pipe(connect.reload());
     });
 
     // run tests once and exit
-    gulp.task('test', ['lint'], function (done) {
+    gulp.task('test', ['lint'], (done) => {
         return new KarmaServer({
             configFile: __dirname + '/karma.conf.js',
             singleRun: true
@@ -123,7 +123,7 @@
 
     
     // Watch for file changes and re-run tests on each change
-    gulp.task('tdd', ['lint'], function (done) {
+    gulp.task('tdd', ['lint'], (done) => {
         new KarmaServer({
             configFile: __dirname + '/karma.conf.js'
         }, done).start();
