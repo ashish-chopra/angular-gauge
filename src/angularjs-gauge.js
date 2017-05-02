@@ -41,7 +41,7 @@
 
     function gaugeMeterDirective(ngGauge) {
 
-        var tpl = '<div style="display:inline;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
         var Gauge = function (element, options) {
             this.element = element.find('canvas')[0];

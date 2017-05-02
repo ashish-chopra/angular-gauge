@@ -1,7 +1,7 @@
 /*!
  * @license angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
  * 
- * version: 1.3.0
+ * version: 1.3.1
  *
  * Copyright (c) 2016-2017 Ashish Chopra
  * Released under the MIT license
@@ -50,7 +50,7 @@
 
     function gaugeMeterDirective(ngGauge) {
 
-        var tpl = '<div style="display:inline;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
         var Gauge = function (element, options) {
             this.element = element.find('canvas')[0];
