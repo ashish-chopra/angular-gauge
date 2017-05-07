@@ -1,6 +1,6 @@
 # angular-gauge
 
-Current Version: `1.3.1`
+Current Version: `1.4.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
