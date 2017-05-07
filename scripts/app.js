@@ -30,10 +30,10 @@
       size: 200,
       value: 68.2,
       cap: "butt",
-      thick: 2,
+      thick: 6,
       type: "full",
-      foregroundColor: "#FFCC66",
-      backgroundColor: "#CCC"
+      foregroundColor: "rgba(0,150,136,1)",
+      backgroundColor: "rgba(0,0,0,0.1)"
     };
 
     vm.gaugeOptions = defaultOptions;
