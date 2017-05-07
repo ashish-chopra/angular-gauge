@@ -69,7 +69,7 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `rgba(0, 0, 0, 0.1)`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
-| `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1200` | Positive Integer           |
+| `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1500` | Positive Integer           |
 
 
 # Global Defaults
