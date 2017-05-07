@@ -1,8 +1,12 @@
 extra
+examples
 node_modules
 test
 .gitignore
 .jscsrc
 .jshintignore
+.jshintrc
+bower.json
+karma.conf.js
 gulpfile.js
 karma.conf.js
