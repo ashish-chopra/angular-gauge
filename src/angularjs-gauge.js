@@ -11,10 +11,10 @@
             size: 200,
             value: undefined,
             cap: 'butt',
-            thick: 2,
+            thick: 6,
             type: 'full',
-            foregroundColor: '#FFCC66',
-            backgroundColor: '#CCC',
+            foregroundColor: 'rgba(0, 150, 136, 1)',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
             duration: 1500
         };
 
@@ -72,7 +72,7 @@
 
                 this.text.css({
                     display: 'inline-block',
-                    fontWeight: 100,
+                    fontWeight: 'normal',
                     width: '100%',
                     position: 'absolute',
                     textAlign: 'center',
@@ -99,45 +99,46 @@
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    fontWeight: 200,
+                    fontWeight: 'normal',
                     fontSize: fs + 'px',
                     lineHeight: lh + 'px'
                 });
             },
             create: function () {
 
-                var type = this.getType(),
+                var self = this,
+                    type = this.getType(),
                     bounds = this.getBounds(type),
-                    msecs = this.getDuration(),
-                    movePerFrame = 40 / msecs,
-                    center = this.getCenter(),
-                    context = this.context,
-                    value = this.getValue(),
-                    radius = this.getRadius(),
-                    foregroundColor = this.getForegroundColor(),
+                    duration = this.getDuration(),
+                    value = this.clamp(this.getValue(), 0, 100),
                     requestID,
                     head = bounds.head,
+                    unit = (bounds.tail - bounds.head) / 100,
+                    displacement = unit * value,
                     tail = bounds.tail,
-                    distance = tail - head;
+                    starttime;
 
-                this.drawShell(head, tail);
-                tail = head + (distance * value) / 100;
+                function animate(timestamp) {
+                    var timestamp = timestamp || new Date().getTime();
+                    var runtime = timestamp - starttime;
+                    var progress = runtime / duration;
+                    progress = Math.min(progress, 1);
 
-                function animate() {
-                    requestID = window.requestAnimationFrame(animate);
-
-                    if (head <= tail) {
-                        context.beginPath();
-                        var newPos = head + 2 * movePerFrame;
-                        context.arc(center.x, center.y, radius, head, newPos, false);
-                        context.strokeStyle = foregroundColor;
-                        context.stroke();
-                        head = newPos;
+                    self.drawShell(head, head + displacement * progress, tail);
+                    if (runtime < duration) {
+                        requestID = window.requestAnimationFrame(function (timestamp) {
+                            animate(timestamp);
+                        });
                     } else {
                         cancelAnimationFrame(requestID);
                     }
                 }
-                animate();
+
+                requestAnimationFrame(function (timestamp) {
+                    starttime = timestamp || new Date().getTime();
+                    animate(timestamp);
+                });
+
             },
 
             getBounds: function (type) {
@@ -160,13 +161,22 @@
 
             },
 
-            drawShell: function (start, end) {
-                var context = this.context,
+            drawShell: function (start, middle, tail) {
+                var
+                    context = this.context,
                     center = this.getCenter(),
-                    radius = this.getRadius();
+                    radius = this.getRadius(),
+                    foregroundColor = this.getForegroundColor(),
+                    backgroundColor = this.getBackgroundColor();
+                this.clear();
                 context.beginPath();
-                context.arc(center.x, center.y, radius, start, end, false);
-                context.strokeStyle = this.options.backgroundColor;
+                context.strokeStyle = backgroundColor;
+                context.arc(center.x, center.y, radius, middle, tail, false);
+                context.stroke();
+
+                context.beginPath();
+                context.strokeStyle = foregroundColor;
+                context.arc(center.x, center.y, radius, start, middle, false);
                 context.stroke();
             },
 
@@ -175,7 +185,6 @@
             },
 
             update: function () {
-                this.clear();
                 this.create();
             },
 
@@ -237,7 +246,11 @@
             },
 
             getDuration: function () {
-              return this.options.duration;
+                return this.options.duration;
+            },
+
+            clamp: function (value, min, max) {
+                return Math.max(min, Math.min(max, value));
             }
 
         };
