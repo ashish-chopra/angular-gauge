@@ -1,3 +1,12 @@
+/*!
+ * @license angularjs-gauge - A Gauge directive for Angular 1.x apps and dashboards
+ * 
+ * version: 1.4.0
+ *
+ * Copyright (c) 2016-2017 Ashish Chopra
+ * Released under the MIT license
+ * https://github.com/ashish-chopra/angular-gauge/blob/master/LICENSE
+ */
 (function (angular) {
     'use strict';
     angular

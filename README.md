@@ -1,6 +1,6 @@
 # angular-gauge
 
-Current Version: `1.3.0`
+Current Version: `1.4.0`
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
@@ -62,16 +62,15 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `used`  | Specifies the absolute value which has been consumed out of `total`. The percentage usage (used/total) will be displayed by the Gauge. When this attribute is specified with `total`, `value` attribute is not used.  | No     | `undefined`  | Any numeric value  |
 | `total` | specifies the total value that represents the whole rim of the Gauge. It is used along with `used` attribute.  `used` and `total` attributes are specified together. When these attributes are specified, do not use `value` attribute. | No       | `undefined`  | Any numeric value  |
 | `cap`       | The style of line ending at the gauge's end.    | No        | `"butt"`    | `"round"`, `"butt"`           |
-| `thick`        | Specified the thickness of the gauge's bar.            | No        | `5`        | Any Positive Integer |
+| `thick`        | Specified the thickness of the gauge's bar.            | No        | `6`        | Any Positive Integer |
 | `type`      | Specifies the gauge's type.                     | No        | `"full"`     |  `"full"`, `"semi"`, `"arch"`  |
 | `label`       | Specifies the text to display below the Gauge's reading.  | No  | `undefined`                | Any String           |
-| `foreground-color`         | Specifies the foreground color of the Gauge's bar. It will be overriden if `theme` attribute is specified.                    | No       | `"#FFCC66"`             |   Any color value string       |
-| `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `"#CCC"`           |    Any color value string        |
+| `foreground-color`         | Specifies the foreground color of the Gauge's bar.                    | No       | `rgba(0, 150, 136, 1)`             |   Any color value string       |
+| `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `rgba(0, 0, 0, 0.1)`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
-| `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1500` | Positive Integer           |
-| `text`  |              Not supported yet                              | -        | -   | -  |
-| `theme` |        Not supported yet                             | -        | -   | -  |
+| `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1200` | Positive Integer           |
+
 
 # Global Defaults
 
@@ -105,6 +104,14 @@ angular
   }
 
 ```
+
+# Playground
+
+The examples section is redesigned as a playground where you can play with Gauge by tuning its different parameters. 
+And, you can see the result live on-screen. It is good start to get familiar with Gauge.
+
+![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/playground.png)
+
 
 # Contribute
 
