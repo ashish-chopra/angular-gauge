@@ -1,6 +1,8 @@
 # angular-gauge
 
-Current Version: `1.4.0`
+[![npm version](https://badge.fury.io/js/angularjs-gauge.svg)](https://badge.fury.io/js/angularjs-gauge)
+[![Build Status](https://travis-ci.org/ashish-chopra/angular-gauge.png?branch=master)](https://travis-ci.org/ashish-chopra/angular-gauge)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
 
