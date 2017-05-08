@@ -29,6 +29,7 @@
     "angular": ">= 1.4.14 <= 1.6.x"
   },
   "devDependencies": {
+    "angular": ">= 1.4.14 <= 1.6.x",
     "angular-mocks": ">= 1.4.14 <= 1.6.x",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
