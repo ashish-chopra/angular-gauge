@@ -19,6 +19,7 @@
     "console",
     "define",
     "module",
-    "__dirname"
+    "__dirname",
+    "process"
   ]
 }

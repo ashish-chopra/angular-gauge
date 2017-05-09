@@ -88,6 +88,16 @@
                 </md-input-container>
             </md-slider-container>
             <br>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Min</label>
+                    <input ng-model="m.options.min">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Max</label>
+                    <input ng-model="m.options.max">
+                </md-input-container>
+            </div>
             <md-input-container class="md-block">
                 <label>Value</label>
                 <input type="text" ng-model="m.options.value">
@@ -121,11 +131,10 @@
             <div>
                 <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
                     prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
-                    background-color="{{m.options.backgroundColor}}" value="m.options.value"></ng-gauge>
+                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"></ng-gauge>
             </div>
         </section>
     </div>
     <div class="spacer"></div>
 </body>
-
 </html>

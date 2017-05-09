@@ -10,6 +10,8 @@
         var defaultOptions = {
             size: 200,
             value: undefined,
+            min: 0,
+            max: 100,
             cap: 'butt',
             thick: 6,
             type: 'full',
@@ -32,7 +34,6 @@
 
         this.$get = function () {
             return ngGauge;
-
         };
 
     }
@@ -110,12 +111,14 @@
                     type = this.getType(),
                     bounds = this.getBounds(type),
                     duration = this.getDuration(),
-                    value = this.clamp(this.getValue(), 0, 100),
-                    requestID,
+                    min = this.getMin(),
+                    max = this.getMax(),
+                    value = this.clamp(this.getValue(), min, max),
                     head = bounds.head,
-                    unit = (bounds.tail - bounds.head) / 100,
-                    displacement = unit * value,
+                    unit = (bounds.tail - bounds.head) / (max - min),
+                    displacement = unit * (value - min),
                     tail = bounds.tail,
+                    requestID,
                     starttime;
 
                 function animate(timestamp) {
@@ -207,15 +210,13 @@
             },
 
             getValue: function () {
-                var val = 0;
-                if (this.options.used && this.options.total) {
-                    val = (this.options.used / this.options.total) * 100;
-                    this.options.value = this.options.used;
-                } else {
-                    val = this.options.value;
-                }
-                return val;
-
+                return this.options.value;
+            },
+            getMin: function () {
+                return this.options.min;
+            },
+            getMax: function () {
+                return this.options.max;
             },
             getWidth: function () {
                 return this.context.canvas.width;
@@ -248,7 +249,6 @@
             getDuration: function () {
                 return this.options.duration;
             },
-
             clamp: function (value, min, max) {
                 return Math.max(min, Math.min(max, value));
             }
@@ -272,12 +272,14 @@
                 type: '@?',
                 duration: '@?',
                 value: '=?',
-                used: '=?',
-                total: '=?'
+                min: '=?',
+                max: '=?'
 
             },
             link: function (scope, element) {
                 var defaults = ngGauge.getOptions(); // fetching default settings from provider
+                scope.min = angular.isDefined(scope.min) ? scope.min : defaults.min;
+                scope.max = angular.isDefined(scope.max) ? scope.max : defaults.max;
                 scope.value = angular.isDefined(scope.value) ? scope.value : defaults.value;
                 scope.size = angular.isDefined(scope.size) ? scope.size : defaults.size;
                 scope.cap = angular.isDefined(scope.cap) ? scope.cap : defaults.cap;
@@ -290,8 +292,8 @@
                 var gauge = new Gauge(element, scope);
 
                 scope.$watch('value', watchData, false);
-                scope.$watch('used', watchData, false);
-                scope.$watch('total', watchData, false);
+                scope.$watch('min', watchData, false);
+                scope.$watch('max', watchData, false);
                 scope.$watch('cap', watchOther, false);
                 scope.$watch('thick', watchOther, false);
                 scope.$watch('type', watchOther, false);
