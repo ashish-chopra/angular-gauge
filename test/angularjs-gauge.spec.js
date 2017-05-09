@@ -30,12 +30,12 @@ describe('Angular Gauge Unit Test Suites', function () {
         expect(canvas.attr('width')).toBe('200');
         expect(canvas.attr('height')).toBe('200');
         expect(scope.value).toBeUndefined();
-        expect(scope.foregroundColor).toBe('#FFCC66');
-        expect(scope.backgroundColor).toBe('#CCC');
+        expect(scope.foregroundColor).toBe('rgba(0, 150, 136, 1)');
+        expect(scope.backgroundColor).toBe('rgba(0, 0, 0, 0.1)');
         expect(scope.cap).toBe('butt');
         expect(context.lineCap).toBe('butt');
-        expect(context.lineWidth).toBe(2);
-        expect(scope.thick).toBe(2);
+        expect(context.lineWidth).toBe(6);
+        expect(scope.thick).toBe(6);
         expect(scope.type).toBe('full');
     });
 
