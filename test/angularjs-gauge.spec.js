@@ -37,6 +37,8 @@ describe('Angular Gauge Unit Test Suites', function () {
         expect(context.lineWidth).toBe(6);
         expect(scope.thick).toBe(6);
         expect(scope.type).toBe('full');
+        expect(scope.min).toBe(0);
+        expect(scope.max).toBe(100);
     });
 
     it('custom size', function () {
@@ -50,10 +52,11 @@ describe('Angular Gauge Unit Test Suites', function () {
         expect(canvas.attr('width')).toBe('300');
         expect(canvas.attr('height')).toBe('300');
 
-        //        parentScope.size = 250;
-        //        parentScope.$digest();
-        //        expect(canvas.attr('width')).toBe('250');
-        //        expect(canvas.attr('height')).toBe('250');
+            //    parentScope.size = 250;
+            //    parentScope.$digest();
+            //    console.log(canvas);
+            //    expect(canvas.attr('width')).toBe('250');
+            //    expect(canvas.attr('height')).toBe('250');
 
     });
 

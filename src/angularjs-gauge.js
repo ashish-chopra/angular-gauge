@@ -42,7 +42,7 @@
 
     function gaugeMeterDirective(ngGauge) {
 
-        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value | number:2}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
         var Gauge = function (element, options) {
             this.element = element.find('canvas')[0];
@@ -122,7 +122,7 @@
                     starttime;
 
                 function animate(timestamp) {
-                    var timestamp = timestamp || new Date().getTime();
+                    timestamp = timestamp || new Date().getTime();
                     var runtime = timestamp - starttime;
                     var progress = runtime / duration;
                     progress = Math.min(progress, 1);

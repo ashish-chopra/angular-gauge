@@ -55,7 +55,7 @@
     });
 
     gulp.task('lint', () => {
-        return gulp.src('**/*.js')
+        return gulp.src('src/*.js')
             .pipe(jshint())
             .pipe(jshint.reporter());
     });
@@ -65,17 +65,8 @@
             .pipe(jscs());
     });
 
-    gulp.task('bower', () => {
-        return gulp.src('src/angularjs-gauge.js')
-            .pipe(header(banner, {
-                pkg: pkg
-            }))
-            .pipe(gulp.dest('./dist'))
-            .pipe(gulp.dest('./examples/'));
-    });
 
-
-    gulp.task('js', ['bower'], () => {
+    gulp.task('js', () => {
         return gulp.src('src/angularjs-gauge.js')
             .pipe(header(banner, {
                 pkg: pkg

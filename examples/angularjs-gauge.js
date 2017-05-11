@@ -43,7 +43,6 @@
 
         this.$get = function () {
             return ngGauge;
-
         };
 
     }
@@ -132,7 +131,7 @@
                     starttime;
 
                 function animate(timestamp) {
-                    var timestamp = timestamp || new Date().getTime();
+                    timestamp = timestamp || new Date().getTime();
                     var runtime = timestamp - starttime;
                     var progress = runtime / duration;
                     progress = Math.min(progress, 1);
