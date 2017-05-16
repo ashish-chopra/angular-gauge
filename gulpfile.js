@@ -78,6 +78,7 @@
             }))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest('./dist/'))
+            .pipe(gulp.dest('./examples'))
             .pipe(connect.reload());
     });
 
