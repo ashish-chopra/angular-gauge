@@ -8,7 +8,7 @@
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configurationable options to customize according to your needs. Checkout the live demo [here](https://ashish-chopra.github.io/angular-gauge).
 
-**NOTE:** In angular-gauge 2.x, some breaking changes have been introduced. If you are upgrading from `v1.x.x` version to `v2.x.x` then checkout the [Upgrade Guide](#upgrade-guide).
+**NOTE: In angular-gauge 2.x, some breaking changes have been introduced. If you are upgrading from `v1.x.x` version to `v2.x.x` then checkout the [Upgrade Guide](#upgrade-guide) first.**
 
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
 
@@ -53,7 +53,7 @@ angular.module('yourApp', ['angularjs-gauge']);
 Use it in your HTML markup like this
 
 ```html
-<ng-gauge size="200" type="full" thick="5" value="68.2" cap="round" label="Speed"  foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="mph"></ng-gauge>
+<ng-gauge size="200" type="full" thick="5" min="0" max="120" value="68.2" cap="round" label="Speed"  foreground-color="#ffcc66" background-color="rgba(255,255,255, 0.4)" append="mph"></ng-gauge>
 ```
 
 If you face any problem, then raise an issue [here](https://github.com/ashish-chopra/angular-gauge/issues).
@@ -123,9 +123,9 @@ And, you can see the result live on-screen. It is good start to get familiar wit
 
 If you are upgrading from angular-gauge 1.x version to any version in 2.x family, then make sure to read the release notes of the chosen version on the [Releases](https://github.com/ashish-chopra/angular-gauge/releases) section.
 
-Following are the breaking changes introduced in 2.0.x family:
+Following are the breaking changes introduced in 2.x.x onwards:
 1. `used` and `total` attributes are removed.
-2. `min` and `max` attributes are introduced which works in tandem with `value` attribute. Checkout [config options](#config-options) to know more about their usage.
+2. `min` and `max` attributes are introduced which works with `value` attribute. Checkout [config options](#config-options) to know more about their usage.
 
 
 # Contribute
