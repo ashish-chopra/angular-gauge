@@ -71,6 +71,7 @@
             .pipe(header(banner, {
                 pkg: pkg
             }))
+            .pipe(gulp.dest('./dist/'))
             .pipe(rename('angularjs-gauge.min.js'))
             .pipe(sourcemaps.init())
             .pipe(uglify({
