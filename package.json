@@ -1,6 +1,6 @@
 {
   "name": "angularjs-gauge",
-  "version": "1.4.0",
+  "version": "2.0.0-beta",
   "description": "A Gauge directive for Angular 1.x apps and dashboards",
   "keywords": [
     "angular",
