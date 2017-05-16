@@ -8,10 +8,9 @@
 
 A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configurationable options to customize according to your needs. Checkout the live demo [here](https://ashish-chopra.github.io/angular-gauge).
 
-**NOTE: In angular-gauge 2.x, some breaking changes have been introduced. If you are upgrading from `v1.x.x` version to `v2.x.x` then checkout the [Upgrade Guide](#upgrade-guide) first.**
-
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
 
+**NOTE: In angular-gauge 2.x, some breaking changes have been introduced. If you are upgrading from `v1.x.x` version to `v2.x.x` then checkout the [Upgrade Guide](#upgrade-guide) first.**
 
 # Usage
 
