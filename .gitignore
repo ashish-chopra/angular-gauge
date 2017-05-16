@@ -4,4 +4,5 @@ extra
 dist
 debug.log
 npm-debug.log
-examples/angularjs-gauge.js
+examples/angularjs-gauge.min.js
+examples/angularjs-gauge.min.js.map

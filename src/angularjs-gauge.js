@@ -42,7 +42,7 @@
 
     function gaugeMeterDirective(ngGauge) {
 
-        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value | number:2}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value | number}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
         var Gauge = function (element, options) {
             this.element = element.find('canvas')[0];
@@ -172,6 +172,7 @@
                     foregroundColor = this.getForegroundColor(),
                     backgroundColor = this.getBackgroundColor();
                 this.clear();
+                
                 context.beginPath();
                 context.strokeStyle = backgroundColor;
                 context.arc(center.x, center.y, radius, middle, tail, false);
@@ -181,6 +182,7 @@
                 context.strokeStyle = foregroundColor;
                 context.arc(center.x, center.y, radius, start, middle, false);
                 context.stroke();
+
             },
 
             clear: function () {

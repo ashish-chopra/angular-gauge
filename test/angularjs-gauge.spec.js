@@ -52,11 +52,11 @@ describe('Angular Gauge Unit Test Suites', function () {
         expect(canvas.attr('width')).toBe('300');
         expect(canvas.attr('height')).toBe('300');
 
-            //    parentScope.size = 250;
-            //    parentScope.$digest();
-            //    console.log(canvas);
-            //    expect(canvas.attr('width')).toBe('250');
-            //    expect(canvas.attr('height')).toBe('250');
+        //    parentScope.size = 250;
+        //    parentScope.$digest();
+        //    console.log(canvas);
+        //    expect(canvas.attr('width')).toBe('250');
+        //    expect(canvas.attr('height')).toBe('250');
 
     });
 
@@ -79,21 +79,79 @@ describe('Angular Gauge Unit Test Suites', function () {
 
         parentScope.value = 50;
         parentScope.$digest();
-        
+
         expect(label.text()).toContain('50');
-      //  expect(label.text()).toBeEmptyString();
+        //  expect(label.text()).toBeEmptyString();
         expect(directiveScope.value).toBe(50);
 
-        parentScope.value = 'hello';
+        parentScope.value = '20';
         parentScope.$digest();
-        expect(label.text()).toContain('hello');
-        expect(directiveScope.value).toBe('hello');
+        expect(label.text()).toContain('20');
+        expect(directiveScope.value).toBe('20');
 
         parentScope.value = undefined;
         parentScope.$digest();
         expect(directiveScope.value).toBeUndefined();
 
 
+    });
+
+    it("custom min-max-value", function () {
+        var code = "<ng-gauge value='value' min='min' max='max'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+
+        var elem = $compile(angular.element(code))(parentScope),
+            label = elem.find("span").eq(0),
+            directiveScope = elem.scope();
+
+
+        parentScope.min = -10;
+        parentScope.max = 10;
+        parentScope.value = -2;
+        parentScope.$digest();
+        expect(label.text()).toContain("-2");
+        expect(directiveScope.value).toBe(-2);
+
+        parentScope.value = 8;
+        parentScope.$digest();
+        expect(label.text()).toContain("8");
+        expect(directiveScope.value).toBe(8);
+
+        parentScope.min = -100;
+        parentScope.value = -80;
+        parentScope.$digest();
+        expect(label.text()).toContain("-80");
+        expect(directiveScope.value).toBe(-80);
+    });
+
+    it("clamping value to min-max range", function () {
+        var code = "<ng-gauge value='value' min='min' max='max'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+
+        var elem = $compile(angular.element(code))(parentScope),
+            label = elem.find("span").eq(0),
+            directiveScope = elem.scope();
+
+
+        parentScope.min = -100;
+        parentScope.max = 102;
+        parentScope.value = 150;
+        parentScope.$digest();
+        expect(label.text()).toContain("150");
+        expect(directiveScope.value).toBe(150);
+
+        parentScope.value = 45;
+        parentScope.$digest();
+        expect(label.text()).toContain("45");
+        expect(directiveScope.value).toBe(45);
+
+
+        parentScope.value = -230;
+        parentScope.$digest();
+        expect(label.text()).toContain("-230");
+        expect(directiveScope.value).toBe(-230);
     });
 
     it("custom line cap", function () {
@@ -133,14 +191,14 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(directiveScope.thick).toBe(10);
     });
-    
-     it("custom type", function () {
-         var code = "<ng-gauge type='{{type}}'></ng-gauge>",
+
+    it("custom type", function () {
+        var code = "<ng-gauge type='{{type}}'></ng-gauge>",
             parentScope = $rootScope.$new();
 
         var elem = $compile(angular.element(code))(parentScope),
             directiveScope = elem.scope();
-        
+
         expect(directiveScope.type).toBeUndefined();
 
         parentScope.type = "semi";
@@ -158,7 +216,7 @@ describe('Angular Gauge Unit Test Suites', function () {
 
         var elem = $compile(angular.element(code))(parentScope),
             directiveScope = elem.scope();
-        
+
         expect(directiveScope.foregroundColor).toBeUndefined();
 
         parentScope.foregroundColor = "red";
@@ -171,12 +229,12 @@ describe('Angular Gauge Unit Test Suites', function () {
     });
 
     it("custom background color", function () {
-         var code = "<ng-gauge backgroundColor='{{backgroundColor}}'></ng-gauge>",
+        var code = "<ng-gauge backgroundColor='{{backgroundColor}}'></ng-gauge>",
             parentScope = $rootScope.$new();
 
         var elem = $compile(angular.element(code))(parentScope),
             directiveScope = elem.scope();
-        
+
         expect(directiveScope.backgroundColor).toBeUndefined();
 
         parentScope.backgroundColor = "red";
@@ -187,7 +245,7 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(directiveScope.backgroundColor).toBe("#CCC");
     });
-    
+
     it("custom label", function () {
         var code = "<ng-gauge label='{{label}}'></ng-gauge>",
             parentScope = $rootScope.$new();
@@ -205,16 +263,16 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(directiveScope.label).toBe('Current');
         expect(legend.text()).toBe('Current');
-        
+
         parentScope.label = undefined;
         parentScope.$digest();
         expect(directiveScope.label).toBeUndefined();
         expect(legend.text()).toBe('');
-        
+
     });
 
     it("custom append", function () {
-         var code = "<ng-gauge append='{{append}}'></ng-gauge>",
+        var code = "<ng-gauge append='{{append}}'></ng-gauge>",
             parentScope = $rootScope.$new();
 
         var elem = $compile(angular.element(code))(parentScope),
@@ -230,7 +288,7 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(directiveScope.append).toBe('kW');
         expect(append.text()).toBe('kW');
-        
+
         parentScope.append = undefined;
         parentScope.$digest();
         expect(directiveScope.append).toBeUndefined();
@@ -238,7 +296,7 @@ describe('Angular Gauge Unit Test Suites', function () {
     });
 
     it("custom prepend", function () {
-          var code = "<ng-gauge prepend='{{prepend}}'></ng-gauge>",
+        var code = "<ng-gauge prepend='{{prepend}}'></ng-gauge>",
             parentScope = $rootScope.$new();
 
         var elem = $compile(angular.element(code))(parentScope),
@@ -254,11 +312,71 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(directiveScope.prepend).toBe('Rs');
         expect(prepend.text()).toBe('Rs');
-        
+
         parentScope.prepend = undefined;
         parentScope.$digest();
         expect(directiveScope.prepend).toBeUndefined();
         expect(prepend.text()).toBe('');
+    });
+
+    it("i18n number format supported", function () {
+        var code = "<ng-gauge value='value' min='min' max='max'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+        parentScope.min = 0;
+        parentScope.max = 10000;
+        parentScope.value = 100;
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope(),
+            label = elem.find("span").eq(0);
+
+        parentScope.$digest();
+        expect(label.text()).toContain("100");
+        expect(directiveScope.value).toBe(100);
+
+        parentScope.value = 2300;
+        parentScope.$digest();
+        expect(label.text()).toContain("2,300");
+        expect(directiveScope.value).toBe(2300);
+
+
+        parentScope.value = 23000;
+        parentScope.$digest();
+        expect(label.text()).toContain("23,000");
+        expect(directiveScope.value).toBe(23000);
+
+    });
+
+    it("i18n decimal supported", function () {
+        var code = "<ng-gauge value='value' min='min' max='max'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+        parentScope.min = -100;
+        parentScope.max = 100;
+        var elem = $compile(angular.element(code))(parentScope),
+            directiveScope = elem.scope(),
+            label = elem.find("span").eq(0);
+
+        parentScope.value = 24.8;
+        parentScope.$digest();
+        expect(label.text()).toContain("24.8");
+        expect(directiveScope.value).toBe(24.8);
+
+        parentScope.value = -24.89;
+        parentScope.$digest();
+        expect(label.text()).toContain("-24.89");
+        expect(directiveScope.value).toBe(-24.89);
+
+        parentScope.value = 24.897;
+        parentScope.$digest();
+        expect(label.text()).toContain("24.897");
+        expect(directiveScope.value).toBe(24.897);
+
+        parentScope.value = 24.8976;
+        parentScope.$digest();
+        expect(label.text()).toContain("24.898");
+        expect(directiveScope.value).toBe(24.8976);
+
     });
 
 });
