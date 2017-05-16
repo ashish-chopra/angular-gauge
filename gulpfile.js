@@ -68,9 +68,6 @@
 
     gulp.task('js', () => {
         return gulp.src('src/angularjs-gauge.js')
-            .pipe(header(banner, {
-                pkg: pkg
-            }))
             .pipe(gulp.dest('./dist/'))
             .pipe(rename('angularjs-gauge.min.js'))
             .pipe(sourcemaps.init())
@@ -122,4 +119,11 @@
         }, done).start();
     });
 
+    gulp.task('prepublish', function() {
+        return gulp.src(['./dist/angularjs-gauge.js', './dist/angularjs-gauge.min.js'], {base: 'dist'})
+        .pipe(header(banner, {
+                pkg: pkg
+            }))
+        .pipe(gulp.dest('./dist/'));
+    });
 })();
