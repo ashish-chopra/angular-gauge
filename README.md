@@ -6,9 +6,12 @@
 [![devDependencies Status](https://david-dm.org/ashish-chopra/angular-gauge/dev-status.svg)](https://david-dm.org/ashish-chopra/angular-gauge?type=dev)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
-A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configuration options to customize according to your project needs.
+A reusable gauge directive for Angular 1.x apps and dashboards. It provides many configurationable options to customize according to your needs. Checkout the live demo [here](https://ashish-chopra.github.io/angular-gauge).
+
+**NOTE:** In angular-gauge 2.x, some breaking changes have been introduced. If you are upgrading from `v1.x.x` version to `v2.x.x` then checkout the [Upgrade Guide](#upgrade-guide).
 
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/examples.png)
+
 
 # Usage
 
@@ -62,15 +65,15 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | Name      | Description  | Required  | Default value  | Possible values |
 | ---       | ---          | ---       | ---               | ---            |
 | `size`    | Specifies the size of the canvas in which Gauge will be drawn. It is used as `width` and `height` both. | No       | `200` | Positive Integer           |
-| `value`          | Specifies the current value of the Gauge as a percentage. It is required attribute.       | Yes       | `undefined`  | A numeric value between `0` - `100`.           |
-| `used`  | Specifies the absolute value which has been consumed out of `total`. The percentage usage (used/total) will be displayed by the Gauge. When this attribute is specified with `total`, `value` attribute is not used.  | No     | `undefined`  | Any numeric value  |
-| `total` | specifies the total value that represents the whole rim of the Gauge. It is used along with `used` attribute.  `used` and `total` attributes are specified together. When these attributes are specified, do not use `value` attribute. | No       | `undefined`  | Any numeric value  |
+| `type`      | Specifies the gauge's type.                     | No        | `"full"`     |  `"full"`, `"semi"`, `"arch"`  |
+| `min`  | Specifies the minimum numeric value for gauge's scale.  | No     | `0`  | Any numeric value  |
+| `max` | Specified the maximum numeric value for gauge's scale. | No       | `100`  | Any numeric value  |
+| `value`          | Specifies the current value of the Gauge in the range specified by `min` and `max`. It is a required attribute.       | Yes       | `undefined`  | Any numeric value |
 | `cap`       | The style of line ending at the gauge's end.    | No        | `"butt"`    | `"round"`, `"butt"`           |
 | `thick`        | Specified the thickness of the gauge's bar.            | No        | `6`        | Any Positive Integer |
-| `type`      | Specifies the gauge's type.                     | No        | `"full"`     |  `"full"`, `"semi"`, `"arch"`  |
 | `label`       | Specifies the text to display below the Gauge's reading.  | No  | `undefined`                | Any String           |
-| `foreground-color`         | Specifies the foreground color of the Gauge's bar.                    | No       | `rgba(0, 150, 136, 1)`             |   Any color value string       |
-| `background-color`    | Specifies the background color of the Gauge's bar.| No        |    `rgba(0, 0, 0, 0.1)`           |    Any color value string        |
+| `foreground-color`         | Specifies the foreground color of the Gauge's scale.                    | No       | `rgba(0, 150, 136, 1)`             |   Any color value string       |
+| `background-color`    | Specifies the background color of the Gauge's scale.| No        |    `rgba(0, 0, 0, 0.1)`           |    Any color value string        |
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
 | `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1500` | Positive Integer           |
@@ -115,6 +118,14 @@ The examples section is redesigned as a playground where you can play with Gauge
 And, you can see the result live on-screen. It is good start to get familiar with Gauge.
 
 ![alt text](https://raw.githubusercontent.com/ashish-chopra/angular-gauge/master/examples/playground.png)
+
+# Upgrade Guide
+
+If you are upgrading from angular-gauge 1.x version to any version in 2.x family, then make sure to read the release notes of the chosen version on the [Releases](https://github.com/ashish-chopra/angular-gauge/releases) section.
+
+Following are the breaking changes introduced in 2.0.x family:
+1. `used` and `total` attributes are removed.
+2. `min` and `max` attributes are introduced which works in tandem with `value` attribute. Checkout [config options](#config-options) to know more about their usage.
 
 
 # Contribute
