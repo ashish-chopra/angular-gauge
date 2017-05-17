@@ -1,0 +1,4 @@
+<ng-gauge size="250" type="arch" thick="10" 
+          min="0" max="250" value="105.8" 
+          cap="butt" label="Speed" append="mph">
+</ng-gauge>

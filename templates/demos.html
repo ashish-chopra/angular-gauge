@@ -123,6 +123,33 @@
                 <ng-gauge type="arch" value="68" thick="15" size="150" label="Speed" append="mph"></ng-gauge>
             </div>
         </div>
+         <div class="column-item">
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Description">
+                    <md-content class="md-padding">
+                        <h2>Gauge's Scale</h2>
+                        <p>
+                            The range of Gauge's scale can be specified using "min" and "max" attribute. The "value" attribute specifies the
+                            current value that lies between the given range is rendered on the gauge's scale.
+                        </p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Markup">
+                    <md-content class="md-padding">
+                        <div hljs hljs-include="'code/scale-markup'"></div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </div>
+        <div class="column-item">
+            <div class="output-frame">
+               <ng-gauge size="250" type="arch" thick="10" 
+                         min="0" max="250"
+                         value="105.8" cap="butt" label="Speed" 
+                         append="mph">
+                </ng-gauge>
+            </div>
+        </div>
         <div class="column-item">
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Description">

@@ -28,20 +28,33 @@
                 <td>200</td>
                 <td>Positive Integer</td>
             </tr>
-            <tr>
-                <td>value</td>
-                <td>Specifies the current value of the Gauge as a percentage. It is required attribute.</td>
-                <td>Yes</td>
-                <td>undefined</td>
-                <td>A numeric value between 0 - 100.</td>
+             <tr>
+                <td>type</td>
+                <td>Specifies the gauge's type.</td>
+                <td>No</td>
+                <td>"full"</td>
+                <td>"full", "semi", "arch"</td>
             </tr>
             <tr>
-                <td>used</td>
-                <td>Specifies the absolute value which has been consumed out of total. The percentage usage (used/total) will
-                    be displayed by the Gauge. When this attribute is specified with total, value attribute is not used.</td>
+                <td>min</td>
+                <td>Specifies the minimum numeric value for gauge's scale.</td>
                 <td>No</td>
-                <td>undefined</td>
+                <td>0</td>
                 <td>Any numeric value</td>
+            </tr>
+             <tr>
+                <td>max</td>
+                <td>Specified the maximum numeric value for gauge's scale.</td>
+                <td>No</td>
+                <td>100</td>
+                <td>Any numeric value</td>
+            </tr>
+             <tr>
+                <td>value</td>
+                <td>Specifies the current value of the Gauge in the range specified by min and max. It is a required attribute.</td>
+                <td>Yes</td>
+                <td>undefined</td>
+                <td>A numeric value</td>
             </tr>
             <tr>
                 <td>cap</td>
@@ -58,18 +71,11 @@
                 <td>Any Positive Integer</td>
             </tr>
             <tr>
-                <td>type</td>
-                <td>Specifies the gauge's type.</td>
-                <td>No</td>
-                <td>"full"</td>
-                <td>"full", "semi", "arch"</td>
-            </tr>
-            <tr>
                 <td>label</td>
                 <td>Specifies the text to display below the Gauge's reading.</td>
                 <td>No</td>
                 <td>undefined</td>
-                <td>Any String</td>
+                <td>Any string</td>
             </tr>
             <tr>
                 <td>foreground-color</td>
@@ -98,14 +104,14 @@
                     in Gauge.</td>
                 <td>No</td>
                 <td>undefined</td>
-                <td>Any String</td>
+                <td>Any string</td>
             </tr>
             <tr>
                 <td>duration</td>
                 <td>Specifies the duration (in milliseconds) of the Gauge's animation</td>
                 <td>No</td>
-                <td>1200</td>
-                <td>Positive Integer</td>
+                <td>1500</td>
+                <td>A positive integer</td>
             </tr>
         </tbody>
     </table>
