@@ -309,12 +309,11 @@
 
                 function watchData(nv, ov) {
                     if (!gauge) return;
-                    if (!nv || angular.equals(nv, ov)) return;
+                    if ( !angular.isDefined(nv) || angular.equals(nv, ov)) return;
                     gauge.update();
                 }
 
                 function watchOther(nv, ov) {
-                    if (!gauge) return;
                     if (!nv || angular.equals(nv, ov)) return;
                     gauge.destroy();
                     gauge.init();
