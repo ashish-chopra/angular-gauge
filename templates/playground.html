@@ -1,0 +1,98 @@
+<div class="container block">
+    <md-toolbar class="md-accent">
+        <div class="md-toolbar-tools">
+            <h3>Tune Gauge Properties</h3>
+        </div>
+    </md-toolbar>
+    <br>
+    <p>
+        This is Angular Gauge's playground. Here you get the options to fiddle with various properties of gauge widget directive.
+        Play around and see it working on the right side.
+    </p>
+    <div class="playground" ng-controller="PlaygroundController as m">
+        <section class="playground-section">
+
+            <br>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Gauge Type</label>
+                    <md-select ng-model="m.options.type">
+                        <md-option value="full">Full</md-option>
+                        <md-option value="semi">Semi</md-option>
+                        <md-option value="arch">Arch</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Cap Style</label>
+                    <md-select ng-model="m.options.cap">
+                        <md-option value="round">Round</md-option>
+                        <md-option value="butt">Butt</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <md-slider-container class="md-block">
+                <div>Size</div>
+                <md-slider min="100" max="500" class="md-primary" ng-model="m.options.size">
+                </md-slider>
+                <md-input-container>
+                    <input type="number" ng-model="m.options.size">
+                </md-input-container>
+            </md-slider-container>
+            <md-slider-container class="md-block">
+                <div>Thick</div>
+                <md-slider min="1" max="50" class="md-primary" ng-model="m.options.thick">
+                </md-slider>
+                <md-input-container>
+                    <input type="number" ng-model="m.options.thick">
+                </md-input-container>
+            </md-slider-container>
+            <br>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Min</label>
+                    <input ng-model="m.options.min">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Max</label>
+                    <input ng-model="m.options.max">
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block">
+                <label>Value</label>
+                <input type="text" ng-model="m.options.value">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Label</label>
+                <input ng-model="m.options.label">
+            </md-input-container>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Prepend</label>
+                    <input ng-model="m.options.prepend">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Append</label>
+                    <input ng-model="m.options.append">
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row" class="md-block">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Foreground Color</label>
+                    <input ng-model="m.options.foregroundColor">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Background Color</label>
+                    <input ng-model="m.options.backgroundColor">
+                </md-input-container>
+            </div>
+        </section>
+        <section class="playground-section">
+            <div>
+                <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
+                    prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
+                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"></ng-gauge>
+            </div>
+        </section>
+    </div>
+    <div class="spacer"></div>
+</div>

@@ -227,6 +227,30 @@ h4 {
         width: 100%;
     }
 }*/
+
+.playground {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.playground > .playground-section {
+    width: 47%;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.playground > .playground-section:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-width {
+    width: 80%;
+}
+
 @media screen and (max-width: 400px) {
     .badge {
         position:relative;
