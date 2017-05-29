@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('websiteApp', ['ngMaterial', 'ngRoute', 'angularjs-gauge', 'hljs'])
+    .module('websiteApp', ['ngMaterial', 'angularjs-gauge', 'hljs'])
     .config(configApp)
     .controller('MainController', mainController)
     .controller('PlaygroundController', playgroundController);
 
-  configApp.$inject = ['$mdThemingProvider', '$routeProvider'];
-  function configApp($mdThemingProvider, $routeProvider) {
+  configApp.$inject = ['$mdThemingProvider'];
+  function configApp($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('teal', {
         'default': '400', // by default use shade 400 from the pink palette for primary intentions
@@ -20,17 +20,6 @@
       // default shades
       .accentPalette('amber', {
         'default': '200' // use shade 200 for default, and keep all other shades the same
-      });
-
-    $routeProvider
-      .when('/', {
-        templateUrl: 'templates/home.html'
-      })
-      .when('/playground', {
-        templateUrl: 'templates/playground.html'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   }
 
@@ -71,7 +60,7 @@
   }
 
 
-   playgroundController.$inject = [];
+  playgroundController.$inject = [];
   function playgroundController() {
     var vm = this;
     vm.options = {
