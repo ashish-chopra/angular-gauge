@@ -305,7 +305,7 @@
                 scope.duration = angular.isDefined(scope.duration) ? scope.duration : defaults.duration;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
-                scope.threshold = angular.isDefined(scope.threshold) ? scope.threshold : {};
+                scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : {};
 
                 var gauge = new Gauge(element, scope);
 
