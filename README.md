@@ -76,7 +76,7 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
 | `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1500` | Positive Integer           |
-| `thresholds` | Specifies an object of threshold values at which the gauge's color changes. Checkout an example [here](#adding-threshold-colors).  | No |  `none` | {}
+| `thresholds` | Specifies an object of threshold values at which the gauge's color changes. Checkout an example [here](#configure-threshold-color-ranges).  | No |  `none` | {}
 
 # Global Defaults
 
