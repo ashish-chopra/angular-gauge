@@ -1,0 +1,21 @@
+angular
+  .module('myApp', ['angularjs-gauge'])
+  .controller('MainController', mainController);
+
+    mainController.$inject = [];
+   function mainController() {
+
+        // key of the object is the minimum value at which color changes.
+        // value is an object with color property set the color string as 'green', HEX, or rgba format.
+       var thresholdOptions = {
+            '0': { color: 'green' },
+            '40.3': {color: 'orange' },
+            '80': {color: 'red'}
+       };
+
+    }
+  }
+
+
+// use it inside HTML:
+<ng-gauge value="54.3" thresholds="main.thresholds"> </ng-gauge>

@@ -1,6 +1,6 @@
 <div class="container block">
     <h1>Playground - <small>Get your hands dirty!</small> </h1>
-   
+
     <p>
         This is Angular Gauge's playground. Here you get the options to fiddle with various properties of gauge widget directive.
         Play around and see it working on the right side.
@@ -81,12 +81,24 @@
                     <input ng-model="m.options.backgroundColor">
                 </md-input-container>
             </div>
+            <div layout-gt-sm="row" class="md-block" layout-align="space-between center">
+
+                <div flex style="max-width:200px;">Thresholds</div>
+                <md-switch ng-model="m.enableThresholds" aria-label="Switch 1"></md-switch>
+
+            </div>
+            <small>Toggle the threshold switch to apply a threshold based color range configuration. And change the gauge's value to see different colors in action.</small>
+            <br> <br>
+            <md-whiteframe class="md-whiteframe-1dp" layout-padding layout layout-align="center center">
+                <pre><code>{{m.enableThresholds? m.thresholds : {} | json}}</code></pre>
+            </md-whiteframe>
         </section>
         <section class="playground-section">
             <div>
                 <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
                     prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
-                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"></ng-gauge>
+                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"
+                    thresholds="m.enableThresholds ? m.thresholds : {}"></ng-gauge>
             </div>
         </section>
     </div>
