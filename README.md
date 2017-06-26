@@ -76,7 +76,7 @@ There are plenty of configurable options available to tune the `Gauge` as per yo
 | `append`   | Specifies a `string` appended to the Gauge's reading. For example `"%"` most commonly used. | No        | `undefined`        | Any string           |
 | `prepend`      | Specifies a `string` prepended to the Gauge's reading. For example `"$"` in case of financial data displayed in Gauge.                                        | No        | `undefined`            | Any String           |
 | `duration`    | Specifies the duration (in milliseconds) of the Gauge's animation | No       | `1500` | Positive Integer           |
-
+| `thresholds` | Specifies an object of threshold values at which the gauge's color changes. Checkout an example [here](#adding-threshold-colors).  | No |  `none` | {}
 
 # Global Defaults
 
@@ -110,6 +110,30 @@ angular
   }
 
 ```
+
+## Configure Threshold Color Ranges
+
+You can customize the colors of the gauge based on the current value being shown. This feature is introduced in `v2.1.0`. Make sure to update your local copy before using this feature. 
+
+In order to show different colors when gauge crosses certain value, use property `thresholds`. It takes an object with the threshold value  as `key` and an object with `color` property as `value`. For example: 
+
+```js
+....
+
+var threshold = {
+  '0': {color: 'green'},
+  '40': {color: 'orange'},
+  '75.5': {color: 'red'}
+};
+
+....
+
+```
+
+```html
+<ng-gauge ...  thresholds="threshold"></ng-gauge>
+```
+The keys in the threshold object signifies the minimum value at which the color will be applied. For instance, if the gauge's current value is `53.2`, then orange color will be applied because after point `40` every value will be displayed as `orange`, until next threshold is encountered. In this example `75.5` is the next threshold.
 
 # Playground
 
