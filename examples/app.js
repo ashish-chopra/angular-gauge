@@ -38,5 +38,11 @@
       foregroundColor: 'rgba(0, 150, 136, 1)',
       backgroundColor: 'rgba(0, 0, 0, 0.1)'
     };
+
+    vm.thresholds = {
+       '0': { color: 'green' },
+      '30': { color: '#ffcc66' },
+      '80': { color: 'rgba(255,120,120,1)' }
+    }
   }
 }(angular));

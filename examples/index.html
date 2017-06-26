@@ -23,15 +23,15 @@
 <body ng-controller="MainController as m">
     <nav class="navbar navbar-toggleable-md fixed-top navbar-light">
         <div class="container custom-width">
-            <a class="navbar-brand" href="#">Angular Gauge <span class="badge badge-default">2.0.0</span> &nbsp;&nbsp;<i class="main-color">Playground</i></a>
+            <a class="navbar-brand" href="#">Angular Gauge <span class="badge badge-default">2.1.0</span> &nbsp;&nbsp;<i class="main-color">Playground</i></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://ashish-chopra.github.io/angular-gauge"  title="visit website"><i class="fa fa-2x fa-hand-peace-o"></i></a>
+                        <a class="nav-link" href="https://ashish-chopra.github.io/angular-gauge" title="visit website"><i class="fa fa-2x fa-hand-peace-o"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/ashish-chopra/angular-gauge" title="Checkout code on GitHub"><i class="fa fa-2x fa-github"></i></a>
@@ -126,15 +126,28 @@
                     <input ng-model="m.options.backgroundColor">
                 </md-input-container>
             </div>
+            <div layout-gt-sm="row" class="md-block" layout-align="space-between center">
+                
+                    <div flex style="max-width:200px;">Thresholds</div>
+                    <md-switch ng-model="m.enableThresholds" aria-label="Switch 1"></md-switch>
+                
+            </div>
+            <small>Toggle the threshold switch to apply a threshold based color range configuration. And change the gauge's value to see different colors in action.</small>
+            <br> <br>
+            <md-whiteframe class="md-whiteframe-1dp" layout-padding layout layout-align="center center">
+               <pre><code>{{m.enableThresholds? m.thresholds : {} | json}}</code></pre>
+            </md-whiteframe>
         </section>
         <section class="playground-section">
             <div>
                 <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
                     prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
-                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"></ng-gauge>
+                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"
+                    thresholds="m.enableThresholds ? m.thresholds : {}"></ng-gauge>
             </div>
         </section>
     </div>
     <div class="spacer"></div>
 </body>
+
 </html>

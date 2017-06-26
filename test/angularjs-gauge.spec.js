@@ -379,4 +379,8 @@ describe('Angular Gauge Unit Test Suites', function () {
 
     });
 
+    it("test case for thresholds range colors", function () {
+       // coming soon
+    });
+
 });
