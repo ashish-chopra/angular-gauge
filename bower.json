@@ -12,7 +12,7 @@
         "full",
         "arc"
     ],
-    "main": "dist/angularjs-gauge.js",
+    "main": "src/angularjs-gauge.js",
     "authors": ["Ashish Chopra"],
     "license": "MIT",
     "homepage": "https://github.com/ashish-chopra/angular-gauge",
