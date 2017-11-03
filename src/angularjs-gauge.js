@@ -58,7 +58,7 @@
 
             init: function () {
                 this.setupStyles();
-                this.create();
+                this.create(null, null);
             },
 
             setupStyles: function () {
@@ -105,7 +105,7 @@
                     lineHeight: lh + 'px'
                 });
             },
-            create: function () {
+            create: function (nv, ov) {
 
                 var self = this,
                     type = this.getType(),
@@ -114,20 +114,26 @@
                     min = this.getMin(),
                     max = this.getMax(),
                     value = this.clamp(this.getValue(), min, max),
-                    head = bounds.head,
+                    start = bounds.head,
                     unit = (bounds.tail - bounds.head) / (max - min),
                     displacement = unit * (value - min),
                     tail = bounds.tail,
                     color = this.getForegroundColorByRange(value),
                     requestID,
-                    starttime;
+                    startTime;
+
+                if (nv && ov) {
+                    displacement = unit * nv - unit * ov;
+                }
 
                 function animate(timestamp) {
                     timestamp = timestamp || new Date().getTime();
-                    var runtime = timestamp - starttime;
-                    var progress = runtime / duration;
-                    progress = Math.min(progress, 1);
-                    self.drawShell(head, head + displacement * progress, tail, color);
+                    var runtime = timestamp - startTime;
+                    var progress = Math.min(runtime / duration, 1); // never exceed 100%
+                    var previousProgress = ov ? (ov * unit) : 0;
+                    var middle = start + previousProgress + displacement * progress;
+
+                    self.drawShell(start, middle, tail, color);
                     if (runtime < duration) {
                         requestID = window.requestAnimationFrame(function (timestamp) {
                             animate(timestamp);
@@ -138,7 +144,7 @@
                 }
 
                 requestAnimationFrame(function (timestamp) {
-                    starttime = timestamp || new Date().getTime();
+                    startTime = timestamp || new Date().getTime();
                     animate(timestamp);
                 });
 
@@ -171,7 +177,12 @@
                     radius = this.getRadius(),
                     foregroundColor = color,
                     backgroundColor = this.getBackgroundColor();
+
                 this.clear();
+
+                middle = Math.max(middle, start); // never below 0%
+                middle = Math.min(middle, tail); // never exceed 100%
+
 
                 context.beginPath();
                 context.strokeStyle = backgroundColor;
@@ -189,8 +200,8 @@
                 this.context.clearRect(0, 0, this.getWidth(), this.getHeight());
             },
 
-            update: function () {
-                this.create();
+            update: function (nv, ov) {
+                this.create(nv, ov);
             },
 
             destroy: function () {
@@ -247,7 +258,7 @@
                 };
 
                 var match = Object.keys(this.options.thresholds)
-                    .filter(function (item) { return isNumber(item) && Number(item) <= value })
+                    .filter(function (item) { return isNumber(item) && Number(item) <= value; })
                     .sort().reverse()[0];
 
                 return match !== undefined ? this.options.thresholds[match].color || this.getForegroundColor() : this.getForegroundColor();
@@ -327,7 +338,7 @@
                 function watchData(nv, ov) {
                     if (!gauge) return;
                     if (!angular.isDefined(nv) || angular.equals(nv, ov)) return;
-                    gauge.update();
+                    gauge.update(nv, ov);
                 }
 
                 function watchOther(nv, ov) {
