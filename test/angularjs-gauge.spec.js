@@ -39,6 +39,7 @@ describe('Angular Gauge Unit Test Suites', function () {
         expect(scope.type).toBe('full');
         expect(scope.min).toBe(0);
         expect(scope.max).toBe(100);
+        expect(scope.labelOnly).toBe(false);
     });
 
     it('custom size', function () {
@@ -376,6 +377,24 @@ describe('Angular Gauge Unit Test Suites', function () {
         parentScope.$digest();
         expect(label.text()).toContain("24.898");
         expect(directiveScope.value).toBe(24.8976);
+
+    });
+
+    it("label only supported", function () {
+        var code = "<ng-gauge value='value' min='min' max='max' label='The answer' label-only='true'></ng-gauge>",
+            parentScope = $rootScope.$new();
+
+        parentScope.min = 0;
+        parentScope.max = 100;
+        var elem = $compile(angular.element(code))(parentScope),
+            label = elem.find("span").eq(0),
+            legend = elem.find("b");
+
+        parentScope.value = 42;
+        parentScope.$digest();
+        expect(label.text()).toContain("42");
+        expect(legend.text()).toBe('The answer');
+        expect(label.hasClass('ng-hide')).toBeTruthy();
 
     });
 
