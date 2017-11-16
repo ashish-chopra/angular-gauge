@@ -17,8 +17,9 @@
             type: 'full',
             foregroundColor: 'rgba(0, 150, 136, 1)',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            duration: 1500,
+            fractionSize: null,
             labelOnly: false,
-            duration: 1500
         };
 
         this.setOptions = function (customOptions) {
@@ -36,14 +37,20 @@
         this.$get = function () {
             return ngGauge;
         };
-
     }
 
     gaugeMeterDirective.$inject = ['ngGauge'];
 
     function gaugeMeterDirective(ngGauge) {
 
-        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span ng-show="{{!labelOnly}}"><u>{{prepend}}</u>{{value | number}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+
+        var tpl = '<div style="display:inline-block;text-align:center;position:relative;">' +
+            '<span ng-show="{{!labelOnly}}"><u>{{prepend}}</u>' +
+            '<span ng-if="fractionSize === null">{{value | number}}</span>' +
+            '<span ng-if="fractionSize !== null">{{value | number: fractionSize}}</span>' +
+            '<u>{{append}}</u></span>' +
+            '<b>{{ label }}</b>' +
+            '<canvas></canvas></div>';
 
         var Gauge = function (element, options) {
             this.element = element.find('canvas')[0];
@@ -303,7 +310,8 @@
                 value: '=?',
                 min: '=?',
                 max: '=?',
-                thresholds: '=?'
+                thresholds: '=?',
+                fractionSize: '=?'
 
             },
             link: function (scope, element) {
@@ -320,6 +328,7 @@
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
                 scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : {};
+                scope.fractionSize = angular.isDefined(scope.fractionSize) ? scope.fractionSize : defaults.fractionSize;
 
                 var gauge = new Gauge(element, scope);
 
@@ -334,6 +343,7 @@
                 scope.$watch('foregroundColor', watchOther, false);
                 scope.$watch('backgroundColor', watchOther, false);
                 scope.$watch('thresholds', watchData, false);
+                scope.$watch('fractionSize', watchData, false);
 
                 scope.$on('$destroy', function () { });
                 scope.$on('$resize', function () { });
