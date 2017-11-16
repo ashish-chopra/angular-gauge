@@ -18,7 +18,8 @@
             foregroundColor: 'rgba(0, 150, 136, 1)',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
             duration: 1500,
-            fractionSize: null
+            fractionSize: null,
+            labelOnly: false,
         };
 
         this.setOptions = function (customOptions) {
@@ -42,8 +43,9 @@
 
     function gaugeMeterDirective(ngGauge) {
 
+
         var tpl = '<div style="display:inline-block;text-align:center;position:relative;">' +
-            '<span><u>{{prepend}}</u>' +
+            '<span ng-show="{{!labelOnly}}"><u>{{prepend}}</u>' +
             '<span ng-if="fractionSize === null">{{value | number}}</span>' +
             '<span ng-if="fractionSize !== null">{{value | number: fractionSize}}</span>' +
             '<u>{{append}}</u></span>' +
@@ -64,7 +66,7 @@
 
             init: function () {
                 this.setupStyles();
-                this.create();
+                this.create(null, null);
             },
 
             setupStyles: function () {
@@ -96,8 +98,8 @@
                     opacity: 0.8
                 });
 
-                var fs = this.options.size / 13;
-                var lh = (5 * fs) + parseInt(this.options.size);
+                var fs = this.options.labelOnly ? lfs * 0.8 : this.options.size / 13;
+                var lh = this.options.labelOnly ? llh : (5 * fs) + parseInt(this.options.size);
 
                 this.legend.css({
                     display: 'inline-block',
@@ -111,7 +113,7 @@
                     lineHeight: lh + 'px'
                 });
             },
-            create: function () {
+            create: function (nv, ov) {
 
                 var self = this,
                     type = this.getType(),
@@ -120,20 +122,26 @@
                     min = this.getMin(),
                     max = this.getMax(),
                     value = this.clamp(this.getValue(), min, max),
-                    head = bounds.head,
+                    start = bounds.head,
                     unit = (bounds.tail - bounds.head) / (max - min),
                     displacement = unit * (value - min),
                     tail = bounds.tail,
                     color = this.getForegroundColorByRange(value),
                     requestID,
-                    starttime;
+                    startTime;
+
+                if (nv && ov) {
+                    displacement = unit * nv - unit * ov;
+                }
 
                 function animate(timestamp) {
                     timestamp = timestamp || new Date().getTime();
-                    var runtime = timestamp - starttime;
-                    var progress = runtime / duration;
-                    progress = Math.min(progress, 1);
-                    self.drawShell(head, head + displacement * progress, tail, color);
+                    var runtime = timestamp - startTime;
+                    var progress = Math.min(runtime / duration, 1); // never exceed 100%
+                    var previousProgress = ov ? (ov * unit) : 0;
+                    var middle = start + previousProgress + displacement * progress;
+
+                    self.drawShell(start, middle, tail, color);
                     if (runtime < duration) {
                         requestID = window.requestAnimationFrame(function (timestamp) {
                             animate(timestamp);
@@ -144,7 +152,7 @@
                 }
 
                 requestAnimationFrame(function (timestamp) {
-                    starttime = timestamp || new Date().getTime();
+                    startTime = timestamp || new Date().getTime();
                     animate(timestamp);
                 });
 
@@ -177,7 +185,12 @@
                     radius = this.getRadius(),
                     foregroundColor = color,
                     backgroundColor = this.getBackgroundColor();
+
                 this.clear();
+
+                middle = Math.max(middle, start); // never below 0%
+                middle = Math.min(middle, tail); // never exceed 100%
+
 
                 context.beginPath();
                 context.strokeStyle = backgroundColor;
@@ -195,8 +208,8 @@
                 this.context.clearRect(0, 0, this.getWidth(), this.getHeight());
             },
 
-            update: function () {
-                this.create();
+            update: function (nv, ov) {
+                this.create(nv, ov);
             },
 
             destroy: function () {
@@ -253,7 +266,7 @@
                 };
 
                 var match = Object.keys(this.options.thresholds)
-                    .filter(function (item) { return isNumber(item) && Number(item) <= value })
+                    .filter(function (item) { return isNumber(item) && Number(item) <= value; })
                     .sort().reverse()[0];
 
                 return match !== undefined ? this.options.thresholds[match].color || this.getForegroundColor() : this.getForegroundColor();
@@ -288,6 +301,7 @@
                 cap: '@?',
                 foregroundColor: '@?',
                 label: '@?',
+                labelOnly: '@?',
                 prepend: '@?',
                 size: '@?',
                 thick: '@?',
@@ -310,6 +324,7 @@
                 scope.thick = angular.isDefined(scope.thick) ? scope.thick : defaults.thick;
                 scope.type = angular.isDefined(scope.type) ? scope.type : defaults.type;
                 scope.duration = angular.isDefined(scope.duration) ? scope.duration : defaults.duration;
+                scope.labelOnly = angular.isDefined(scope.labelOnly) ? scope.labelOnly : defaults.labelOnly;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
                 scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : {};
@@ -336,7 +351,7 @@
                 function watchData(nv, ov) {
                     if (!gauge) return;
                     if (!angular.isDefined(nv) || angular.equals(nv, ov)) return;
-                    gauge.update();
+                    gauge.update(nv, ov);
                 }
 
                 function watchOther(nv, ov) {
