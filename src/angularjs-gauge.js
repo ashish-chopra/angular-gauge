@@ -17,6 +17,7 @@
             type: 'full',
             foregroundColor: 'rgba(0, 150, 136, 1)',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            labelOnly: false,
             duration: 1500
         };
 
@@ -42,7 +43,7 @@
 
     function gaugeMeterDirective(ngGauge) {
 
-        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span><u>{{prepend}}</u>{{value | number}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
+        var tpl = '<div style="display:inline-block;text-align:center;position:relative;"><span ng-show="{{!labelOnly}}"><u>{{prepend}}</u>{{value | number}}<u>{{append}}</u></span><b>{{label}}</b><canvas></canvas></div>';
 
         var Gauge = function (element, options) {
             this.element = element.find('canvas')[0];
@@ -90,8 +91,8 @@
                     opacity: 0.8
                 });
 
-                var fs = this.options.size / 13;
-                var lh = (5 * fs) + parseInt(this.options.size);
+                var fs = this.options.labelOnly ? lfs * 0.8 : this.options.size / 13;
+                var lh = this.options.labelOnly ? llh : (5 * fs) + parseInt(this.options.size);
 
                 this.legend.css({
                     display: 'inline-block',
@@ -293,6 +294,7 @@
                 cap: '@?',
                 foregroundColor: '@?',
                 label: '@?',
+                labelOnly: '@?',
                 prepend: '@?',
                 size: '@?',
                 thick: '@?',
@@ -314,6 +316,7 @@
                 scope.thick = angular.isDefined(scope.thick) ? scope.thick : defaults.thick;
                 scope.type = angular.isDefined(scope.type) ? scope.type : defaults.type;
                 scope.duration = angular.isDefined(scope.duration) ? scope.duration : defaults.duration;
+                scope.labelOnly = angular.isDefined(scope.labelOnly) ? scope.labelOnly : defaults.labelOnly;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
                 scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : {};
