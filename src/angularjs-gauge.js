@@ -267,7 +267,7 @@
 
                 var match = Object.keys(this.options.thresholds)
                     .filter(function (item) { return isNumber(item) && Number(item) <= value })
-                    .sort((a, b) => {Number(a) > Number(b)}).reverse()[0];
+                    .sort(function(a,b) {return Number(a) > Number(b);}.reverse()[0];
 
                 return match !== undefined ? this.options.thresholds[match].color || this.getForegroundColor() : this.getForegroundColor();
             },
