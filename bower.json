@@ -1,6 +1,6 @@
 {
     "name": "angularjs-gauge",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "description": "A Gauge directive for Angular 1.x apps and dashboards",
     "keywords": [
         "angular",
@@ -24,6 +24,6 @@
     "tests"
   ],
     "dependencies": {
-        "angular": "~1.5.8"
+        "angular": ">= 1.4.14 <= 1.6.x"
     }
 }
