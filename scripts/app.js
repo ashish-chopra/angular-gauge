@@ -77,11 +77,15 @@
       backgroundColor: 'rgba(0, 0, 0, 0.1)'
     };
 
-     vm.thresholds = {
-       '0': { color: 'green' },
-      '30': { color: '#ffcc66' },
-      '80': { color: 'rgba(255,0,0,0.8)' }
-    }
-  }
+    vm.thresholds = {
+      '0': { color: 'green' },
+      '8': { color: "orange" },
+      '20': { color: 'yellow' },
+      '30': { color: 'coral' },
+      '80': { color: 'red' }
+    };
+    
+    vm.empty = {};
+}
 
 }(angular));

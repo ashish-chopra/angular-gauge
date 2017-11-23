@@ -28,18 +28,18 @@
             </div>
             <md-slider-container class="md-block">
                 <div>Size</div>
-                <md-slider min="100" max="500" class="md-primary" ng-model="m.options.size">
+                <md-slider aria-label="size selector for gauge" min="100" max="500" class="md-primary" ng-model="m.options.size">
                 </md-slider>
                 <md-input-container>
-                    <input type="number" ng-model="m.options.size">
+                    <input aria-label="size selector for gauge" type="number" ng-model="m.options.size">
                 </md-input-container>
             </md-slider-container>
             <md-slider-container class="md-block">
                 <div>Thick</div>
-                <md-slider min="1" max="50" class="md-primary" ng-model="m.options.thick">
+                <md-slider aria-label="thickness selector for gauge" min="1" max="50" class="md-primary" ng-model="m.options.thick">
                 </md-slider>
                 <md-input-container>
-                    <input type="number" ng-model="m.options.thick">
+                    <input aria-label="thickness selector for gauge" type="number" ng-model="m.options.thick">
                 </md-input-container>
             </md-slider-container>
             <br>
@@ -98,7 +98,7 @@
                 <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
                     prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
                     background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"
-                    thresholds="m.enableThresholds ? m.thresholds : {}"></ng-gauge>
+                    thresholds="m.enableThresholds ? m.thresholds : m.empty"></ng-gauge>
             </div>
         </section>
     </div>
