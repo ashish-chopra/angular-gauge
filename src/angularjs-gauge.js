@@ -266,8 +266,8 @@
                 };
 
                 var match = Object.keys(this.options.thresholds)
-                    .filter(function (item) { return isNumber(item) && Number(item) <= value })
-                    .sort(function(a,b) {return Number(a) > Number(b);}.reverse()[0];
+                    .filter(function (item) { return isNumber(item) && Number(item) <= value; })
+                    .sort(function(a,b) {return Number(a) > Number(b);}).reverse()[0];
 
                 return match !== undefined ? this.options.thresholds[match].color || this.getForegroundColor() : this.getForegroundColor();
             },
@@ -342,7 +342,7 @@
                 scope.$watch('duration', watchOther, false);
                 scope.$watch('foregroundColor', watchOther, false);
                 scope.$watch('backgroundColor', watchOther, false);
-                scope.$watch('thresholds', watchData, false);
+                scope.$watch('thresholds', watchOther, false);
                 scope.$watch('fractionSize', watchData, false);
 
                 scope.$on('$destroy', function () { });
