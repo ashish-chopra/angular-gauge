@@ -5,7 +5,6 @@
         .directive('ngGauge', gaugeMeterDirective)
         .provider('ngGauge', gaugeMeterProviderFn);
 
-    gaugeMeterProviderFn.$inject = [];
     function gaugeMeterProviderFn() {
         var defaultOptions = {
             size: 200,
@@ -43,13 +42,12 @@
 
     function gaugeMeterDirective(ngGauge) {
 
-
         var tpl = '<div style="display:inline-block;text-align:center;position:relative;">' +
             '<span ng-show="{{!labelOnly}}"><u>{{prepend}}</u>' +
             '<span ng-if="fractionSize === null">{{value | number}}</span>' +
             '<span ng-if="fractionSize !== null">{{value | number: fractionSize}}</span>' +
             '<u>{{append}}</u></span>' +
-            '<b>{{ label }}</b>' +
+            '<b>{{label}}</b>' +
             '<canvas></canvas></div>';
 
         var Gauge = function (element, options) {
@@ -66,7 +64,7 @@
 
             init: function () {
                 this.setupStyles();
-                this.create(null, null);
+                this.render(null, null);
             },
 
             setupStyles: function () {
@@ -113,20 +111,20 @@
                     lineHeight: lh + 'px'
                 });
             },
-            create: function (nv, ov) {
+            render: function (nv, ov) {
 
                 var self = this,
                     type = this.getType(),
                     bounds = this.getBounds(type),
-                    duration = this.getDuration(),
-                    min = this.getMin(),
-                    max = this.getMax(),
-                    value = this.clamp(this.getValue(), min, max),
-                    start = bounds.head,
-                    unit = (bounds.tail - bounds.head) / (max - min),
-                    displacement = unit * (value - min),
-                    tail = bounds.tail,
-                    color = this.getForegroundColorByRange(value),
+                    duration = this.getDuration(),                      // animation duration (in miliseconds)
+                    min = this.getMin(),                                // the min value given by the binding
+                    max = this.getMax(),                                // the max value given by the binding
+                    value = this.clamp(this.getValue(), min, max),      // the value given by the binding
+                    head = bounds.head,                                 // start angle of the gauge
+                    tail = bounds.tail,                                 // end angle of the gauge
+                    unit = (bounds.tail - bounds.head) / (max - min),   // a calcualtion of how many degrees a unit represents
+                    displacement = unit * (value - min),                // the displacement in degrees to make on each animation
+                    color = this.getForegroundColorByRange(value),      
                     requestID,
                     startTime;
 
@@ -139,9 +137,10 @@
                     var runtime = timestamp - startTime;
                     var progress = Math.min(runtime / duration, 1); // never exceed 100%
                     var previousProgress = ov ? (ov * unit) : 0;
-                    var middle = start + previousProgress + displacement * progress;
+                    var middle = head + previousProgress + displacement * progress || 0; // if undefined we assume zero so the gauge background shows
 
-                    self.drawShell(start, middle, tail, color);
+                    self.drawShell(head, middle, tail, color);
+
                     if (runtime < duration) {
                         requestID = window.requestAnimationFrame(function (timestamp) {
                             animate(timestamp);
@@ -178,7 +177,7 @@
 
             },
 
-            drawShell: function (start, middle, tail, color) {
+            drawShell: function (head, middle, tail, color) {
                 var
                     context = this.context,
                     center = this.getCenter(),
@@ -188,7 +187,7 @@
 
                 this.clear();
 
-                middle = Math.max(middle, start); // never below 0%
+                middle = Math.max(middle, head); // never below 0%
                 middle = Math.min(middle, tail); // never exceed 100%
 
 
@@ -199,17 +198,13 @@
 
                 context.beginPath();
                 context.strokeStyle = foregroundColor;
-                context.arc(center.x, center.y, radius, start, middle, false);
+                context.arc(center.x, center.y, radius, head, middle, false);
                 context.stroke();
 
             },
 
             clear: function () {
                 this.context.clearRect(0, 0, this.getWidth(), this.getHeight());
-            },
-
-            update: function (nv, ov) {
-                this.create(nv, ov);
             },
 
             destroy: function () {
@@ -267,7 +262,7 @@
 
                 var match = Object.keys(this.options.thresholds)
                     .filter(function (item) { return isNumber(item) && Number(item) <= value; })
-                    .sort(function(a,b) {return Number(a) > Number(b);}).reverse()[0];
+                    .sort(function (a, b) { return Number(a) > Number(b); }).reverse()[0];
 
                 return match !== undefined ? this.options.thresholds[match].color || this.getForegroundColor() : this.getForegroundColor();
             },
@@ -333,8 +328,8 @@
                 var gauge = new Gauge(element, scope);
 
                 scope.$watch('value', watchData, false);
-                scope.$watch('min', watchData, false);
-                scope.$watch('max', watchData, false);
+                scope.$watch('min', watchOther, false);
+                scope.$watch('max', watchOther, false);
                 scope.$watch('cap', watchOther, false);
                 scope.$watch('thick', watchOther, false);
                 scope.$watch('type', watchOther, false);
@@ -343,7 +338,6 @@
                 scope.$watch('foregroundColor', watchOther, false);
                 scope.$watch('backgroundColor', watchOther, false);
                 scope.$watch('thresholds', watchOther, false);
-                scope.$watch('fractionSize', watchData, false);
 
                 scope.$on('$destroy', function () { });
                 scope.$on('$resize', function () { });
@@ -351,7 +345,7 @@
                 function watchData(nv, ov) {
                     if (!gauge) return;
                     if (!angular.isDefined(nv) || angular.equals(nv, ov)) return;
-                    gauge.update(nv, ov);
+                    gauge.render(nv, ov);
                 }
 
                 function watchOther(nv, ov) {
