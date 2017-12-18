@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="playground">
 
 <head>
@@ -103,6 +103,10 @@
                 <input type="text" ng-model="m.options.value">
             </md-input-container>
             <md-input-container class="md-block">
+                <label>Fraction size</label>
+                <input type="text" ng-model="m.options.fractionSize">
+            </md-input-container>
+            <md-input-container class="md-block">
                 <label>Label</label>
                 <input ng-model="m.options.label">
             </md-input-container>
@@ -142,7 +146,7 @@
             <div>
                 <ng-gauge type="{{m.options.type}}" size="{{m.options.size}}" thick="{{m.options.thick}}" label="{{m.options.label}}" append="{{m.options.append}}"
                     prepend="{{m.options.prepend}}" cap="{{m.options.cap}}" foreground-color="{{m.options.foregroundColor}}"
-                    background-color="{{m.options.backgroundColor}}" value="m.options.value" min="m.options.min" max="m.options.max"
+                    background-color="{{m.options.backgroundColor}}" value="m.options.value" fraction-size="m.options.fractionSize" min="m.options.min" max="m.options.max"
                     thresholds="m.enableThresholds ? m.thresholds : m.empty"></ng-gauge>
             </div>
         </section>

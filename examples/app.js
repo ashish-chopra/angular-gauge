@@ -36,7 +36,8 @@
       min: 0,
       max: 100,
       foregroundColor: 'rgba(0, 150, 136, 1)',
-      backgroundColor: 'rgba(0, 0, 0, 0.1)'
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      fractionSize: null
     };
 
     vm.thresholds = {
