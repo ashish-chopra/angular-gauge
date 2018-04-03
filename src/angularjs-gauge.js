@@ -351,7 +351,7 @@
                 function watchData(nv, ov) {
                     if (!gauge) return;
                     if (!angular.isDefined(nv) || angular.equals(nv, ov)) return;
-                    gauge.update(nv, ov);
+                    gauge.update(nv, null);
                 }
 
                 function watchOther(nv, ov) {
