@@ -20,6 +20,9 @@
             duration: 1500,
             fractionSize: null,
             labelOnly: false,
+            fontSize: (200 * 0.22) + 'px',
+            fontWeight: 'normal',
+            textColor: 'rgba(0, 150, 136, 1)'
         };
 
         this.setOptions = function (customOptions) {
@@ -87,14 +90,17 @@
                     textAlign: 'center',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    fontSize: lfs + 'px',
-                    lineHeight: llh + 'px'
+                    fontSize: this.options.fontSize,
+                    lineHeight: llh + 'px',
+                    fontWeight: this.options.fontWeight,
+                    color: this.options.textColor
                 });
 
                 this.unit.css({
                     textDecoration: 'none',
-                    fontSize: '0.6em',
-                    fontWeight: 200,
+                    fontSize: this.options.fontSize,
+                    fontWeight: this.options.fontWeight,
+                    color: this.options.color,
                     opacity: 0.8
                 });
 
@@ -311,7 +317,10 @@
                 min: '=?',
                 max: '=?',
                 thresholds: '=?',
-                fractionSize: '=?'
+                fractionSize: '=?',
+                fontSize: '@?',
+                fontWeight: '@?',
+                textColor: '@?'
 
             },
             link: function (scope, element) {
@@ -329,6 +338,9 @@
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
                 scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : {};
                 scope.fractionSize = angular.isDefined(scope.fractionSize) ? scope.fractionSize : defaults.fractionSize;
+                scope.fontSize = angular.isDefined(scope.fontSize) ? scope.fontSize : defaults.fontSize;
+                scope.fontWeight = angular.isDefined(scope.fontWeight) ? scope.fontSize : defaults.fontWeight;
+                scope.textColor = angular.isDefined(scope.textColor) ? scope.fontSize : defaults.textColor;
 
                 var gauge = new Gauge(element, scope);
 
@@ -344,6 +356,9 @@
                 scope.$watch('backgroundColor', watchOther, false);
                 scope.$watch('thresholds', watchOther, false);
                 scope.$watch('fractionSize', watchData, false);
+                scope.$watch('fontSize', watchOther, false);
+                scope.$watch('fontWeight', watchOther, false);
+                scope.$watch('textColor', watchOther, false);
 
                 scope.$on('$destroy', function () { });
                 scope.$on('$resize', function () { });
