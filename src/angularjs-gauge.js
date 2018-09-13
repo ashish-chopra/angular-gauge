@@ -327,7 +327,7 @@
                 scope.labelOnly = angular.isDefined(scope.labelOnly) ? scope.labelOnly : defaults.labelOnly;
                 scope.foregroundColor = angular.isDefined(scope.foregroundColor) ? scope.foregroundColor : defaults.foregroundColor;
                 scope.backgroundColor = angular.isDefined(scope.backgroundColor) ? scope.backgroundColor : defaults.backgroundColor;
-                scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : {};
+                scope.thresholds = angular.isDefined(scope.thresholds) ? scope.thresholds : defaults.thresholds;
                 scope.fractionSize = angular.isDefined(scope.fractionSize) ? scope.fractionSize : defaults.fractionSize;
 
                 var gauge = new Gauge(element, scope);
